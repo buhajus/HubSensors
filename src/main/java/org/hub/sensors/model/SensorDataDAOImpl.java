@@ -6,9 +6,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import java.util.List;
 
-public class SensorDAOImpl implements SensorDAO {
+public class SensorDataDAOImpl implements SensorDataDAO {
     @Override
-    public void insertEntity(Sensor sensor) {
+    public void insertEntity(SensorData sensor) {
         EntityManager entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
         EntityTransaction entityTransaction = entityManager.getTransaction();
         entityTransaction.begin();
@@ -21,12 +21,12 @@ public class SensorDAOImpl implements SensorDAO {
     }
 
     @Override
-    public Sensor findEntityById(int id) {
+    public SensorData findEntityById(int id) {
         EntityManager entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
         entityManager.getTransaction().begin();
 
-        List<Sensor> sensors = entityManager
-                .createQuery("SELECT n FROM Sensor n WHERE n.id = :id")
+        List<SensorData> sensors = entityManager
+                .createQuery("SELECT n FROM SensorData n WHERE n.id = :id")
                 .setParameter("id", id)
                 .getResultList();
 
@@ -34,15 +34,17 @@ public class SensorDAOImpl implements SensorDAO {
         entityManager.close();
 
         return sensors.get(0);
+
+
     }
 
     @Override
-    public List<Sensor> findEntities() {
+    public List<SensorData> findEntities() {
         EntityManager entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
         entityManager.getTransaction().begin();
 
-        List<Sensor> sensors = entityManager.
-                createQuery("SELECT n FROM Sensor n")
+        List<SensorData> sensors = entityManager.
+                createQuery("SELECT n FROM SensorData n")
                 .getResultList();
 
         entityManager.getTransaction().commit();
@@ -52,16 +54,18 @@ public class SensorDAOImpl implements SensorDAO {
     }
 
     @Override
-    public void updateEntity(Sensor sensor) {
+    public void updateEntity(SensorData sensor) {
         EntityManager entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
         entityManager.getTransaction().begin();
-        Sensor sensor1 = entityManager.find(Sensor.class, sensor.getId());
+        SensorData sensor1 = entityManager.find(SensorData.class, sensor.getId());
         sensor1.setSensorName(sensor.getSensorName());
-        sensor1.setSensorModel(sensor.getSensorModel());
-
+        sensor1.setSensorLocation(sensor.getSensorLocation());
+        sensor1.setDate(sensor.getDate());
+        sensor1.setStatus(sensor.getStatus());
 
         entityManager.getTransaction().commit();
         entityManager.close();
+
     }
 
     @Override
@@ -69,11 +73,10 @@ public class SensorDAOImpl implements SensorDAO {
         EntityManager entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
         entityManager.getTransaction().begin();
 
-        Sensor sensor = entityManager.find(Sensor.class, id);
+        SensorData sensor = entityManager.find(SensorData.class, id);
         entityManager.remove(sensor);
 
         entityManager.getTransaction().commit();
         entityManager.close();
-
     }
 }

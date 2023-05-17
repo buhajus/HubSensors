@@ -1,12 +1,12 @@
 package org.hub.sensors.config;
 
-import org.hub.sensors.model.SensorDAO;
-import org.hub.sensors.model.SensorDAOImpl;
-import org.hub.sensors.service.SensorService;
-import org.hub.sensors.service.SensorServiceImpl;
+import org.hub.sensors.model.*;
+import org.hub.sensors.service.*;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
+
 // @Configuration - žymi konfigūracijos komponentą
 // viduje leidžia kurti bean per metodus su @Bean
 @Configuration
@@ -23,15 +23,41 @@ public class SpringConfig {
     // 'Consider marking one of the beans as @Primary, updating the consumer to accept multiple beans,
     // or using @Qualifier to identify the bean that should be consumed'
 
-    @Qualifier("SensorDAOImpl")
-    public SensorDAO getNumberDAO(){
-        return new SensorDAOImpl();
+    @Qualifier("SensorDataDAOImpl")
+    public SensorDataDAO getSensorDataDAO() {
+        return new SensorDataDAOImpl();
     }
 
     @Bean
+    @Qualifier("SensorDataServiceImpl")
+    public SensorDataService getSensorServiceData() {
+        return new SensorDataServiceImpl();
+    }
+
+    @Bean
+    @Qualifier("SensorDAOImpl")
+    public SensorDAO getSensorDAO() {
+        return new SensorDAOImpl();
+
+    }
+
+    @Bean
+    @Primary
     @Qualifier("SensorServiceImpl")
-    public SensorService getNumberService(){
+    public SensorService getSensorService() {
         return new SensorServiceImpl();
     }
 
+    @Bean
+    @Qualifier("UserDAOImpl")
+    public UserDAO getUserDAO() {
+        return new UserDAOImpl();
+    }
+
+    @Bean
+    @Primary
+    @Qualifier("UserServiceImpl")
+    public UserService getUserService() {
+        return new UserServiceImpl();
+    }
 }

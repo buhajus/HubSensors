@@ -1,18 +1,26 @@
 package org.hub.sensors.controller;
 
 import org.hub.sensors.model.Sensor;
+import org.hub.sensors.model.SensorData;
 import org.hub.sensors.model.User;
 import org.hub.sensors.service.SecurityService;
+import org.hub.sensors.service.SensorDataService;
 import org.hub.sensors.service.SensorService;
 import org.hub.sensors.service.UserService;
+import org.hub.sensors.validator.SensorValidator;
 import org.hub.sensors.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.HashMap;
 
 // @RestController negrąžina view.
 // Kadangi mums reikia grąžinti view pagal Spring MVC, naudojame @Controller
@@ -30,6 +38,9 @@ public class HubSensorsController {
     private SecurityService securityService;
     @Autowired
     private UserValidator userValidator;
+     @Autowired
+    private SensorValidator sensorValidator;
+
 
     // autowire- naudojamas automatinei priklausomybių injekcijai
     // Kad panaudoti @Autowired anotaciją, reikia pirmiausiai turėti apsirašius @Bean @Configuration klasėje
@@ -39,35 +50,79 @@ public class HubSensorsController {
     // kitu atveju metama klaida:
     // 'Consider marking one of the beans as @Primary, updating the consumer to accept multiple beans,
     // or using @Qualifier to identify the bean that should be consumed'
+    @Qualifier("SensorDataServiceImpl")
+    public SensorDataService sensorDataService;
+
+    @Autowired
     @Qualifier("SensorServiceImpl")
     public SensorService sensorService;
 
-    /**
-     * Returns all list from DB
-     *
-     * @param model
-     * @return
-     */
+    @Autowired
+    @Qualifier("UserServiceImpl")
+    public UserService getUserService;
+
+
+    @PostMapping("/add-new-sensor")
+    public String addSensor(@Valid @ModelAttribute("sensor") Sensor sensor,
+                            BindingResult bindingResult,
+                            @RequestParam HashMap<String, String> inputForm,
+                            ModelMap outputForm) {
+
+        sensorValidator.validate(sensor, bindingResult);
+  if (bindingResult.hasErrors()) {
+            return "add_new_sensor";
+        }
+        String sensorName = inputForm.get("sensorName");
+        String sensorModel = inputForm.get("sensorModel");
+
+        outputForm.put("sensorName", sensorName);
+        outputForm.put("sensorModel", sensorModel);
+
+        sensorService.save(new Sensor(sensorName, sensorModel));
+        return "redirect:/sensors";
+    }
+
+
+   @GetMapping("/add_new_sensor")
+    public String addNewSensor(Model model ) {
+
+
+        //Jeigu Model "number" nepraeina validacijos - per jį grąžinamos validacijos
+        //klaidos į View
+        model.addAttribute("sensor", new Sensor());
+        //grąžiname JSP failą, kuris turi būti talpinamas "webapp -> WEB-INF ->  JSP" folderi
+        return "add_new_sensor";
+    }
+
     @GetMapping({"/", "/list"})
     public String getList(Model model) {
-        model.addAttribute("list", sensorService.getAll());
+        model.addAttribute("list", sensorDataService.getAll());
         return "list";
     }
 
     @GetMapping("/show{id}")
-    public String getByid(@RequestParam("id") int id, Model model) {
+    public String getById(@RequestParam("id") int id, Model model) {
         model.addAttribute("sensor", sensorService.getById(id));
         return "sensor";
     }
+
     @GetMapping("/delete{id}")
-    public String delete (@RequestParam("id") int id, Model model){
+    public String delete(@RequestParam("id") int id, Model model) {
         sensorService.delete(id);
-        model.addAttribute("list", sensorService.getAll());
-        return "list";
+        model.addAttribute("sensor", sensorService.getAll());
+        return "redirect:/sensors";
     }
 
-    @PostMapping("/update")
-    public String update(@ModelAttribute ("sensor")Sensor sensor){
+    //atnaujinat išrašą, pirmiausia reikia jį parodyti
+    @GetMapping("/update{id}")
+    public String updateById(@RequestParam("id") int id, Model model) {
+        //Kai užkrauname įrašo redagavimo formą, privalome jos laukelius užpildyti įrašo informacija
+        model.addAttribute("sensor", sensorService.getById(id));
+        return "update";
+    }
+
+    @PostMapping("/update-sensor")
+    public String update(@ModelAttribute("sensor") Sensor sensor) {
         sensorService.update(sensor);
         return "redirect:/show?id=" + sensor.getId();
     }
@@ -104,10 +159,41 @@ public class HubSensorsController {
 
         return "login";
     }
+
     @GetMapping("/403")
     public String _403() {
         return "403";
     }
 
+    @GetMapping("/sensors")
+    public String getAllSensors(Model model) {
+        model.addAttribute("sensors", sensorService.getAll());
+        return "sensors";
+    }
+
+    @GetMapping("/users")
+    public String getAllUsers(Model model) {
+        model.addAttribute("users", getUserService.getAll());
+        return "users";
+    }
+
+        //atnaujinat išrašą, pirmiausia reikia jį parodyti
+    @GetMapping("/update_user{id}")
+    public String updateUserById(@RequestParam("id") int id, Model model) {
+        //Kai užkrauname įrašo redagavimo formą, privalome jos laukelius užpildyti įrašo informacija
+        model.addAttribute("user", getUserService.getById(id));
+        return "update_user";
+    }
+
+     @GetMapping("/show_user{id}")
+    public String getUserById(@RequestParam("id") int id, Model model) {
+        model.addAttribute("user", getUserService.getById(id));
+        return "user";
+    }
+    @PostMapping("/update-user")
+    public String updateUser(@ModelAttribute("user") User user) {
+        getUserService.update(user);
+        return "redirect:/show_user?id=" + user.getId();
+    }
 
 }

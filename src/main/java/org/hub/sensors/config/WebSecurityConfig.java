@@ -31,6 +31,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
             .authorizeRequests()
                 .antMatchers("/sensors").hasAuthority("admin") // tik admin gali matyti visas atliktas skaičiavimo operacijas
+                     .antMatchers("/users").hasAuthority("admin") // tik admin gali matyti visas atliktas skaičiavimo operacijas
                 .antMatchers("/registration") // leidžiame registruotis neprisijungusiems vartotojams
                 //.antMatchers("/resources/**", "/skaiciai").hasRole("admin") // tik admin gali matyti visas atliktas skaičiavimo operacijas
                 //.antMatchers("/resources/**", "/registruoti") // leidžiame registruotis neprisijungusiems vartotojams

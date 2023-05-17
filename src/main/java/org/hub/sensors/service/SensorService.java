@@ -14,4 +14,6 @@ public interface SensorService {
     void update(Sensor sensor);
 
     void delete(int id);
+
+
 }

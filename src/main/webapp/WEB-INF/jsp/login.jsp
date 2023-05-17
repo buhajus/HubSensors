@@ -10,21 +10,21 @@
 
   <head>
       <meta charset="utf-8">
-      <title>Prisijungimas</title>
+      <title>Login</title>
           <jsp:include page="header.jsp"/>
   </head>
 
   <body>
-    <h1 class="text-center">Internetinis skaičiuotuvas</h1>
+    <h1 class="text-center">HUB v.0.1</h1>
     <div class="container">
-      <form method="POST" action="${contextPath}/login" class="form-signin">
-        <h3 class="form-heading">Prisijungimas</h3>
+      <form method="POST" action="${contextPath}/login" class="form-signing">
+        <h3 class="form-heading">Login</h3>
 
         <div class="form-group ${error != null ? 'has-error' : ''}">
             <span>${message}</span>
-            <input name="username" type="text" class="form-control" placeholder="Prisijungimo vardas"
+            <input name="username" type="text" class="form-control" placeholder="User name"
                    autofocus="true"/>
-            <input name="password" type="password" class="form-control" placeholder="Slaptažodis"/>
+            <input name="password" type="password" class="form-control" placeholder="Password"/>
             <span>${error}</span>
             <!--
                 Web aplikacija naudotojui turėtų išduoti papildomą parametrą, kuris nebūtų nuspėjamas piktavaliui.
@@ -33,8 +33,8 @@
             -->
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Prisijungti</button>
-            <h4 class="text-center"><a href="${contextPath}/registration">Sukurti naują paskyrą</a></h4>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            <h4 class="text-center"><a href="${contextPath}/registration">Sign up</a></h4>
         </div>
       </form>
     </div>

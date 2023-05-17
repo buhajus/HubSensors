@@ -10,13 +10,13 @@
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="http://127.0.0.1:8080/">Skaičiuotuvas</a>
+            <a class="navbar-brand" href="http://127.0.0.1:8080/">Sensors history</a>
         </div>
 
         <security:authorize access="hasAuthority('admin')">
             <ul class="nav navbar-nav navbar-left">
-                <li class="active"><a href="/sarasas">Atliktos operacijos</a></li>
-                <li class=""><a href="/skyriai">Skyriai</a></li>
+                <li class=""><a href="/sensors">Sensors</a></li>
+                <li class=""><a href="/users">Users</a></li>
             </ul>
         </security:authorize>
 

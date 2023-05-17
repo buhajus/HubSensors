@@ -1,6 +1,5 @@
 package org.hub.sensors.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public interface SensorDAO {
@@ -13,4 +12,6 @@ public interface SensorDAO {
     void updateEntity(Sensor sensor);
 
     void removeEntityById(int id);
+
+
 }

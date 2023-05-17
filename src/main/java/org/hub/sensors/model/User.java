@@ -7,23 +7,25 @@ import javax.persistence.*;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
 
+    @Column(name = "username")
     private String username;
 
     private String password;
 
+    @Column(name = "authorities")
     private String authorities;
 
     // Laukai, pažymėti raktažodžiu transient NEbus saugomi į db
     @Transient
     private String passwordConfirm;
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
