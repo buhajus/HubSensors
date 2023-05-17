@@ -4,14 +4,52 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cab6022f-3c94-4d51-9335-08f95806888b" name="Changes" comment="" />
+    <list default="true" id="cab6022f-3c94-4d51-9335-08f95806888b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/HubApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/HubApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/config/CustomAccessDeniedHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/config/CustomAccessDeniedHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/config/JPAUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/config/JPAUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/config/ServletInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/config/ServletInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/config/SimpleGrantedAuthority.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/config/SimpleGrantedAuthority.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/config/SpringConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/config/SpringConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/config/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/controller/HubSensorsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/controller/HubSensorsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/model/Sensor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/model/Sensor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/model/SensorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/model/SensorDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/model/SensorDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/model/SensorDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/service/SecurityService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/service/SecurityService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/service/SecurityServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/service/SecurityServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/service/SensorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/service/SensorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/service/SensorServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/service/SensorServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/service/UserDetailsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/service/UserDetailsServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/service/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/validator/UserValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/validator/UserValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/list.jsp" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -21,7 +59,9 @@
     </option>
   </component>
   <component name="ProjectId" id="2Pv2ojkwcbGfcnqnHncpKDpb6H9" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="autoscrollToSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -30,9 +70,39 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Users/IT-admin01/OneDrive/Documents/IdeaProjects/Hub/src/main/java/org/hub/sensors"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\IT-admin01\OneDrive\Documents\IdeaProjects\Hub\src\main\java\org\hub\sensors" />
+      <recent name="C:\Users\IT-admin01\OneDrive\Documents\IdeaProjects\Hub\src\main\resources" />
+      <recent name="C:\Users\IT-admin01\OneDrive\Documents\IdeaProjects\Hub\src\main\java\org\hub\sensors\config" />
+      <recent name="C:\Users\IT-admin01\OneDrive\Documents\IdeaProjects\Hub\src\main\java\org\hub\sensors\service" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\IT-admin01\OneDrive\Documents\IdeaProjects\Hub\src\main\webapp\WEB-INF" />
+      <recent name="C:\Users\IT-admin01\OneDrive\Documents\IdeaProjects\Hub\src\main\webapp" />
+      <recent name="C:\Users\IT-admin01\OneDrive\Documents\IdeaProjects\Hub\src\main" />
+      <recent name="C:\Users\IT-admin01\OneDrive\Documents\IdeaProjects\Hub\src\main\resources\webapp\WEB-INF\jsp" />
+      <recent name="C:\Users\IT-admin01\OneDrive\Documents\IdeaProjects\Hub\src\main\resources" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.hub.sensors.config" />
+      <recent name="org.hub.sensors.model" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.hub.sensors.HubApplication" />
+      <module name="sensors" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

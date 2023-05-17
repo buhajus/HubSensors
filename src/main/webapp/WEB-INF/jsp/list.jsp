@@ -19,34 +19,34 @@
             </tr>
 
             <!-- iteruoja per visą skaičių sarašą -->
-            <c:forEach var="skaicius" items="${sarasas}">
+            <c:forEach var="sensor" items="${list}">
 
                 <!-- konstruoja įrašo atnaujinimo adresą su skaičiaus id -->
                 <c:url var="update" value="/update">
-                    <c:param name="id" value="${skaicius.id}"/>
+                    <c:param name="id" value="${sensor.id}"/>
                 </c:url>
 
                 <!-- konstruoja įrašo trynimo adresą su skaičiaus id -->
-                <c:url var="trinti" value="/trinti">
-                    <c:param name="id" value="${skaicius.id}"/>
+                <c:url var="delete" value="/delete">
+                    <c:param name="id" value="${sensor.id}"/>
                 </c:url>
 
                 <!-- konstruoja įrašo peržiūros adresą su skaičiaus id -->
-                <c:url var="rodyti" value="/rodyti">
-                    <c:param name="id" value="${skaicius.id}"/>
+                <c:url var="show" value="/show">
+                    <c:param name="id" value="${sensor.id}"/>
                 </c:url>
 
                 <tr>
-                    <td>${skaicius.sk1}</td>
-                    <td>${skaicius.zenklas}</td>
-                    <td>${skaicius.sk2}</td>
-                    <td>${skaicius.rezult}</td>
+                    <td>${sensor.date}</td>
+                    <td>${sensor.sensorLocation}</td>
+                    <td>${sensor.sensorName}</td>
+                    <td>${sensor.status}</td>
 
                     <td>
-                        <!-- atvaizduoti atnaujinimo adresą --> <a href="${atnaujinti}">Keisti</a>
-                        | <a href="${trinti}"
+                        <!-- atvaizduoti atnaujinimo adresą --> <a href="${update}">Keisti</a>
+                        | <a href="${delete}"
                              onclick="if (!(confirm('Ar tikrai norite ištrinti šį įrašą?'))) return false">Trinti</a>
-                        | <!-- atvaizduoti rodymo adresą --> <a href="${rodyti}">Rodyti</a>
+                        | <!-- atvaizduoti rodymo adresą --> <a href="${show}">Rodyti</a>
                     </td>
 
                 </tr>

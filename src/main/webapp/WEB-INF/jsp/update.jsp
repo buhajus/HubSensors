@@ -7,18 +7,18 @@
 		<jsp:include page="menu.jsp"/>
 	</head>
 	<body class="container">
-		<form:form name="skaicius" action="/atnaujintiSkaiciu" method="post">
+		<form:form name="sensor" action="/update" method="post">
 			<!-- id būtina pateikti formoje, kitaip į back-end nueis null. Todėl darome hidden, kad neredaguotų -->
-			<input type="hidden"	name="id"  			value="${skaicius.id}"><p>
+			<input type="hidden"	name="id"  			value="${sensor.id}"><p>
 			Pirmas skaičius:<br>
-			<input type="number"   	name="sk1"  		value="${skaicius.sk1}"><p>
+			<input type="number"   	name="sk1"  		value="${sensor.sk1}"><p>
 			Ženklas:<br>
-			<input type="text" 		name="zenklas"  	value="${skaicius.zenklas}"><p>
+			<input type="text" 		name="zenklas"  	value="${sensor.zenklas}"><p>
 			Antras skaičius:<br>
-			<input type="number"   	name="sk2" 			value="${skaicius.sk2}"><p>
+			<input type="number"   	name="sk2" 			value="${sensor.sk2}"><p>
 			Rezultatas:<br>
-			<input type="number" 	name="rezult"   	value="${skaicius.rezult}"><p>
-			<input type="submit" value="Atnaujinti">
+			<input type="number" 	name="rezult"   	value="${sensor.rezult}"><p>
+			<input type="submit" value="Update">
 		</form:form>
 	</body>
 	<jsp:include page="footer.jsp"/>

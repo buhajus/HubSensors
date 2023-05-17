@@ -1,6 +1,6 @@
-package com.spring.printer.repository;
+package org.hub.sensors.repository;
 
-import com.spring.printer.model.User;
+import org.hub.sensors.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /*

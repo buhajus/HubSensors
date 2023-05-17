@@ -1,4 +1,4 @@
-package com.spring.printer.config;
+package org.hub.sensors.config;
 
 import org.springframework.security.core.GrantedAuthority;
 

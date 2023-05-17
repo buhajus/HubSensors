@@ -1,6 +1,6 @@
-package com.spring.printer.service;
+package org.hub.sensors.service;
 
-import com.spring.printer.model.User;
+import org.hub.sensors.model.User;
 
 public interface UserService {
     void save(User user);

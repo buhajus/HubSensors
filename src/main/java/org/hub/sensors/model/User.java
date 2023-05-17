@@ -1,4 +1,4 @@
-package com.spring.printer.model;
+package org.hub.sensors.model;
 
 import javax.persistence.*;
 

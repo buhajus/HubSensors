@@ -1,7 +1,7 @@
-package com.spring.printer.validator;
+package org.hub.sensors.validator;
 
-import com.spring.printer.model.User;
-import com.spring.printer.service.UserService;
+import org.hub.sensors.model.User;
+import org.hub.sensors.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;

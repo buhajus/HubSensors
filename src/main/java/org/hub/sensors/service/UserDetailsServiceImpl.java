@@ -1,8 +1,8 @@
-package com.spring.printer.service;
+package org.hub.sensors.service;
 
-import com.spring.printer.config.SimpleGrantedAuthority;
-import com.spring.printer.model.User;
-import com.spring.printer.repository.UserRepository;
+import org.hub.sensors.config.SimpleGrantedAuthority;
+import org.hub.sensors.model.User;
+import org.hub.sensors.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

@@ -1,4 +1,4 @@
-package com.spring.printer.service;
+package org.hub.sensors.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

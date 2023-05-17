@@ -1,4 +1,4 @@
-package com.spring.printer.config;
+package org.hub.sensors.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -30,15 +30,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-                .antMatchers("/skaiciai").hasAuthority("admin") // tik admin gali matyti visas atliktas skaičiavimo operacijas
-                .antMatchers("/registruoti") // leidžiame registruotis neprisijungusiems vartotojams
+                .antMatchers("/sensors").hasAuthority("admin") // tik admin gali matyti visas atliktas skaičiavimo operacijas
+                .antMatchers("/registration") // leidžiame registruotis neprisijungusiems vartotojams
                 //.antMatchers("/resources/**", "/skaiciai").hasRole("admin") // tik admin gali matyti visas atliktas skaičiavimo operacijas
                 //.antMatchers("/resources/**", "/registruoti") // leidžiame registruotis neprisijungusiems vartotojams
                 .permitAll()
                 .anyRequest().authenticated() // kiti puslapiai pasiekiami tik prisijungusiems (autorizuotiems) vartotojams
                 .and()
             .formLogin() // neprisijungusiam vartotojui leidžiame prieiti prie prisijungimo puslapio
-                .loginPage("/prisijungti")
+                .loginPage("/login")
                 .permitAll()
                 .and()
             .logout() // leidžiame visiems atsijungti

@@ -1,4 +1,4 @@
-package com.spring.printer.service;
+package org.hub.sensors.service;
 
 public interface SecurityService {
     String findLoggedInUsername();
