@@ -53,8 +53,8 @@ public class SensorDataServiceImpl implements SensorDataService {
     public void delete(int id) {
         sensorDAO.removeEntityById(id);
     }
-    @Override
-    public SensorData storeSensorStatus(SensorData sensorData){
-        return sensorDataRepository.save(sensorData);
-    }
+//    @Override
+//    public SensorData storeSensorStatus(SensorData sensorData){
+//        return sensorDataRepository.save(sensorData);
+//    }
 }

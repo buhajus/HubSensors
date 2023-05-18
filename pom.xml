@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.0.5</version>
+        <version>2.2.4.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -17,66 +17,69 @@
     <packaging>jar</packaging>
 
     <properties>
-        <java.version>17</java.version>
+        <!-- JAVA VERSIJA 1.8 (!) -->
+        <java.version>1.8</java.version>
     </properties>
 
     <dependencies>
+        <!-- priešingu atveju neranda jsp žymų <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %> -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-taglibs</artifactId>
+        </dependency>
+        <!-- sukonfigūruotas Spring Boot web aplikacijoms -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <!--kad veiktu JSP failais -->
+        <!-- tomcat serveris aplikacijos paleidimui -->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-tomcat</artifactId>-->
+<!--            <scope>provided</scope>-->
+<!--        </dependency>-->
+        <!--Reikalingas, kad veiktų projektas su JSP failais -->
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-jasper</artifactId>
-            <scope>runtime</scope>
+            <scope>runtime</scope><!--in my case provided not working so write runtime-->
         </dependency>
-
-        <!--jeigu nebus šios depencecy, gausme JAVAx servlet Servlet Expansion-->
+        <!-- Jeigu nepridėsime, gausime javax.servlet.ServletException -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <scope>provided</scope>
             <version>3.1.0</version>
+            <scope>provided</scope>
         </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- vartotojo laukelių validacija (input form validation) -->
+        <!-- Vartotojo laukelių validacijai -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
-            <version>8.0.0.Final</version>
+            <version>6.1.0.Final</version>
         </dependency>
-
+        <!-- DB- MySQL connector -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.33</version>
+            <version>8.0.13</version>
         </dependency>
-
-
-        <!-- ORM -->
-
+        <!-- DB- Hibernate -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>5.3.20.Final</version>
+            <version>5.3.7.Final</version>
+        </dependency>
+        <!-- jsp jstl anotacijoms (pvz. forEach, url, param)-->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
         </dependency>
 
-        <!-- API, java.xml.bind module -->
         <dependency>
             <groupId>jakarta.xml.bind</groupId>
             <artifactId>jakarta.xml.bind-api</artifactId>
             <version>2.3.2</version>
         </dependency>
-
-        <!-- JSP JSTL (java server pages tag library) anotacijoms, pvz.: foreach, URL, param -->
-
 
         <dependency>
             <groupId>jakarta.servlet.jsp.jstl</groupId>
@@ -90,15 +93,37 @@
             <artifactId>jakarta.servlet.jsp.jstl</artifactId>
             <version>3.0.1</version>
         </dependency>
-
+        <!-- Vartotojų autentifikacijai ir autorizacijai -->
         <dependency>
-            <groupId>com.pi4j</groupId>
-            <artifactId>pi4j-core</artifactId>
-            <version>1.2</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <!-- Repozitorijoms, kur nereikia rūpintis paprastomis užklausomis -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
 
-    </dependencies>
+        <!-- testavimui  -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.junit.vintage</groupId>
+                    <artifactId>junit-vintage-engine</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>com.pi4j</groupId>-->
+<!--            <artifactId>pi4j-core</artifactId>-->
+<!--            <version>1.2</version>-->
+<!--        </dependency>-->
+   </dependencies>
 
     <build>
         <plugins>

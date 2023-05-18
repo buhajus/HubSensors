@@ -16,5 +16,5 @@ public interface SensorDataService {
 
     void delete(int id);
 
-    SensorData storeSensorStatus(SensorData sensorData);
+   // SensorData storeSensorStatus(SensorData sensorData);
 }
