@@ -1,7 +1,7 @@
 package org.hub.sensors.controller;
 
-//import com.pi4j.io.gpio.*;
-//import com.pi4j.util.Console;
+import com.pi4j.io.gpio.*;
+import com.pi4j.util.Console;
 import org.hub.sensors.model.Sensor;
 import org.hub.sensors.model.SensorData;
 import org.hub.sensors.model.User;
@@ -45,8 +45,8 @@ public class HubSensorsController {
      @Autowired
     private SensorValidator sensorValidator;
 
-   // final GpioController gpio = GpioFactory.getInstance();
-   // final Console console = new Console();
+    final GpioController gpio = GpioFactory.getInstance();
+    final Console console = new Console();
 
 
     // autowire- naudojamas automatinei priklausomybių injekcijai
@@ -101,39 +101,39 @@ public class HubSensorsController {
         return "add_new_sensor";
     }
 
-//    public SensorData storeSensorStatus(@RequestBody SensorData sensorData){
-//        int pinNumber = 27;
-//
-//
-//        // Set pin numbering mode to BCM
-//        GpioFactory.setDefaultProvider(new RaspiGpioProvider(RaspiPinNumberingScheme.BROADCOM_PIN_NUMBERING));
-//
-//        // Create digital input pin
-//        GpioPinDigitalInput pin = gpio.provisionDigitalInputPin(RaspiPin.GPIO_27, PinPullResistance.PULL_DOWN);
-//        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-//        LocalDateTime now = LocalDateTime.now();
-//        PinState pinValue = pin.getState();
-//
-//        // Continuously read pin value
-//        if (pin.isHigh()) {
-//
-//            console.println(pinValue);
-//            System.out.println(dtf.format(now));
-//            gpio.shutdown();
-//            gpio.unprovisionPin(pin);
-//            sensorDataService.storeSensorStatus(sensorData);
-//
-//            // Delay for 2 seconds
-//            //Thread.sleep(2000);
-//
-//        }
-//
-//
-//
-//        gpio.shutdown();
-//        gpio.unprovisionPin(pin);
-//        return null;
-//    }
+    public SensorData storeSensorStatus(@RequestBody SensorData sensorData){
+        int pinNumber = 27;
+
+
+        // Set pin numbering mode to BCM
+        GpioFactory.setDefaultProvider(new RaspiGpioProvider(RaspiPinNumberingScheme.BROADCOM_PIN_NUMBERING));
+
+        // Create digital input pin
+        GpioPinDigitalInput pin = gpio.provisionDigitalInputPin(RaspiPin.GPIO_27, PinPullResistance.PULL_DOWN);
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        PinState pinValue = pin.getState();
+
+        // Continuously read pin value
+        if (pin.isHigh()) {
+
+            console.println(pinValue);
+            System.out.println(dtf.format(now));
+            gpio.shutdown();
+            gpio.unprovisionPin(pin);
+            sensorDataService.storeSensorStatus(sensorData);
+
+            // Delay for 2 seconds
+            //Thread.sleep(2000);
+
+        }
+
+
+
+        gpio.shutdown();
+        gpio.unprovisionPin(pin);
+        return null;
+    }
 
     @GetMapping({"/", "/list"})
     public String getList(Model model) {
