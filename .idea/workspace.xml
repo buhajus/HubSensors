@@ -4,9 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cab6022f-3c94-4d51-9335-08f95806888b" name="Changes" comment="-">
+    <list default="true" id="cab6022f-3c94-4d51-9335-08f95806888b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/list.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,13 +31,6 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
-  <component name="LogFilters">
-    <option name="FILTER_ERRORS" value="false" />
-    <option name="FILTER_WARNINGS" value="false" />
-    <option name="FILTER_INFO" value="true" />
-    <option name="FILTER_DEBUG" value="true" />
-    <option name="CUSTOM_FILTER" />
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -49,17 +48,20 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/IT-admin01/OneDrive/Documents/IdeaProjects/Hub",
+    "last_opened_file_path": "C:/Users/MB Saromania/IdeaProjects/HubSensors",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.0",
     "settings.editor.selected.configurable": "preferences.keymap"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\IT-admin01\OneDrive\Documents\IdeaProjects\Hub" />
       <recent name="C:\Users\MB Saromania\IdeaProjects\HubSensors\src\main\webapp\WEB-INF\jsp" />
       <recent name="C:\Users\IT-admin01\OneDrive\Documents\IdeaProjects\Hub\src\main\java\org\hub\sensors" />
       <recent name="C:\Users\IT-admin01\OneDrive\Documents\IdeaProjects\Hub\src\main\resources" />
       <recent name="C:\Users\IT-admin01\OneDrive\Documents\IdeaProjects\Hub\src\main\java\org\hub\sensors\config" />
+      <recent name="C:\Users\IT-admin01\OneDrive\Documents\IdeaProjects\Hub\src\main\java\org\hub\sensors\service" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\IT-admin01\OneDrive\Documents\IdeaProjects\Hub\src\main\webapp\WEB-INF" />
@@ -91,74 +93,7 @@
       <option name="presentableId" value="Default" />
       <updated>1684323418625</updated>
     </task>
-    <task id="LOCAL−00001" summary="added SensorDataRepository">
-      <created>1684410543191</created>
-      <option name="number" value="LOCAL−00001" />
-      <option name="presentableId" value="LOCAL−00001" />
-      <updated>1684410543192</updated>
-    </task>
-    <task id="LOCAL−00002" summary="updated DB">
-      <created>1684411916087</created>
-      <option name="number" value="LOCAL−00002" />
-      <option name="presentableId" value="LOCAL−00002" />
-      <updated>1684411916087</updated>
-    </task>
-    <task id="LOCAL−00003" summary="updated DB">
-      <created>1684412826359</created>
-      <option name="number" value="LOCAL−00003" />
-      <option name="presentableId" value="LOCAL−00003" />
-      <updated>1684412826359</updated>
-    </task>
-    <task id="LOCAL−00004" summary="updated DB">
-      <created>1684412914928</created>
-      <option name="number" value="LOCAL−00004" />
-      <option name="presentableId" value="LOCAL−00004" />
-      <updated>1684412914928</updated>
-    </task>
-    <task id="LOCAL−00005" summary="updated DB">
-      <created>1684413129844</created>
-      <option name="number" value="LOCAL−00005" />
-      <option name="presentableId" value="LOCAL−00005" />
-      <updated>1684413129844</updated>
-    </task>
-    <task id="LOCAL−00006" summary="updated pom">
-      <created>1684413345016</created>
-      <option name="number" value="LOCAL−00006" />
-      <option name="presentableId" value="LOCAL−00006" />
-      <updated>1684413345016</updated>
-    </task>
-    <task id="LOCAL−00007" summary="-">
-      <created>1684414297642</created>
-      <option name="number" value="LOCAL−00007" />
-      <option name="presentableId" value="LOCAL−00007" />
-      <updated>1684414297642</updated>
-    </task>
-    <task id="LOCAL−00008" summary="-">
-      <created>1684414786754</created>
-      <option name="number" value="LOCAL−00008" />
-      <option name="presentableId" value="LOCAL−00008" />
-      <updated>1684414786754</updated>
-    </task>
-    <option name="localTasksCounter" value="9" />
     <servers />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="added SensorDataRepository" />
-    <MESSAGE value="updated DB" />
-    <MESSAGE value="updated pom" />
-    <MESSAGE value="-" />
-    <option name="LAST_COMMIT_MESSAGE" value="-" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

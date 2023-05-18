@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>Spausdintuvų sąrašas</title>
+    <title>Sensors list</title>
     <jsp:include page="header.jsp"/>
     <jsp:include page="menu.jsp"/>
 </head>

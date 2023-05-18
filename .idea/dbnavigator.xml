@@ -13,8 +13,7 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="e67af464-cd4a-47b2-88b1-2530c066d27e">
-      <console name="Connection" type="STANDARD" schema="hub" session="Main"><![CDATA[Select * from sensors]]></console>
-      <console name="hub DB" type="STANDARD" schema="hub" session="Main"><![CDATA[Select * from sensors]]></console>
+      <console name="hub DB" type="STANDARD" schema="hub" session="Main" />
     </connection>
     <connection id="29258d55-ee34-4bed-9120-00edb5f844a4">
       <console name="pi" type="STANDARD" schema="hub" session="Main" />
