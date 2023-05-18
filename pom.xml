@@ -33,11 +33,11 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <!-- tomcat serveris aplikacijos paleidimui -->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-tomcat</artifactId>-->
-<!--            <scope>provided</scope>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
         <!--Reikalingas, kad veiktų projektas su JSP failais -->
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
@@ -80,19 +80,6 @@
             <artifactId>jakarta.xml.bind-api</artifactId>
             <version>2.3.2</version>
         </dependency>
-
-        <dependency>
-            <groupId>jakarta.servlet.jsp.jstl</groupId>
-            <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
-            <version>3.0.0</version>
-        </dependency>
-
-
-        <dependency>
-            <groupId>org.glassfish.web</groupId>
-            <artifactId>jakarta.servlet.jsp.jstl</artifactId>
-            <version>3.0.1</version>
-        </dependency>
         <!-- Vartotojų autentifikacijai ir autorizacijai -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -103,8 +90,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
-
-
         <!-- testavimui  -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -117,13 +102,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
-<!--        <dependency>-->
-<!--            <groupId>com.pi4j</groupId>-->
-<!--            <artifactId>pi4j-core</artifactId>-->
-<!--            <version>1.2</version>-->
-<!--        </dependency>-->
-   </dependencies>
+    </dependencies>
 
     <build>
         <plugins>
