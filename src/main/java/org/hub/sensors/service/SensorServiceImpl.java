@@ -2,6 +2,8 @@ package org.hub.sensors.service;
 
 import org.hub.sensors.model.Sensor;
 import org.hub.sensors.model.SensorDAO;
+import org.hub.sensors.model.SensorData;
+import org.hub.sensors.repository.SensorDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -10,6 +12,7 @@ import java.util.List;
 @Service
 
 public class SensorServiceImpl implements SensorService {
+
     @Autowired
     @Qualifier("SensorDAOImpl")
     private SensorDAO sensorDAO;
@@ -41,4 +44,6 @@ public class SensorServiceImpl implements SensorService {
     public void delete(int id) {
 sensorDAO.removeEntityById(id);
     }
+
+
 }

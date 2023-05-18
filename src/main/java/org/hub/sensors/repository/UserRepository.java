@@ -2,6 +2,7 @@ package org.hub.sensors.repository;
 
 import org.hub.sensors.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 /*
     O kas, jeigu nenorime rūpintis paprastomis užklausomis, juk jos visada vienodos.
@@ -25,6 +26,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
     Galima patikslinti, ko tiksliau ieškome:
         findFirst.., findTop.., findDistinct.., findUser.., findFirstUser.., findDistinctUser..
  */
+@Repository
 public interface UserRepository extends JpaRepository<User, Long> {
     User findByUsername(String username);
 }

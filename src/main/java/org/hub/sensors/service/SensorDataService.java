@@ -5,6 +5,7 @@ import org.hub.sensors.model.SensorData;
 import java.util.List;
 
 public interface SensorDataService {
+
     List<SensorData> getAll();
 
     void save(SensorData sensor);
@@ -14,4 +15,6 @@ public interface SensorDataService {
     void update(SensorData sensor);
 
     void delete(int id);
+
+    SensorData storeSensorStatus(SensorData sensorData);
 }

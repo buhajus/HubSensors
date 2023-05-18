@@ -28,6 +28,12 @@ public class SensorData {
         this.date = date;
     }
 
+    public SensorData(String sensorName, int status, String date) {
+        this.sensorName = sensorName;
+        this.status = status;
+        this.date = date;
+    }
+
     public SensorData(int id, String sensorName, String sensorLocation, int status, String date) {
         this.id = id;
         this.sensorName = sensorName;

@@ -79,4 +79,7 @@ public class SensorDataDAOImpl implements SensorDataDAO {
         entityManager.getTransaction().commit();
         entityManager.close();
     }
+
+
+
 }
