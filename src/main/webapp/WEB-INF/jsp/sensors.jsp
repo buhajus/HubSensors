@@ -54,7 +54,7 @@
 
         </table>
     </div>
-    <a type="button" href="/add_new_sensor" class="button">Add new sensor</a>
+    <a type="button" href="/add_new_sensor" class="btn btn-info">Add new sensor</a>
     <jsp:include page="footer.jsp"/>
 </body>
 </html>

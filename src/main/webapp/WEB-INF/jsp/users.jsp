@@ -26,7 +26,7 @@
                 </c:url>
 
                 <!-- konstruoja įrašo trynimo adresą su skaičiaus id -->
-                <c:url var="delete" value="/delete">
+                <c:url var="delete" value="/delete_user">
                     <c:param name="id" value="${user.id}"/>
                 </c:url>
 

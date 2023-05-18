@@ -1,5 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
+
 <html>
     <head>
         <title>Add sensor</title>
@@ -10,13 +14,17 @@
         </style>
     </head>
     <body class="container">
-        <h2>Galimos operacijos: sudėti, atimti, dauginti, dalinti</h2>
+        <h2>Add new sensor</h2>
 
         <form:form method="post" action="/add-new-sensor" modelAttribute="sensor">
-           Sensor name: <form:input type="text" path="sensorName"/>
-           Sensor model: <form:input type="text" path="sensorModel"/>
-                          <br> <br>
-            <input type="submit" value="Add new sensor">
+            <div class="form-group ${error != null ? 'has-error' : ''}">
+               <span>${message}</span>
+                    Sensor name: <form:input type="text" path="sensorName"/>
+                    Sensor model: <form:input type="text" path="sensorModel"/>
+                <span>${error}</span> <br> <br>
+               <input type="submit" value="Add new sensor" class="btn btn-info">
+
+            </div>
         </form:form>
     </body>
     <jsp:include page="footer.jsp"/>

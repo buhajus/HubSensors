@@ -10,16 +10,17 @@
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="http://127.0.0.1:8080/">Sensors history</a>
-        </div>
+
+
 
         <security:authorize access="hasAuthority('admin')">
-            <ul class="nav navbar-nav navbar-left">
-                <li class=""><a href="/sensors">Sensors</a></li>
-                <li class=""><a href="/users">Users</a></li>
+            <ul class="nav navbar-nav">
+             <li class="navbar-brand"><a href="http://127.0.0.1:8080/">Sensors history</a></li>
+                <li class="navbar-brand"><a href="/sensors">Sensors</a></li>
+                <li class="navbar-brand"><a href="/users">Users</a></li>
             </ul>
         </security:authorize>
-
+ </div>
         <ul class="nav navbar-nav navbar-right">
                 <c:if test="${pageContext.request.userPrincipal.name != null}"> <!-- vartotojo vardo gavimas iš užklausos -->
                     <form id="logoutForm" method="POST" action="${contextPath}/logout">

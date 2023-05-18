@@ -236,5 +236,11 @@ public class HubSensorsController {
         getUserService.update(user);
         return "redirect:/show_user?id=" + user.getId();
     }
+    @GetMapping("/delete_user{id}")
+    public String deleteUser(@RequestParam("id") int id, Model model) {
+        getUserService.delete(id);
+        model.addAttribute("delete_user", getUserService.getAll());
+        return "redirect:/users";
+    }
 
 }

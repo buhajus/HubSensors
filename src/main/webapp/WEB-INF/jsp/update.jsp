@@ -14,10 +14,8 @@
 			<input type="text"   	name="sensorName"  		value="${sensor.sensorName}"><p>
 			Sensor Model:<br>
 			<input type="text" 		name="sensorModel"  	value="${sensor.sensorModel}"><p>
+		    <input type="submit" value="Update" class="btn btn-info">
 
-
-
-			<input type="submit" value="Update">
 		</form:form>
 	</body>
 	<jsp:include page="footer.jsp"/>

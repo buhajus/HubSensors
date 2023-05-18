@@ -16,7 +16,7 @@
 			<input type="text" 		name="authorities"  	value="${user.authorities}"><p>
 			<br>
 
-			<input type="submit" value="Update">
+               <input type="submit" value="Update" class="btn btn-info">
 		</form:form>
 	</body>
 	<jsp:include page="footer.jsp"/>
