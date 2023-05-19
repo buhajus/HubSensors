@@ -15,7 +15,7 @@
     <groupId>org.hub</groupId>
     <artifactId>sensors</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <properties>
         <!-- JAVA VERSIJA 1.8 (!) -->
