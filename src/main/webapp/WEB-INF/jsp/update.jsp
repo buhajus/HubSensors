@@ -5,6 +5,9 @@
 		<title>Edit sensor</title>
 		<jsp:include page="header.jsp"/>
 		<jsp:include page="menu.jsp"/>
+		  <style>
+                    .error{color:red}
+                </style>
 	</head>
 	<body class="container">
 		<form:form name="sensor" action="/update-sensor" method="post">
@@ -14,6 +17,9 @@
 			<input type="text"   	name="sensorName"  		value="${sensor.sensorName}"><p>
 			Sensor Model:<br>
 			<input type="text" 		name="sensorModel"  	value="${sensor.sensorModel}"><p>
+			GPIO of raspberry:<br>
+            <input type="number" 		name="gpio"  	value="${sensor.gpio}"><p>
+
 		    <input type="submit" value="Update" class="btn btn-info">
 
 		</form:form>

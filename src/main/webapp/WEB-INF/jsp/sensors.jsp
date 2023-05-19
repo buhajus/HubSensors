@@ -14,10 +14,11 @@
             <th>Sensor id</th>
                 <th>Sensor name</th>
                 <th>Sensor model</th>
+                 <th>GPIO of raspberry</th>
                 <th>Action</th>
             </tr>
 
-            <!-- iteruoja per visą skaičių sarašą -->
+            <!-- iteruoja per visą  sarašą -->
             <c:forEach var="sensor" items="${sensors}">
 
                 <!-- konstruoja įrašo atnaujinimo adresą su skaičiaus id -->
@@ -36,11 +37,10 @@
                 </c:url>
 
                 <tr>
-                <td>${sensor.id}</td>
+                    <td>${sensor.id}</td>
                     <td>${sensor.sensorName}</td>
                     <td>${sensor.sensorModel}</td>
-
-
+                    <td>${sensor.gpio}</td>
                     <td>
                         <!-- atvaizduoti atnaujinimo adresą --> <a href="${update}">Keisti</a>
                         | <a href="${delete}"

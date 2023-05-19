@@ -14,7 +14,7 @@
                 <th>Sensor name</th>
                 <th>Sensor location</th>
                 <th>Status</th>
-                <th>Sensor trigger date</th>
+                <th>Sensor trigger time</th>
                <!-- <th>Action</th> -->
             </tr>
 

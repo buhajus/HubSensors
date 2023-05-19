@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.text.DateFormat;
 import java.util.List;
 
 // @Service - servisų sluoksnis biznio logikai
@@ -22,7 +23,7 @@ public class SensorDataServiceImpl implements SensorDataService {
     // 'Consider marking one of the beans as @Primary, updating the consumer to accept multiple beans,
     // or using @Qualifier to identify the bean that should be consumed'
     @Qualifier("SensorDataDAOImpl")
-    private SensorDataDAO sensorDAO;
+    private SensorDataDAO sensorDataDAO;
 
     @Autowired
     private SensorDataRepository sensorDataRepository;
@@ -30,31 +31,36 @@ public class SensorDataServiceImpl implements SensorDataService {
 
     @Override
     public List<SensorData> getAll() {
-        return sensorDAO.findEntities();
+        return sensorDataDAO.findEntities();
     }
 
     @Override
     public void save(SensorData sensor) {
-        sensorDAO.insertEntity(sensor);
+        sensorDataDAO.insertEntity(sensor);
 
     }
 
     @Override
     public SensorData getById(int id) {
-        return sensorDAO.findEntityById(id);
+        return sensorDataDAO.findEntityById(id);
     }
 
     @Override
     public void update(SensorData sensor) {
-        sensorDAO.updateEntity(sensor);
+        sensorDataDAO.updateEntity(sensor);
     }
 
     @Override
     public void delete(int id) {
-        sensorDAO.removeEntityById(id);
+        sensorDataDAO.removeEntityById(id);
     }
-//    @Override
-//    public SensorData storeSensorStatus(SensorData sensorData){
-//        return sensorDataRepository.save(sensorData);
-//    }
+
+
+    @Override
+    public void insertSensorDataStatus(String dateFormat, String sensorLocation, String sensorName, int status) {
+        sensorDataDAO.insertSensorDataStatus(dateFormat, sensorLocation, sensorName, status);
+
+    }
+
+
 }

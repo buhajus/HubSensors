@@ -40,10 +40,10 @@
                     <td>${user.username}</td>
                     <td>${user.authorities}</td>
                     <td>
-                        <!-- atvaizduoti atnaujinimo adresą --> <a href="${update}">Keisti</a>
+                        <a href="${update}">Keisti</a>
                         | <a href="${delete}"
                              onclick="if (!(confirm('Ar tikrai norite ištrinti šį įrašą?'))) return false">Trinti</a>
-                        | <!-- atvaizduoti rodymo adresą --> <a href="${show}">Rodyti</a>
+                        |  <a href="${show}">Rodyti</a>
                     </td>
 
                 </tr>

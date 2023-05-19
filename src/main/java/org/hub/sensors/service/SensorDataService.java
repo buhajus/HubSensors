@@ -2,6 +2,8 @@ package org.hub.sensors.service;
 
 import org.hub.sensors.model.SensorData;
 
+import java.text.DateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public interface SensorDataService {
@@ -16,5 +18,7 @@ public interface SensorDataService {
 
     void delete(int id);
 
-   // SensorData storeSensorStatus(SensorData sensorData);
+    void insertSensorDataStatus(String dateFormat, String sensorLocation, String sensorName, int status);
+
+
 }

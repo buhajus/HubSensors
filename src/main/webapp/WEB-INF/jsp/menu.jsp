@@ -16,6 +16,7 @@
         <security:authorize access="hasAuthority('admin')">
             <ul class="nav navbar-nav">
              <li class="navbar-brand"><a href="http://127.0.0.1:8080/">Sensors history</a></li>
+              <li class="navbar-brand"><a href="/pool_data">Pool data</a></li>
                 <li class="navbar-brand"><a href="/sensors">Sensors</a></li>
                 <li class="navbar-brand"><a href="/users">Users</a></li>
             </ul>

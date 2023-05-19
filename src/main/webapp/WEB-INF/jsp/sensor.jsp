@@ -4,6 +4,7 @@
 		<title>Sensor details</title>
 		<jsp:include page="header.jsp"/>
 		<jsp:include page="menu.jsp"/>
+
 	</head>
 	<body class="container">
 		<div class="table-responsive">
@@ -22,6 +23,11 @@
 					<td><b>Sensor model:</b></td>
 					<td>${sensor.sensorModel}</td>
 				</tr>
+				<tr>
+                	<td><b>GPIO:</b></td>
+                	<td>${sensor.gpio}</td>
+                </tr>
+
 
 			</table>
 		</div>

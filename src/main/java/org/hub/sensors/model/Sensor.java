@@ -1,6 +1,7 @@
 package org.hub.sensors.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "sensors")
@@ -11,22 +12,38 @@ public class Sensor {
     @Column(name = "id")
     private int id;
     @Column(name = "sensor_name")
+    //  @NotBlank(message = "Name is mandatory")
     private String sensorName;
     @Column(name = "sensor_model")
+    @NotBlank(message = "Model is mandatory")
     private String sensorModel;
+
+    @Column(name = "gpio")
+    private int gpio;
 
     public Sensor() {
     }
 
-    public Sensor(String sensorName, String sensorModel) {
+    public Sensor(String sensorName, String sensorModel, int gpio) {
         this.sensorName = sensorName;
         this.sensorModel = sensorModel;
+        this.gpio = gpio;
     }
 
-    public Sensor(int id, String sensorName, String sensorModel) {
+
+    public int getGpio() {
+        return gpio;
+    }
+
+    public Sensor(int id, String sensorName, String sensorModel, int gpio) {
         this.id = id;
         this.sensorName = sensorName;
         this.sensorModel = sensorModel;
+        this.gpio = gpio;
+    }
+
+    public void setGpio(int gpio) {
+        this.gpio = gpio;
     }
 
     public int getId() {

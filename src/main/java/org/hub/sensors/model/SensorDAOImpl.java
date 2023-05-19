@@ -58,7 +58,7 @@ public class SensorDAOImpl implements SensorDAO {
         Sensor sensor1 = entityManager.find(Sensor.class, sensor.getId());
         sensor1.setSensorName(sensor.getSensorName());
         sensor1.setSensorModel(sensor.getSensorModel());
-
+        sensor1.setGpio(sensor.getGpio());
 
         entityManager.getTransaction().commit();
         entityManager.close();

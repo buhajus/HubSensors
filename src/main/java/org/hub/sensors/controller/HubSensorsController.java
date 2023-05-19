@@ -2,6 +2,7 @@ package org.hub.sensors.controller;
 
 //import com.pi4j.io.gpio.*;
 //import com.pi4j.util.Console;
+
 import org.hub.sensors.model.Sensor;
 import org.hub.sensors.model.SensorData;
 import org.hub.sensors.model.User;
@@ -15,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -22,6 +24,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.text.DateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
@@ -42,7 +45,7 @@ public class HubSensorsController {
     private SecurityService securityService;
     @Autowired
     private UserValidator userValidator;
-     @Autowired
+    @Autowired
     private SensorValidator sensorValidator;
 
 //    final GpioController gpio = GpioFactory.getInstance();
@@ -76,22 +79,24 @@ public class HubSensorsController {
                             ModelMap outputForm) {
 
         sensorValidator.validate(sensor, bindingResult);
-  if (bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors()) {
             return "add_new_sensor";
         }
         String sensorName = inputForm.get("sensorName");
         String sensorModel = inputForm.get("sensorModel");
+        int gpio = Integer.parseInt(inputForm.get("gpio"));
 
         outputForm.put("sensorName", sensorName);
         outputForm.put("sensorModel", sensorModel);
+        outputForm.put("gpio", gpio);
 
-        sensorService.save(new Sensor(sensorName, sensorModel));
+        sensorService.save(new Sensor(sensorName, sensorModel, gpio));
         return "redirect:/sensors";
     }
 
 
-   @GetMapping("/add_new_sensor")
-    public String addNewSensor(Model model ) {
+    @GetMapping("/add_new_sensor")
+    public String addNewSensor(Model model) {
 
 
         //Jeigu Model "number" nepraeina validacijos - per jį grąžinamos validacijos
@@ -99,6 +104,32 @@ public class HubSensorsController {
         model.addAttribute("sensor", new Sensor());
         //grąžiname JSP failą, kuris turi būti talpinamas "webapp -> WEB-INF ->  JSP" folderi
         return "add_new_sensor";
+    }
+    //  @GetMapping("/status")
+    //@Scheduled(fixedDelay = 3600000 ) //every one hour
+
+    public void checkSensorStatus() {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        String dateTime = dtf.format(now);
+        SensorData sensorData;
+
+
+        //if pin state is high, do this:
+        if (5 < 10) {
+
+            System.out.println("ok");
+            //check which pin was high and get data sensorData.getSensorLocation(), sensorData.getSensorName() ....
+            //switch,
+            //send email after trigger
+
+            sensorDataService.insertSensorDataStatus(dateTime, "kaka", "tu", 1);
+
+
+        } else {
+            System.out.println("ne");
+        }
+
     }
 
 //    public SensorData storeSensorStatus(@RequestBody SensorData sensorData){
@@ -218,7 +249,7 @@ public class HubSensorsController {
         return "users";
     }
 
-        //atnaujinat išrašą, pirmiausia reikia jį parodyti
+    //atnaujinat išrašą, pirmiausia reikia jį parodyti
     @GetMapping("/update_user{id}")
     public String updateUserById(@RequestParam("id") int id, Model model) {
         //Kai užkrauname įrašo redagavimo formą, privalome jos laukelius užpildyti įrašo informacija
@@ -226,21 +257,29 @@ public class HubSensorsController {
         return "update_user";
     }
 
-     @GetMapping("/show_user{id}")
+    @GetMapping("/show_user{id}")
     public String getUserById(@RequestParam("id") int id, Model model) {
         model.addAttribute("user", getUserService.getById(id));
         return "user";
     }
+
     @PostMapping("/update-user")
     public String updateUser(@ModelAttribute("user") User user) {
         getUserService.update(user);
         return "redirect:/show_user?id=" + user.getId();
     }
+
     @GetMapping("/delete_user{id}")
     public String deleteUser(@RequestParam("id") int id, Model model) {
         getUserService.delete(id);
         model.addAttribute("delete_user", getUserService.getAll());
         return "redirect:/users";
     }
+
+    @GetMapping("/pool_data")
+    public String getPoolData() {
+        return "pool_data";
+    }
+
 
 }

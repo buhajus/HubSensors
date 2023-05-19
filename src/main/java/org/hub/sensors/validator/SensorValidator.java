@@ -1,9 +1,7 @@
 package org.hub.sensors.validator;
 
 import org.hub.sensors.model.Sensor;
-import org.hub.sensors.model.User;
 import org.hub.sensors.service.SensorService;
-import org.hub.sensors.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
@@ -11,7 +9,7 @@ import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 @Component
-public class SensorValidator  implements Validator {
+public class SensorValidator implements Validator {
 
     @Autowired
     private SensorService sensorService;
@@ -27,11 +25,9 @@ public class SensorValidator  implements Validator {
         // Validacijos priemonių klasė (tuščių simbolių validavimui)
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "sensorName", "NotEmpty");
       if (sensor.getSensorName().length() < 3 || sensor.getSensorName().length() > 32) {
-            errors.rejectValue("sensorName", "Size.userForm.username");
+            errors.rejectValue("sensorName", "sensor.name");
         }
-//        if (sensor.getSensorName().equals("")) {
-//            errors.rejectValue("sensorName", "NotEmpty");
-//        }
+
 //
 //
 //

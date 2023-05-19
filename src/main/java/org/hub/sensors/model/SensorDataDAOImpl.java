@@ -4,6 +4,7 @@ import org.hub.sensors.config.JPAUtil;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import java.text.DateFormat;
 import java.util.List;
 
 public class SensorDataDAOImpl implements SensorDataDAO {
@@ -34,7 +35,23 @@ public class SensorDataDAOImpl implements SensorDataDAO {
         entityManager.close();
 
         return sensors.get(0);
+    }
 
+
+    @Override
+    public void insertSensorDataStatus(String dateFormat, String sensorLocation, String sensorName, int status) {
+        EntityManager entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
+        entityManager.getTransaction().begin();
+
+        entityManager.createNativeQuery("INSERT INTO sensors_data (date, sensor_location, sensor_name, status) VALUES (?,?,?,?)")
+                .setParameter(1, dateFormat)
+                .setParameter(2, sensorLocation)
+                .setParameter(3, sensorName)
+                .setParameter(4, status)
+                .executeUpdate();
+
+        entityManager.getTransaction().commit();
+        entityManager.close();
 
     }
 
@@ -79,7 +96,6 @@ public class SensorDataDAOImpl implements SensorDataDAO {
         entityManager.getTransaction().commit();
         entityManager.close();
     }
-
 
 
 }
