@@ -145,6 +145,10 @@ public class HubSensorsController {
 
         }
 
+         console.println(pinValue);
+         System.out.println(dtf.format(now));
+         gpio.shutdown();
+         gpio.unprovisionPin(pin);
 
         //if pin state is high, do this:
 
