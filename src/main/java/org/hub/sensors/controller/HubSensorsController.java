@@ -112,7 +112,7 @@ public class HubSensorsController {
         //grąžiname JSP failą, kuris turi būti talpinamas "webapp -> WEB-INF ->  JSP" folderi
         return "add_new_sensor";
     }
-    //  @GetMapping("/status")
+     @GetMapping("/status")
     //@Scheduled(fixedDelay = 3600000 ) //every one hour
 
     public void checkSensorStatus() {
@@ -120,14 +120,15 @@ public class HubSensorsController {
         LocalDateTime now = LocalDateTime.now();
         String dateTime = dtf.format(now);
         SensorData sensorData;
-        //   int pinNumber = RaspiPin.GPIO_27.getAddress();
+        int pinNumber = 27;
+
 
 
         // Set pin numbering mode to BCM
         GpioFactory.setDefaultProvider(new RaspiGpioProvider(RaspiPinNumberingScheme.BROADCOM_PIN_NUMBERING));
 
         // Create digital input pin
-        GpioPinDigitalInput pin = gpio.provisionDigitalInputPin(RaspiPin.GPIO_27, PinPullResistance.PULL_DOWN);
+        GpioPinDigitalInput pin = gpio.provisionDigitalInputPin(RaspiPin.getPinByAddress(pinNumber), PinPullResistance.PULL_DOWN);
 
         PinState pinValue = pin.getState();
 
