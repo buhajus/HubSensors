@@ -7,7 +7,7 @@
 	</head>
 	<body class="container">
 		<div class="table-responsive">
-			<caption>Sensor details</caption>
+			<caption>User details</caption>
 			<table class="table table-striped">
 				<tr>
 					<td><b>Id:</b></td>

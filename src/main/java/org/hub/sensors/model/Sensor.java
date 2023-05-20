@@ -1,6 +1,7 @@
 package org.hub.sensors.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -19,6 +20,7 @@ public class Sensor {
     private String sensorModel;
 
     @Column(name = "gpio")
+    @Min(value = 0, message = "min 0" )
     private int gpio;
 
     public Sensor() {

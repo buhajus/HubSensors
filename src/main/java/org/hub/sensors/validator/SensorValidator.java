@@ -24,6 +24,7 @@ public class SensorValidator implements Validator {
 //TODO:: validacijos
         // Validacijos priemonių klasė (tuščių simbolių validavimui)
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "sensorName", "NotEmpty");
+         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "gpio", "NotEmpty");
       if (sensor.getSensorName().length() < 3 || sensor.getSensorName().length() > 32) {
             errors.rejectValue("sensorName", "sensor.name");
         }

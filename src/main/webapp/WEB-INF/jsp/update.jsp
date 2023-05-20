@@ -19,7 +19,7 @@
 			<input type="text" 		name="sensorModel"  	value="${sensor.sensorModel}"><p>
 			GPIO of raspberry:<br>
             <input type="number" 		name="gpio"  	value="${sensor.gpio}"><p>
-
+                 <form:errors path="gpio" cssClass="error"/></span>
 		    <input type="submit" value="Update" class="btn btn-info">
 
 		</form:form>

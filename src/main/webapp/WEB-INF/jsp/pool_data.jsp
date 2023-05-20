@@ -11,8 +11,8 @@
     <div class="table-responsive">
         <table class="table table-striped">
             <tr>
-                <th>CL name</th>
-                <th>PH location</th>
+                <th>CL</th>
+                <th>PH</th>
                 <th>Temperature</th>
                 <th>Date time</th>
 
@@ -20,18 +20,12 @@
 
             <!-- iteruoja per visą skaičių sarašą -->
             <c:forEach var="pool" items="${pool_list}">
-
-
                 <tr>
                     <td>${pool.cl}</td>
                     <td>${pool.ph}</td>
                     <td>${pool.temp}</td>
                     <td>${pool.date_time}</td>
-
-
-
                 </tr>
-
             </c:forEach>
 
         </table>

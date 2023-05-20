@@ -22,8 +22,8 @@
                  <span>   Sensor model: <form:input type="text" path="sensorModel"/>
                          <form:errors path="sensorModel" cssClass="error"/></span>
 
-                         <span>   GPIO of raspberry: <form:input type="number" path="gpio"/>
-                                                  <form:errors path="gpio" cssClass="error"/></span>
+                         <span> GPIO of raspberry: <form:input type="number" path="gpio"/>
+                             <form:errors path="gpio" cssClass="error"/></span>
                  <br>
                <input type="submit" value="Add new sensor" class="btn btn-info">
 
