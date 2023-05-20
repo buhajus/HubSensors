@@ -112,9 +112,10 @@ public class HubSensorsController {
         //grąžiname JSP failą, kuris turi būti talpinamas "webapp -> WEB-INF ->  JSP" folderi
         return "add_new_sensor";
     }
-     @GetMapping("/status")
+   //  @GetMapping("/status")
     //@Scheduled(fixedDelay = 3600000 ) //every one hour
-    public void checkSensorStatus() {
+     @Scheduled(fixedDelay = 5000 )
+    public void checkSensorStatus() throws InterruptedException {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
         String dateTime = dtf.format(now);
@@ -130,10 +131,12 @@ public class HubSensorsController {
         PinState pinValue = pin.getState();
 
         if (pin.isHigh()) {
+            //if pin state is high, do this:
 
+            //check which pin was high and get data sensorData.getSensorLocation(), sensorData.getSensorName() ....
+            //switch,
+            //send email after trigger
             sensorDataService.insertSensorDataStatus(dateTime, "under desk", "wood bench", 1);
-
-
             console.println(pinValue);
             System.out.println(dtf.format(now));
             gpio.shutdown();
@@ -141,7 +144,7 @@ public class HubSensorsController {
 
 
             // Delay for 2 seconds
-            //Thread.sleep(2000);
+            Thread.sleep(2000);
 
         }
 
@@ -150,48 +153,11 @@ public class HubSensorsController {
          gpio.shutdown();
          gpio.unprovisionPin(pin);
 
-        //if pin state is high, do this:
 
-        //check which pin was high and get data sensorData.getSensorLocation(), sensorData.getSensorName() ....
-        //switch,
-        //send email after trigger
 
 
     }
 
-//    public SensorData storeSensorStatus(@RequestBody SensorData sensorData){
-//        int pinNumber = 27;
-//
-//
-//        // Set pin numbering mode to BCM
-//        GpioFactory.setDefaultProvider(new RaspiGpioProvider(RaspiPinNumberingScheme.BROADCOM_PIN_NUMBERING));
-//
-//        // Create digital input pin
-//        GpioPinDigitalInput pin = gpio.provisionDigitalInputPin(RaspiPin.GPIO_27, PinPullResistance.PULL_DOWN);
-//        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-//        LocalDateTime now = LocalDateTime.now();
-//        PinState pinValue = pin.getState();
-//
-//        // Continuously read pin value
-//        if (pin.isHigh()) {
-//
-//            console.println(pinValue);
-//            System.out.println(dtf.format(now));
-//            gpio.shutdown();
-//            gpio.unprovisionPin(pin);
-//            sensorDataService.storeSensorStatus(sensorData);
-//
-//            // Delay for 2 seconds
-//            //Thread.sleep(2000);
-//
-//        }
-//
-//
-//
-//        gpio.shutdown();
-//        gpio.unprovisionPin(pin);
-//        return null;
-//    }
 
     @GetMapping({"/", "/list"})
     public String getList(Model model) {
