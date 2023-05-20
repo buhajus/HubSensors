@@ -114,15 +114,12 @@ public class HubSensorsController {
     }
      @GetMapping("/status")
     //@Scheduled(fixedDelay = 3600000 ) //every one hour
-
     public void checkSensorStatus() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
         String dateTime = dtf.format(now);
         SensorData sensorData;
         int pinNumber = 27;
-
-
 
         // Set pin numbering mode to BCM
         GpioFactory.setDefaultProvider(new RaspiGpioProvider(RaspiPinNumberingScheme.BROADCOM_PIN_NUMBERING));
@@ -131,7 +128,6 @@ public class HubSensorsController {
         GpioPinDigitalInput pin = gpio.provisionDigitalInputPin(RaspiPin.getPinByAddress(pinNumber), PinPullResistance.PULL_DOWN);
 
         PinState pinValue = pin.getState();
-
 
         if (pin.isHigh()) {
 
