@@ -149,7 +149,7 @@ public class HubSensorsController {
 
         }
 
-        console.println("GPIO " + gpioPinNumber + "is - :" + pinValue);
+        console.println("GPIO " + gpioPinNumber + " is :" + pinValue);
         gpio.shutdown();
         gpio.unprovisionPin(pin);
 
