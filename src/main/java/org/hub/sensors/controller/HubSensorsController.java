@@ -141,7 +141,7 @@ public class HubSensorsController {
             console.println("GPIO " + gpioPinNumber + "is - :" + pinValue);
             gpio.shutdown();
             gpio.unprovisionPin(pin);
-            System.exit(0);
+          gpio.isShutdown();
 
 
             // Delay for 2 seconds
