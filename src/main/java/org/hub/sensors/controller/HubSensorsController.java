@@ -112,9 +112,10 @@ public class HubSensorsController {
         //grąžiname JSP failą, kuris turi būti talpinamas "webapp -> WEB-INF ->  JSP" folderi
         return "add_new_sensor";
     }
-   //  @GetMapping("/status")
+
+    //  @GetMapping("/status")
     //@Scheduled(fixedDelay = 3600000 ) //every one hour
-     @Scheduled(fixedDelay = 5000 )
+    @Scheduled(fixedDelay = 5000)
     public void checkSensorStatus() throws InterruptedException {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
@@ -137,22 +138,20 @@ public class HubSensorsController {
             //switch,
             //send email after trigger
             sensorDataService.insertSensorDataStatus(dateTime, "under desk", "wood bench", 1);
-            console.println("GPIO "+gpioPinNumber+ "is - :"+ pinValue);
+            console.println("GPIO " + gpioPinNumber + "is - :" + pinValue);
             gpio.shutdown();
             gpio.unprovisionPin(pin);
-
+            System.exit(0);
 
 
             // Delay for 2 seconds
-          //  Thread.sleep(2000);
+            //  Thread.sleep(2000);
 
         }
 
-         console.println("GPIO "+gpioPinNumber+ "is - :"+ pinValue);
-         gpio.shutdown();
-         gpio.unprovisionPin(pin);
-
-
+        console.println("GPIO " + gpioPinNumber + "is - :" + pinValue);
+        gpio.shutdown();
+        gpio.unprovisionPin(pin);
 
 
     }
