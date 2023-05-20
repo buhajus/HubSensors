@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cab6022f-3c94-4d51-9335-08f95806888b" name="Changes" comment="added insertSensorDataStatus">
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    <list default="true" id="cab6022f-3c94-4d51-9335-08f95806888b" name="Changes" comment="added checkSensorStatus">
       <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/controller/HubSensorsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/controller/HubSensorsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/menu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/menu.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +124,19 @@
       <option name="presentableId" value="LOCAL−00006" />
       <updated>1684601247099</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL−00007" summary="added checkSensorStatus">
+      <created>1684601963689</created>
+      <option name="number" value="LOCAL−00007" />
+      <option name="presentableId" value="LOCAL−00007" />
+      <updated>1684601963689</updated>
+    </task>
+    <task id="LOCAL−00008" summary="added checkSensorStatus">
+      <created>1684602207606</created>
+      <option name="number" value="LOCAL−00008" />
+      <option name="presentableId" value="LOCAL−00008" />
+      <updated>1684602207606</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -144,7 +154,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="fix maven" />
     <MESSAGE value="added insertSensorDataStatus" />
-    <option name="LAST_COMMIT_MESSAGE" value="added insertSensorDataStatus" />
+    <MESSAGE value="added checkSensorStatus" />
+    <option name="LAST_COMMIT_MESSAGE" value="added checkSensorStatus" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
