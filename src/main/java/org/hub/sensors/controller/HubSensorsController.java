@@ -120,13 +120,13 @@ public class HubSensorsController {
         LocalDateTime now = LocalDateTime.now();
         String dateTime = dtf.format(now);
         SensorData sensorData;
-        int GPIOpinNumber = 27;
+        int gpioPinNumber = 27;
 
         // Set pin numbering mode to BCM
         GpioFactory.setDefaultProvider(new RaspiGpioProvider(RaspiPinNumberingScheme.BROADCOM_PIN_NUMBERING));
 
         // Create digital input pin
-        GpioPinDigitalInput pin = gpio.provisionDigitalInputPin(RaspiPin.getPinByAddress(GPIOpinNumber), PinPullResistance.PULL_DOWN);
+        GpioPinDigitalInput pin = gpio.provisionDigitalInputPin(RaspiPin.getPinByAddress(gpioPinNumber), PinPullResistance.PULL_DOWN);
 
         PinState pinValue = pin.getState();
 
@@ -137,7 +137,7 @@ public class HubSensorsController {
             //switch,
             //send email after trigger
             sensorDataService.insertSensorDataStatus(dateTime, "under desk", "wood bench", 1);
-            console.println("GPIO "+GPIOpinNumber+ "is - :"+ pinValue);
+            console.println("GPIO "+gpioPinNumber+ "is - :"+ pinValue);
             gpio.shutdown();
             gpio.unprovisionPin(pin);
 
@@ -148,7 +148,7 @@ public class HubSensorsController {
 
         }
 
-         console.println("GPIO "+GPIOpinNumber+ "is - :"+ pinValue);
+         console.println("GPIO "+gpioPinNumber+ "is - :"+ pinValue);
          gpio.shutdown();
          gpio.unprovisionPin(pin);
 
