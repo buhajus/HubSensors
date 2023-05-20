@@ -131,17 +131,17 @@ public class HubSensorsController {
 
         PinState pinValue = pin.getState();
 
-        if (pin.isHigh()) {
-            //if pin state is high, do this:
+        if (pin.isLow()) {
+            //if pin state is low, do this:
 
             //check which pin was high and get data sensorData.getSensorLocation(), sensorData.getSensorName() ....
             //switch,
             //send email after trigger
             sensorDataService.insertSensorDataStatus(dateTime, "under desk", "wood bench", 1);
-            console.println("GPIO " + gpioPinNumber + "is - :" + pinValue);
+            console.println("GPIO " + gpioPinNumber + "is :" + pinValue);
             gpio.shutdown();
             gpio.unprovisionPin(pin);
-          gpio.isShutdown();
+
 
 
             // Delay for 2 seconds
