@@ -3,6 +3,8 @@ package org.hub.sensors.controller;
 //import com.pi4j.io.gpio.*;
 //import com.pi4j.util.Console;
 
+import com.pi4j.io.gpio.*;
+import com.pi4j.util.Console;
 import org.hub.sensors.model.Sensor;
 import org.hub.sensors.model.SensorData;
 import org.hub.sensors.model.User;
@@ -47,6 +49,11 @@ public class HubSensorsController {
     private UserValidator userValidator;
     @Autowired
     private SensorValidator sensorValidator;
+
+
+    private static GpioController pin;
+    final GpioController gpio = GpioFactory.getInstance();
+    final Console console = new Console();
 
 //    final GpioController gpio = GpioFactory.getInstance();
 //    final Console console = new Console();
@@ -113,22 +120,41 @@ public class HubSensorsController {
         LocalDateTime now = LocalDateTime.now();
         String dateTime = dtf.format(now);
         SensorData sensorData;
+        //   int pinNumber = RaspiPin.GPIO_27.getAddress();
+
+
+        // Set pin numbering mode to BCM
+        GpioFactory.setDefaultProvider(new RaspiGpioProvider(RaspiPinNumberingScheme.BROADCOM_PIN_NUMBERING));
+
+        // Create digital input pin
+        GpioPinDigitalInput pin = gpio.provisionDigitalInputPin(RaspiPin.GPIO_27, PinPullResistance.PULL_DOWN);
+
+        PinState pinValue = pin.getState();
+
+
+        if (pin.isHigh()) {
+
+            sensorDataService.insertSensorDataStatus(dateTime, "under desk", "wood bench", 1);
+
+
+            console.println(pinValue);
+            System.out.println(dtf.format(now));
+            gpio.shutdown();
+            gpio.unprovisionPin(pin);
+
+
+            // Delay for 2 seconds
+            //Thread.sleep(2000);
+
+        }
 
 
         //if pin state is high, do this:
-        if (5 < 10) {
 
-            System.out.println("ok");
-            //check which pin was high and get data sensorData.getSensorLocation(), sensorData.getSensorName() ....
-            //switch,
-            //send email after trigger
+        //check which pin was high and get data sensorData.getSensorLocation(), sensorData.getSensorName() ....
+        //switch,
+        //send email after trigger
 
-            sensorDataService.insertSensorDataStatus(dateTime, "kaka", "tu", 1);
-
-
-        } else {
-            System.out.println("ne");
-        }
 
     }
 
