@@ -27,7 +27,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
@@ -134,7 +133,7 @@ public class HubSensorsController {
     //@Scheduled(fixedDelay = 3600000 ) //every one hour
     @Scheduled(fixedDelay = 5000)
     public void checkSensorStatus() {
-        DateFormat  dtf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
         String dateTime = dtf.format(now);
         SensorData sensorData = new SensorData();
