@@ -163,8 +163,7 @@ public class HubSensorsController {
 
                 //   pin27.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
 
-                gpio.shutdown();
-                gpio.unprovisionPin(pin27);
+
                 break;
 
 
@@ -179,8 +178,7 @@ public class HubSensorsController {
                 sensorDataService.insertSensorDataStatus(dateTime, sensorData.getSensorLocation(), sensorData.getSensorName(), 0);
                 console.println("GPIO " + gpioPinNumber17 + "is :" + pinValue17);
                 //pin17.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
-                gpio2.shutdown();
-                gpio2.unprovisionPin(pin17);
+
                 break;
 
             default:
@@ -192,6 +190,10 @@ public class HubSensorsController {
 
         }
 
+        gpio.shutdown();
+        gpio.unprovisionPin(pin27);
+        gpio2.shutdown();
+        gpio2.unprovisionPin(pin17);
 
     }
 
