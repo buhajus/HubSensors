@@ -128,47 +128,70 @@ public class HubSensorsController {
         GpioFactory.setDefaultProvider(new RaspiGpioProvider(RaspiPinNumberingScheme.BROADCOM_PIN_NUMBERING));
 
         // Create digital input pin
+
+//        GpioPinDigitalInput pin[] = {
+//                PinState pinValue27 = gpio.provisionDigitalInputPin(RaspiPin.getPinByAddress(gpioPinNumber27)).getState(),
+//                gpio.provisionDigitalInputPin(RaspiPin.getPinByAddress(gpioPinNumber17))
+//        };
+
+
         GpioPinDigitalInput pin27 = gpio.provisionDigitalInputPin(RaspiPin.getPinByAddress(gpioPinNumber27));
         GpioPinDigitalInput pin17 = gpio.provisionDigitalInputPin(RaspiPin.getPinByAddress(gpioPinNumber17));
 
         PinState pinValue27 = pin27.getState();
         PinState pinValue17 = pin17.getState();
+        int activePin = 0;
+        if (pin27.isHigh()){
+            activePin = 27;
+        }else if  (pin17.isHigh()){
+            activePin = 17;
+        }else{
+            console.println("GPIO " + gpioPinNumber17 + " is :" + pinValue17);
 
-        if (pin27.isHigh()) {
-            sensorData.setSensorName("Sensor 27");
-            sensorData.setSensorLocation("Pool");
-            //if pin state is low, do this:
-            //check which pin was high and get data sensorData.getSensorLocation(), sensorData.getSensorName() ....
-            //switch,
-            //send email after trigger
-
-            sensorDataService.insertSensorDataStatus(dateTime, sensorData.getSensorLocation(), sensorData.getSensorName(), 0);
-            console.println("GPIO " + gpioPinNumber27 + "is :" + pinValue27);
+            console.println("GPIO " + gpioPinNumber27 + " is :" + pinValue27);
             gpio.shutdown();
             gpio.unprovisionPin(pin27);
-        }
-
-
-        if (pin17.isHigh()) {
-            sensorData.setSensorName("Sensor 17");
-            sensorData.setSensorLocation("Chloride");
-            //if pin state is low, do this:
-            //check which pin was high and get data sensorData.getSensorLocation(), sensorData.getSensorName() ....
-            //switch,
-            //send email after trigger
-
-            sensorDataService.insertSensorDataStatus(dateTime, sensorData.getSensorLocation(), sensorData.getSensorName(), 0);
-            console.println("GPIO " + gpioPinNumber17 + "is :" + pinValue17);
-            gpio.shutdown();
             gpio.unprovisionPin(pin17);
         }
 
-        console.println("GPIO " + gpioPinNumber17 + " is :" + pinValue17);
+        switch (activePin){
+            case 27 :   {
+                sensorData.setSensorName("Sensor 27");
+                sensorData.setSensorLocation("Pool");
+                //if pin state is low, do this:
+                //check which pin was high and get data sensorData.getSensorLocation(), sensorData.getSensorName() ....
+                //switch,
+                //send email after trigger
 
-        console.println("GPIO " + gpioPinNumber27 + " is :" + pinValue27);
-        gpio.shutdown();
-        gpio.unprovisionPin(pin27);
-        gpio.unprovisionPin(pin17);
+                sensorDataService.insertSensorDataStatus(dateTime, sensorData.getSensorLocation(), sensorData.getSensorName(), 0);
+                console.println("GPIO " + gpioPinNumber27 + "is :" + pinValue27);
+                gpio.shutdown();
+                gpio.unprovisionPin(pin27);
+                break;
+            }
+            case 17: {
+                sensorData.setSensorName("Sensor 17");
+                sensorData.setSensorLocation("Chloride");
+                //if pin state is low, do this:
+                //check which pin was high and get data sensorData.getSensorLocation(), sensorData.getSensorName() ....
+                //switch,
+                //send email after trigger
+
+                sensorDataService.insertSensorDataStatus(dateTime, sensorData.getSensorLocation(), sensorData.getSensorName(), 0);
+                console.println("GPIO " + gpioPinNumber17 + "is :" + pinValue17);
+                gpio.shutdown();
+                gpio.unprovisionPin(pin17);
+                break;
+            }
+
+
+        }
+
+
+
+
+
+
 
 
 
