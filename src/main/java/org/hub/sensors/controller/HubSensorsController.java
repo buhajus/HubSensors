@@ -122,32 +122,51 @@ public class HubSensorsController {
         String dateTime = dtf.format(now);
         SensorData sensorData = new SensorData();
         int gpioPinNumber27 = 27;
-        int gpioPinNumber19 = 19;
+        int gpioPinNumber17 = 17;
 
         // Set pin numbering mode to BCM
         GpioFactory.setDefaultProvider(new RaspiGpioProvider(RaspiPinNumberingScheme.BROADCOM_PIN_NUMBERING));
 
         // Create digital input pin
         GpioPinDigitalInput pin27 = gpio.provisionDigitalInputPin(RaspiPin.getPinByAddress(gpioPinNumber27), PinPullResistance.PULL_DOWN);
-        GpioPinDigitalInput pin19 = gpio.provisionDigitalInputPin(RaspiPin.getPinByAddress(gpioPinNumber19), PinPullResistance.PULL_DOWN);
+        GpioPinDigitalInput pin17 = gpio.provisionDigitalInputPin(RaspiPin.getPinByAddress(gpioPinNumber17), PinPullResistance.PULL_DOWN);
 
-        PinState pinValue = pin27.getState();
+        PinState pinValue27 = pin27.getState();
 
-        if (pin27.isLow()) {
+        if (pin27.isHigh()) {
             sensorData.setSensorName("Sensor 27");
+            sensorData.setSensorLocation("Pool");
             //if pin state is low, do this:
             //check which pin was high and get data sensorData.getSensorLocation(), sensorData.getSensorName() ....
             //switch,
             //send email after trigger
 
             sensorDataService.insertSensorDataStatus(dateTime, sensorData.getSensorLocation(),  sensorData.getSensorName(), 1);
-            console.println("GPIO " + gpioPinNumber27 + "is :" + pinValue);
+            console.println("GPIO " + gpioPinNumber27 + "is :" + pinValue27);
             gpio.shutdown();
             gpio.unprovisionPin(pin27);
         }
 
-        console.println("GPIO " + gpioPinNumber27 + " is :" + pinValue);
+        PinState pinValue17 = pin17.getState();
+
+        if (pin17.isHigh()) {
+            sensorData.setSensorName("Sensor 17");
+            sensorData.setSensorLocation("Chloride");
+            //if pin state is low, do this:
+            //check which pin was high and get data sensorData.getSensorLocation(), sensorData.getSensorName() ....
+            //switch,
+            //send email after trigger
+
+            sensorDataService.insertSensorDataStatus(dateTime, sensorData.getSensorLocation(),  sensorData.getSensorName(), 1);
+            console.println("GPIO " + gpioPinNumber17 + "is :" + pinValue17);
+            gpio.shutdown();
+            gpio.unprovisionPin(pin17);
+        }
+
+        console.println("GPIO " + gpioPinNumber27 + " is :" + pinValue17);
+        console.println("GPIO " + gpioPinNumber17 + " is :" + pinValue17);
         gpio.shutdown();
+        gpio.unprovisionPin(pin17);
         gpio.unprovisionPin(pin27);
 
 

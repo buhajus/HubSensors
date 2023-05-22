@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cab6022f-3c94-4d51-9335-08f95806888b" name="Changes" comment="-">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="cab6022f-3c94-4d51-9335-08f95806888b" name="Changes" comment="Updated checkSensorStatus()">
       <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/controller/HubSensorsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/controller/HubSensorsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/model/SensorData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/model/SensorData.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,7 +152,13 @@
       <option name="presentableId" value="LOCAL−00009" />
       <updated>1684487640744</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL−00010" summary="Updated checkSensorStatus()">
+      <created>1684758505014</created>
+      <option name="number" value="LOCAL−00010" />
+      <option name="presentableId" value="LOCAL−00010" />
+      <updated>1684758505014</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -173,7 +177,8 @@
     <MESSAGE value="updated DB" />
     <MESSAGE value="updated pom" />
     <MESSAGE value="-" />
-    <option name="LAST_COMMIT_MESSAGE" value="-" />
+    <MESSAGE value="Updated checkSensorStatus()" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated checkSensorStatus()" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
