@@ -146,8 +146,8 @@ public class HubSensorsController {
             gpio.shutdown();
             gpio.unprovisionPin(pin27);
         }
-        console.println("GPIO " + gpioPinNumber27 + " is :" + pinValue27);
-        gpio.unprovisionPin(pin27);
+
+
 
         PinState pinValue17 = pin17.getState();
 
@@ -167,6 +167,8 @@ public class HubSensorsController {
 
         console.println("GPIO " + gpioPinNumber17 + " is :" + pinValue17);
 
+        console.println("GPIO " + gpioPinNumber27 + " is :" + pinValue27);
+        gpio.unprovisionPin(pin27);
         gpio.unprovisionPin(pin17);
         gpio.shutdown();
 
