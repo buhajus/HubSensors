@@ -78,7 +78,15 @@ public class HubSensorsController {
     @Qualifier("UserServiceImpl")
     public UserService getUserService;
 
-
+    /**
+     * Method action to take values from JSP input form and store into DB
+     *
+     * @param sensor
+     * @param bindingResult
+     * @param inputForm
+     * @param outputForm
+     * @return redirect to list of all sensors
+     */
     @PostMapping("/add-new-sensor")
     public String addSensor(@Valid @ModelAttribute("sensor") Sensor sensor,
                             BindingResult bindingResult,
@@ -101,10 +109,14 @@ public class HubSensorsController {
         return "redirect:/sensors";
     }
 
-
+    /**
+     * Method for add new sensor
+     *
+     * @param model
+     * @return JSP template
+     */
     @GetMapping("/add_new_sensor")
     public String addNewSensor(Model model) {
-
 
         //Jeigu Model "number" nepraeina validacijos - per jį grąžinamos validacijos
         //klaidos į View
@@ -113,10 +125,14 @@ public class HubSensorsController {
         return "add_new_sensor";
     }
 
+    /**
+     * Method checking sensors every 5 sec and if they are active - store data into DB
+     */
+
     //  @GetMapping("/status")
     //@Scheduled(fixedDelay = 3600000 ) //every one hour
     @Scheduled(fixedDelay = 5000)
-    public void checkSensorStatus() throws InterruptedException {
+    public void checkSensorStatus() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
         String dateTime = dtf.format(now);
@@ -163,7 +179,6 @@ public class HubSensorsController {
 
                 //   pin27.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
 
-
                 break;
 
 
@@ -174,11 +189,9 @@ public class HubSensorsController {
                 //check which pin was high and get data sensorData.getSensorLocation(), sensorData.getSensorName() ....
                 //switch,
                 //send email after trigger
-
                 sensorDataService.insertSensorDataStatus(dateTime, sensorData.getSensorLocation(), sensorData.getSensorName(), 0);
                 console.println("GPIO " + gpioPinNumber17 + "is :" + pinValue17);
                 //pin17.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
-
                 break;
 
             default:
@@ -191,45 +204,88 @@ public class HubSensorsController {
         }
 
         gpio.shutdown();
+        //TODO:for loop to close all pins
         gpio.unprovisionPin(pin27);
         gpio.unprovisionPin(pin17);
 
     }
 
-
+    /**
+     * Index page
+     *
+     * @param model
+     * @return all sensor data records
+     */
     @GetMapping({"/", "/list"})
     public String getList(Model model) {
         model.addAttribute("list", sensorDataService.getAll());
+
         return "list";
     }
 
+    /**
+     * Method to get sensor by it`s id
+     *
+     * @param id
+     * @param model
+     * @return sensor details
+     */
     @GetMapping("/show{id}")
     public String getById(@RequestParam("id") int id, Model model) {
         model.addAttribute("sensor", sensorService.getById(id));
+
         return "sensor";
     }
 
-    @GetMapping("/delete{id}")
+    /**
+     * Method to delete sensor
+     *
+     * @param id
+     * @param model
+     * @return redirects to sensors list
+     */
+    @PostMapping("/delete{id}")
     public String delete(@RequestParam("id") int id, Model model) {
         sensorService.delete(id);
         model.addAttribute("sensor", sensorService.getAll());
+
         return "redirect:/sensors";
     }
 
+    /**
+     * Method to show update form for sensor
+     *
+     * @param id
+     * @param model
+     * @return JSP template
+     */
     //atnaujinat išrašą, pirmiausia reikia jį parodyti
     @GetMapping("/update{id}")
     public String updateById(@RequestParam("id") int id, Model model) {
         //Kai užkrauname įrašo redagavimo formą, privalome jos laukelius užpildyti įrašo informacija
         model.addAttribute("sensor", sensorService.getById(id));
+
         return "update";
     }
 
+    /**
+     * Method action to update sensor
+     *
+     * @param sensor
+     * @return redirect to sensor details
+     */
     @PostMapping("/update-sensor")
     public String update(@ModelAttribute("sensor") Sensor sensor) {
         sensorService.update(sensor);
+
         return "redirect:/show?id=" + sensor.getId();
     }
 
+    /**
+     * Method to show for registration form
+     * @param model
+     * @return JSP registration form
+     */
     @GetMapping("/registration")
     public String registration(Model model) {
         model.addAttribute("userForm", new User());

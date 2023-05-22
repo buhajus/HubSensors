@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cab6022f-3c94-4d51-9335-08f95806888b" name="Changes" comment="added  switch to checkSensorStatus()" />
+    <list default="true" id="cab6022f-3c94-4d51-9335-08f95806888b" name="Changes" comment="updated checkSensorStatus">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/controller/HubSensorsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/controller/HubSensorsController.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,25 +23,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="UPDATE_TYPE" value="REBASE" />
-  </component>
-  <component name="LogFilters">
-    <option name="FILTER_ERRORS" value="false" />
-    <option name="FILTER_WARNINGS" value="false" />
-    <option name="FILTER_INFO" value="true" />
-    <option name="FILTER_DEBUG" value="true" />
-    <option name="CUSTOM_FILTER" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
-  </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHome" value="Use Maven wrapper" />
-        <option name="useMavenConfig" value="true" />
-      </MavenGeneralSettings>
-    </option>
   </component>
   <component name="ProjectId" id="2Pv2ojkwcbGfcnqnHncpKDpb6H9" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -54,14 +41,17 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/IT-admin01/OneDrive/Documents/IdeaProjects/Hub&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/MB Saromania/IdeaProjects/HubSensors/src/main/webapp/WEB-INF/jsp&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.5126437&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\IT-admin01\OneDrive\Documents\IdeaProjects\Hub" />
       <recent name="C:\Users\MB Saromania\IdeaProjects\HubSensors\src\main\webapp\WEB-INF\jsp" />
+      <recent name="C:\Users\MB Saromania\IdeaProjects\HubSensors" />
       <recent name="C:\Users\IT-admin01\OneDrive\Documents\IdeaProjects\Hub\src\main\java\org\hub\sensors" />
       <recent name="C:\Users\IT-admin01\OneDrive\Documents\IdeaProjects\Hub\src\main\resources" />
       <recent name="C:\Users\IT-admin01\OneDrive\Documents\IdeaProjects\Hub\src\main\java\org\hub\sensors\config" />
@@ -72,6 +62,9 @@
       <recent name="C:\Users\IT-admin01\OneDrive\Documents\IdeaProjects\Hub\src\main" />
       <recent name="C:\Users\IT-admin01\OneDrive\Documents\IdeaProjects\Hub\src\main\resources\webapp\WEB-INF\jsp" />
       <recent name="C:\Users\IT-admin01\OneDrive\Documents\IdeaProjects\Hub\src\main\resources" />
+    </key>
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="org.hub.sensors.config" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="org.hub.sensors.config" />
@@ -96,161 +89,117 @@
       <option name="presentableId" value="Default" />
       <updated>1684323418625</updated>
     </task>
-    <task id="LOCAL−00001" summary="added SensorDataRepository">
-      <created>1684410543191</created>
+    <task id="LOCAL−00001" summary="fix maven">
+      <created>1684426474571</created>
       <option name="number" value="LOCAL−00001" />
       <option name="presentableId" value="LOCAL−00001" />
-      <updated>1684410543192</updated>
+      <updated>1684426474571</updated>
     </task>
-    <task id="LOCAL−00002" summary="updated DB">
-      <created>1684411916087</created>
+    <task id="LOCAL−00002" summary="added insertSensorDataStatus">
+      <created>1684534111763</created>
       <option name="number" value="LOCAL−00002" />
       <option name="presentableId" value="LOCAL−00002" />
-      <updated>1684411916087</updated>
+      <updated>1684534111763</updated>
     </task>
-    <task id="LOCAL−00003" summary="updated DB">
-      <created>1684412826359</created>
+    <task id="LOCAL−00003" summary="added insertSensorDataStatus">
+      <created>1684599714148</created>
       <option name="number" value="LOCAL−00003" />
       <option name="presentableId" value="LOCAL−00003" />
-      <updated>1684412826359</updated>
+      <updated>1684599714148</updated>
     </task>
-    <task id="LOCAL−00004" summary="updated DB">
-      <created>1684412914928</created>
+    <task id="LOCAL−00004" summary="added insertSensorDataStatus">
+      <created>1684599999311</created>
       <option name="number" value="LOCAL−00004" />
       <option name="presentableId" value="LOCAL−00004" />
-      <updated>1684412914928</updated>
+      <updated>1684599999311</updated>
     </task>
-    <task id="LOCAL−00005" summary="updated DB">
-      <created>1684413129844</created>
+    <task id="LOCAL−00005" summary="added insertSensorDataStatus">
+      <created>1684600883493</created>
       <option name="number" value="LOCAL−00005" />
       <option name="presentableId" value="LOCAL−00005" />
-      <updated>1684413129844</updated>
+      <updated>1684600883493</updated>
     </task>
-    <task id="LOCAL−00006" summary="updated pom">
-      <created>1684413345016</created>
+    <task id="LOCAL−00006" summary="added insertSensorDataStatus">
+      <created>1684601247099</created>
       <option name="number" value="LOCAL−00006" />
       <option name="presentableId" value="LOCAL−00006" />
-      <updated>1684413345016</updated>
+      <updated>1684601247099</updated>
     </task>
-    <task id="LOCAL−00007" summary="-">
-      <created>1684414297642</created>
+    <task id="LOCAL−00007" summary="added checkSensorStatus">
+      <created>1684601963689</created>
       <option name="number" value="LOCAL−00007" />
       <option name="presentableId" value="LOCAL−00007" />
-      <updated>1684414297642</updated>
+      <updated>1684601963689</updated>
     </task>
-    <task id="LOCAL−00008" summary="-">
-      <created>1684414786754</created>
+    <task id="LOCAL−00008" summary="added checkSensorStatus">
+      <created>1684602207606</created>
       <option name="number" value="LOCAL−00008" />
       <option name="presentableId" value="LOCAL−00008" />
-      <updated>1684414786754</updated>
+      <updated>1684602207606</updated>
     </task>
-    <task id="LOCAL−00009" summary="-">
-      <created>1684487640744</created>
+    <task id="LOCAL−00009" summary="added checkSensorStatus">
+      <created>1684602491866</created>
       <option name="number" value="LOCAL−00009" />
       <option name="presentableId" value="LOCAL−00009" />
-      <updated>1684487640744</updated>
+      <updated>1684602491866</updated>
     </task>
-    <task id="LOCAL−00010" summary="Updated checkSensorStatus()">
-      <created>1684758505014</created>
+    <task id="LOCAL−00010" summary="added checkSensorStatus">
+      <created>1684602535958</created>
       <option name="number" value="LOCAL−00010" />
       <option name="presentableId" value="LOCAL−00010" />
-      <updated>1684758505014</updated>
+      <updated>1684602535958</updated>
     </task>
-    <task id="LOCAL−00011" summary="added  17 GPIO">
-      <created>1684759412037</created>
+    <task id="LOCAL−00011" summary="added checkSensorStatus">
+      <created>1684602766436</created>
       <option name="number" value="LOCAL−00011" />
       <option name="presentableId" value="LOCAL−00011" />
-      <updated>1684759412037</updated>
+      <updated>1684602766436</updated>
     </task>
-    <task id="LOCAL−00012" summary="added  17 GPIO">
-      <created>1684759853281</created>
+    <task id="LOCAL−00012" summary="updated checkSensorStatus">
+      <created>1684602993814</created>
       <option name="number" value="LOCAL−00012" />
       <option name="presentableId" value="LOCAL−00012" />
-      <updated>1684759853281</updated>
+      <updated>1684602993814</updated>
     </task>
-    <task id="LOCAL−00013" summary="added  17 GPIO">
-      <created>1684760288827</created>
+    <task id="LOCAL−00013" summary="updated checkSensorStatus">
+      <created>1684603375275</created>
       <option name="number" value="LOCAL−00013" />
       <option name="presentableId" value="LOCAL−00013" />
-      <updated>1684760288827</updated>
+      <updated>1684603375275</updated>
     </task>
-    <task id="LOCAL−00014" summary="added  17 GPIO">
-      <created>1684760487730</created>
+    <task id="LOCAL−00014" summary="updated checkSensorStatus">
+      <created>1684603414909</created>
       <option name="number" value="LOCAL−00014" />
       <option name="presentableId" value="LOCAL−00014" />
-      <updated>1684760487730</updated>
+      <updated>1684603414909</updated>
     </task>
-    <task id="LOCAL−00015" summary="added  17 GPIO">
-      <created>1684760926571</created>
+    <task id="LOCAL−00015" summary="updated checkSensorStatus">
+      <created>1684603657179</created>
       <option name="number" value="LOCAL−00015" />
       <option name="presentableId" value="LOCAL−00015" />
-      <updated>1684760926571</updated>
+      <updated>1684603657179</updated>
     </task>
-    <task id="LOCAL−00016" summary="added  17 GPIO">
-      <created>1684761083894</created>
-      <option name="number" value="LOCAL−00016" />
-      <option name="presentableId" value="LOCAL−00016" />
-      <updated>1684761083894</updated>
-    </task>
-    <task id="LOCAL−00017" summary="added  switch to checkSensorStatus()">
-      <created>1684762138161</created>
-      <option name="number" value="LOCAL−00017" />
-      <option name="presentableId" value="LOCAL−00017" />
-      <updated>1684762138161</updated>
-    </task>
-    <task id="LOCAL−00018" summary="added  switch to checkSensorStatus()">
-      <created>1684762673055</created>
-      <option name="number" value="LOCAL−00018" />
-      <option name="presentableId" value="LOCAL−00018" />
-      <updated>1684762673055</updated>
-    </task>
-    <task id="LOCAL−00019" summary="added  switch to checkSensorStatus()">
-      <created>1684762931644</created>
-      <option name="number" value="LOCAL−00019" />
-      <option name="presentableId" value="LOCAL−00019" />
-      <updated>1684762931644</updated>
-    </task>
-    <task id="LOCAL−00020" summary="added  switch to checkSensorStatus()">
-      <created>1684763189670</created>
-      <option name="number" value="LOCAL−00020" />
-      <option name="presentableId" value="LOCAL−00020" />
-      <updated>1684763189670</updated>
-    </task>
-    <task id="LOCAL−00021" summary="added  switch to checkSensorStatus()">
-      <created>1684763615162</created>
-      <option name="number" value="LOCAL−00021" />
-      <option name="presentableId" value="LOCAL−00021" />
-      <updated>1684763615162</updated>
-    </task>
-    <task id="LOCAL−00022" summary="added  switch to checkSensorStatus()">
-      <created>1684763742858</created>
-      <option name="number" value="LOCAL−00022" />
-      <option name="presentableId" value="LOCAL−00022" />
-      <updated>1684763742858</updated>
-    </task>
-    <option name="localTasksCounter" value="23" />
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
+  <component name="UnknownFeatures">
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-core" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.security:spring-security-core" />
+    <option featureType="dependencySupport" implementationName="java:jakarta.validation:jakarta.validation-api" />
+    <option featureType="dependencySupport" implementationName="java:com.google.protobuf:protobuf-java" />
+    <option featureType="dependencySupport" implementationName="java:jakarta.persistence:jakarta.persistence-api" />
+    <option featureType="dependencySupport" implementationName="java:javax.persistence:javax.persistence-api" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.data:spring-data-commons" />
+    <option featureType="dependencySupport" implementationName="java:org.hibernate.validator:hibernate-validator" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.boot:spring-boot" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-webmvc" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added SensorDataRepository" />
-    <MESSAGE value="updated DB" />
-    <MESSAGE value="updated pom" />
-    <MESSAGE value="-" />
-    <MESSAGE value="Updated checkSensorStatus()" />
-    <MESSAGE value="added  17 GPIO" />
-    <MESSAGE value="added  switch to checkSensorStatus()" />
-    <option name="LAST_COMMIT_MESSAGE" value="added  switch to checkSensorStatus()" />
+    <MESSAGE value="fix maven" />
+    <MESSAGE value="added insertSensorDataStatus" />
+    <MESSAGE value="added checkSensorStatus" />
+    <MESSAGE value="updated checkSensorStatus" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated checkSensorStatus" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
