@@ -120,38 +120,35 @@ public class HubSensorsController {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
         String dateTime = dtf.format(now);
-        SensorData sensorData;
-        int gpioPinNumber = 27;
+        SensorData sensorData = new SensorData();
+        int gpioPinNumber27 = 27;
+        int gpioPinNumber19 = 19;
 
         // Set pin numbering mode to BCM
         GpioFactory.setDefaultProvider(new RaspiGpioProvider(RaspiPinNumberingScheme.BROADCOM_PIN_NUMBERING));
 
         // Create digital input pin
-        GpioPinDigitalInput pin = gpio.provisionDigitalInputPin(RaspiPin.getPinByAddress(gpioPinNumber), PinPullResistance.PULL_DOWN);
+        GpioPinDigitalInput pin27 = gpio.provisionDigitalInputPin(RaspiPin.getPinByAddress(gpioPinNumber27), PinPullResistance.PULL_DOWN);
+        GpioPinDigitalInput pin19 = gpio.provisionDigitalInputPin(RaspiPin.getPinByAddress(gpioPinNumber19), PinPullResistance.PULL_DOWN);
 
-        PinState pinValue = pin.getState();
+        PinState pinValue = pin27.getState();
 
-        if (pin.isLow()) {
+        if (pin27.isLow()) {
+            sensorData.setSensorName("Sensor 27");
             //if pin state is low, do this:
-
             //check which pin was high and get data sensorData.getSensorLocation(), sensorData.getSensorName() ....
             //switch,
             //send email after trigger
-            sensorDataService.insertSensorDataStatus(dateTime, "under desk", "wood bench", 1);
-            console.println("GPIO " + gpioPinNumber + "is :" + pinValue);
+
+            sensorDataService.insertSensorDataStatus(dateTime, sensorData.getSensorLocation(),  sensorData.getSensorName(), 1);
+            console.println("GPIO " + gpioPinNumber27 + "is :" + pinValue);
             gpio.shutdown();
-            gpio.unprovisionPin(pin);
-
-
-
-            // Delay for 2 seconds
-            //  Thread.sleep(2000);
-
+            gpio.unprovisionPin(pin27);
         }
 
-        console.println("GPIO " + gpioPinNumber + " is :" + pinValue);
+        console.println("GPIO " + gpioPinNumber27 + " is :" + pinValue);
         gpio.shutdown();
-        gpio.unprovisionPin(pin);
+        gpio.unprovisionPin(pin27);
 
 
     }

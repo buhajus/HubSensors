@@ -18,6 +18,8 @@ public class SensorData {
     @Column(name = "date")
     private String date;
 
+
+
     public SensorData() {
     }
 
