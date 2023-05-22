@@ -128,10 +128,11 @@ public class HubSensorsController {
         GpioFactory.setDefaultProvider(new RaspiGpioProvider(RaspiPinNumberingScheme.BROADCOM_PIN_NUMBERING));
 
         // Create digital input pin
-        GpioPinDigitalInput pin27 = gpio.provisionDigitalInputPin(RaspiPin.getPinByAddress(gpioPinNumber27), PinPullResistance.PULL_DOWN);
-        GpioPinDigitalInput pin17 = gpio.provisionDigitalInputPin(RaspiPin.getPinByAddress(gpioPinNumber17), PinPullResistance.PULL_DOWN);
+        GpioPinDigitalInput pin27 = gpio.provisionDigitalInputPin(RaspiPin.getPinByAddress(gpioPinNumber27));
+        GpioPinDigitalInput pin17 = gpio.provisionDigitalInputPin(RaspiPin.getPinByAddress(gpioPinNumber17));
 
         PinState pinValue27 = pin27.getState();
+        PinState pinValue17 = pin17.getState();
 
         if (pin27.isHigh()) {
             sensorData.setSensorName("Sensor 27");
@@ -149,7 +150,7 @@ public class HubSensorsController {
 
 
 
-        PinState pinValue17 = pin17.getState();
+
 
         if (pin17.isHigh()) {
             sensorData.setSensorName("Sensor 17");
