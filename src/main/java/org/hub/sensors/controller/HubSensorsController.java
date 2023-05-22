@@ -51,8 +51,9 @@ public class HubSensorsController {
     private SensorValidator sensorValidator;
 
 
-    private static GpioController pin;
-    private static GpioController gpio = GpioFactory.getInstance();
+
+    final GpioController gpio = GpioFactory.getInstance();
+    final GpioController gpio2 = GpioFactory.getInstance();
     final Console console = new Console();
 
 //    final GpioController gpio = GpioFactory.getInstance();
@@ -136,16 +137,16 @@ public class HubSensorsController {
 
 
         GpioPinDigitalInput pin27 = gpio.provisionDigitalInputPin(RaspiPin.getPinByAddress(gpioPinNumber27));
-        GpioPinDigitalInput pin17 = gpio.provisionDigitalInputPin(RaspiPin.getPinByAddress(gpioPinNumber17));
+        GpioPinDigitalInput pin17 = gpio2.provisionDigitalInputPin(RaspiPin.getPinByAddress(gpioPinNumber17));
 
         PinState pinValue27 = pin27.getState();
         PinState pinValue17 = pin17.getState();
 
         int activePin = 0;
         if (pin27.isHigh()){
-            activePin = 27;
+            activePin = gpioPinNumber27;
         }else if  (pin17.isHigh()){
-            activePin = 17;
+            activePin = gpioPinNumber17;
         }
 
         switch (activePin){
@@ -160,7 +161,7 @@ public class HubSensorsController {
                 sensorDataService.insertSensorDataStatus(dateTime, sensorData.getSensorLocation(), sensorData.getSensorName(), 0);
                 console.println("GPIO " + gpioPinNumber27 + "is :" + pinValue27);
 
-                pin27.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
+             //   pin27.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
 
                 gpio.shutdown();
                 gpio.unprovisionPin(pin27);
@@ -177,18 +178,16 @@ public class HubSensorsController {
 
                 sensorDataService.insertSensorDataStatus(dateTime, sensorData.getSensorLocation(), sensorData.getSensorName(), 0);
                 console.println("GPIO " + gpioPinNumber17 + "is :" + pinValue17);
-                pin17.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
-                gpio.shutdown();
-                gpio.unprovisionPin(pin17);
+                //pin17.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
+                gpio2.shutdown();
+                gpio2.unprovisionPin(pin17);
                 break;
             }
             default:
                 console.println("GPIO " + gpioPinNumber17 + " is :" + pinValue17);
 
                 console.println("GPIO " + gpioPinNumber27 + " is :" + pinValue27);
-                gpio.shutdown();
-                gpio.unprovisionPin(pin27);
-                gpio.unprovisionPin(pin17);
+
 
 
         }
