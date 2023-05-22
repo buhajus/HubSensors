@@ -52,7 +52,7 @@ public class HubSensorsController {
 
 
     private static GpioController pin;
-    final GpioController gpio = GpioFactory.getInstance();
+    private static GpioController gpio = GpioFactory.getInstance();
     final Console console = new Console();
 
 //    final GpioController gpio = GpioFactory.getInstance();
