@@ -136,7 +136,7 @@ public class HubSensorsController {
 
 
         GpioPinDigitalInput pin27 = gpio.provisionDigitalInputPin(RaspiPin.getPinByAddress(gpioPinNumber27), PinPullResistance.PULL_DOWN);
-        GpioPinDigitalInput pin17 = gpio2.provisionDigitalInputPin(RaspiPin.getPinByAddress(gpioPinNumber17), PinPullResistance.PULL_DOWN);
+        GpioPinDigitalInput pin17 = gpio.provisionDigitalInputPin(RaspiPin.getPinByAddress(gpioPinNumber17), PinPullResistance.PULL_DOWN);
 
         PinState pinValue27 = pin27.getState();
         PinState pinValue17 = pin17.getState();
@@ -192,8 +192,7 @@ public class HubSensorsController {
 
         gpio.shutdown();
         gpio.unprovisionPin(pin27);
-        gpio2.shutdown();
-        gpio2.unprovisionPin(pin17);
+        gpio.unprovisionPin(pin17);
 
     }
 
