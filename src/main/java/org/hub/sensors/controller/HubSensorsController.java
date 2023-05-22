@@ -149,9 +149,6 @@ public class HubSensorsController {
         }
 
 
-
-
-
         if (pin17.isHigh()) {
             sensorData.setSensorName("Sensor 17");
             sensorData.setSensorLocation("Chloride");
@@ -169,9 +166,10 @@ public class HubSensorsController {
         console.println("GPIO " + gpioPinNumber17 + " is :" + pinValue17);
 
         console.println("GPIO " + gpioPinNumber27 + " is :" + pinValue27);
+        gpio.shutdown();
         gpio.unprovisionPin(pin27);
         gpio.unprovisionPin(pin17);
-        gpio.shutdown();
+
 
 
     }
