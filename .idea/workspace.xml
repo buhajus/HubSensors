@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cab6022f-3c94-4d51-9335-08f95806888b" name="Changes" comment="Updated checkSensorStatus()">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/controller/HubSensorsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/controller/HubSensorsController.java" afterDir="false" />
-    </list>
+    <list default="true" id="cab6022f-3c94-4d51-9335-08f95806888b" name="Changes" comment="added  17 GPIO" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -158,7 +156,13 @@
       <option name="presentableId" value="LOCAL−00010" />
       <updated>1684758505014</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL−00011" summary="added  17 GPIO">
+      <created>1684759412037</created>
+      <option name="number" value="LOCAL−00011" />
+      <option name="presentableId" value="LOCAL−00011" />
+      <updated>1684759412037</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -178,7 +182,8 @@
     <MESSAGE value="updated pom" />
     <MESSAGE value="-" />
     <MESSAGE value="Updated checkSensorStatus()" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated checkSensorStatus()" />
+    <MESSAGE value="added  17 GPIO" />
+    <option name="LAST_COMMIT_MESSAGE" value="added  17 GPIO" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

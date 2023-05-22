@@ -141,11 +141,14 @@ public class HubSensorsController {
             //switch,
             //send email after trigger
 
-            sensorDataService.insertSensorDataStatus(dateTime, sensorData.getSensorLocation(),  sensorData.getSensorName(), 1);
+            sensorDataService.insertSensorDataStatus(dateTime, sensorData.getSensorLocation(), sensorData.getSensorName(), 0);
             console.println("GPIO " + gpioPinNumber27 + "is :" + pinValue27);
             gpio.shutdown();
             gpio.unprovisionPin(pin27);
         }
+        console.println("GPIO " + gpioPinNumber27 + " is :" + pinValue27);
+        gpio.shutdown();
+        gpio.unprovisionPin(pin27);
 
         PinState pinValue17 = pin17.getState();
 
@@ -157,17 +160,15 @@ public class HubSensorsController {
             //switch,
             //send email after trigger
 
-            sensorDataService.insertSensorDataStatus(dateTime, sensorData.getSensorLocation(),  sensorData.getSensorName(), 1);
+            sensorDataService.insertSensorDataStatus(dateTime, sensorData.getSensorLocation(), sensorData.getSensorName(), 0);
             console.println("GPIO " + gpioPinNumber17 + "is :" + pinValue17);
             gpio.shutdown();
             gpio.unprovisionPin(pin17);
         }
 
-        console.println("GPIO " + gpioPinNumber27 + " is :" + pinValue17);
         console.println("GPIO " + gpioPinNumber17 + " is :" + pinValue17);
         gpio.shutdown();
         gpio.unprovisionPin(pin17);
-        gpio.unprovisionPin(pin27);
 
 
     }
