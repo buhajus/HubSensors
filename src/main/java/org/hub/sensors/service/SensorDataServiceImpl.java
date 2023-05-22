@@ -28,7 +28,10 @@ public class SensorDataServiceImpl implements SensorDataService {
     @Autowired
     private SensorDataRepository sensorDataRepository;
 
-
+    /**
+     *
+     * @return
+     */
     @Override
     public List<SensorData> getAll() {
         return sensorDataDAO.findEntities();

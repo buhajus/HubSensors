@@ -8,6 +8,11 @@ import java.text.DateFormat;
 import java.util.List;
 
 public class SensorDataDAOImpl implements SensorDataDAO {
+    /**
+     * Method to insert new data to DB
+     *
+     * @param sensor Sensor class object
+     */
     @Override
     public void insertEntity(SensorData sensor) {
         EntityManager entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
@@ -20,6 +25,13 @@ public class SensorDataDAOImpl implements SensorDataDAO {
         entityManager.close();
 
     }
+
+    /**
+     * Method to find entity by it`s id
+     *
+     * @param id
+     * @return 1st result from list
+     */
 
     @Override
     public SensorData findEntityById(int id) {
@@ -37,7 +49,13 @@ public class SensorDataDAOImpl implements SensorDataDAO {
         return sensors.get(0);
     }
 
-
+    /**
+     * Method to insert data to DB if sensor triggers
+     * @param dateFormat type of date
+     * @param sensorLocation location of sensor
+     * @param sensorName sensor name
+     * @param status sensor status
+     */
     @Override
     public void insertSensorDataStatus(String dateFormat, String sensorLocation, String sensorName, int status) {
         EntityManager entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
@@ -54,7 +72,11 @@ public class SensorDataDAOImpl implements SensorDataDAO {
         entityManager.close();
 
     }
-
+    /**
+     * Method to show entities from DB
+     *
+     * @return list of results
+     */
     @Override
     public List<SensorData> findEntities() {
         EntityManager entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
@@ -69,7 +91,11 @@ public class SensorDataDAOImpl implements SensorDataDAO {
 
         return sensors;
     }
-
+    /**
+     * Method to update entity
+     *
+     * @param sensor Sensor class object
+     */
     @Override
     public void updateEntity(SensorData sensor) {
         EntityManager entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
@@ -84,7 +110,11 @@ public class SensorDataDAOImpl implements SensorDataDAO {
         entityManager.close();
 
     }
-
+    /**
+     * Method to remove entity by it`s id
+     *
+     * @param id
+     */
     @Override
     public void removeEntityById(int id) {
         EntityManager entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();

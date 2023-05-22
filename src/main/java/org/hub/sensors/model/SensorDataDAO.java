@@ -6,10 +6,7 @@ import java.util.List;
 public interface SensorDataDAO {
     void insertEntity(SensorData sensor);
 
-
     SensorData findEntityById(int id);
-
-
 
     void insertSensorDataStatus(String dateFormat, String sensorLocation, String sensorName, int status);
 

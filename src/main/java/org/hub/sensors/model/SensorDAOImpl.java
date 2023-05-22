@@ -7,6 +7,11 @@ import javax.persistence.EntityTransaction;
 import java.util.List;
 
 public class SensorDAOImpl implements SensorDAO {
+    /**
+     * Method to insert new data to DB
+     *
+     * @param sensor Sensor class object
+     */
     @Override
     public void insertEntity(Sensor sensor) {
         EntityManager entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
@@ -20,6 +25,12 @@ public class SensorDAOImpl implements SensorDAO {
 
     }
 
+    /**
+     * Method to find entity by it`s id
+     *
+     * @param id
+     * @return 1st result from list
+     */
     @Override
     public Sensor findEntityById(int id) {
         EntityManager entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
@@ -36,6 +47,11 @@ public class SensorDAOImpl implements SensorDAO {
         return sensors.get(0);
     }
 
+    /**
+     * Method to show entities from DB
+     *
+     * @return list of results
+     */
     @Override
     public List<Sensor> findEntities() {
         EntityManager entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
@@ -51,6 +67,11 @@ public class SensorDAOImpl implements SensorDAO {
         return sensors;
     }
 
+    /**
+     * Method to update entity
+     *
+     * @param sensor Sensor class object
+     */
     @Override
     public void updateEntity(Sensor sensor) {
         EntityManager entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
@@ -64,6 +85,11 @@ public class SensorDAOImpl implements SensorDAO {
         entityManager.close();
     }
 
+    /**
+     * Method to remove entity by it`s id
+     *
+     * @param id
+     */
     @Override
     public void removeEntityById(int id) {
         EntityManager entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();

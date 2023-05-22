@@ -33,14 +33,11 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
     }
 
-
-
     @Override
     // kai registruojamas naujas vartotojas, reikia patikrinti ar nėra duplikatų vartotojo vardui
     public User findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
-
 
 
     @Override

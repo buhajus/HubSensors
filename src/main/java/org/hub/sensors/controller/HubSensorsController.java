@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
@@ -126,14 +127,14 @@ public class HubSensorsController {
     }
 
     /**
-     * Method checking sensors every 5 sec and if they are active - store data into DB
+     * Method for checking sensors every 5 sec and if they are active - store data into DB
      */
 
     //  @GetMapping("/status")
     //@Scheduled(fixedDelay = 3600000 ) //every one hour
     @Scheduled(fixedDelay = 5000)
     public void checkSensorStatus() {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        DateFormat  dtf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
         String dateTime = dtf.format(now);
         SensorData sensorData = new SensorData();
@@ -149,7 +150,6 @@ public class HubSensorsController {
 //                PinState pinValue27 = gpio.provisionDigitalInputPin(RaspiPin.getPinByAddress(gpioPinNumber27)).getState(),
 //                gpio.provisionDigitalInputPin(RaspiPin.getPinByAddress(gpioPinNumber17))
 //        };
-
 
         GpioPinDigitalInput pin27 = gpio.provisionDigitalInputPin(RaspiPin.getPinByAddress(gpioPinNumber27), PinPullResistance.PULL_DOWN);
         GpioPinDigitalInput pin17 = gpio.provisionDigitalInputPin(RaspiPin.getPinByAddress(gpioPinNumber17), PinPullResistance.PULL_DOWN);
@@ -181,7 +181,6 @@ public class HubSensorsController {
 
                 break;
 
-
             case 17:
                 sensorData.setSensorName("Sensor 17");
                 sensorData.setSensorLocation("Chloride");
@@ -199,7 +198,6 @@ public class HubSensorsController {
 
                 console.println("GPIO " + gpioPinNumber27 + " is :" + pinValue27);
                 break;
-
 
         }
 
@@ -244,7 +242,7 @@ public class HubSensorsController {
      * @param model
      * @return redirects to sensors list
      */
-    @PostMapping("/delete{id}")
+    @GetMapping("/delete{id}")
     public String delete(@RequestParam("id") int id, Model model) {
         sensorService.delete(id);
         model.addAttribute("sensor", sensorService.getAll());
@@ -283,6 +281,7 @@ public class HubSensorsController {
 
     /**
      * Method to show for registration form
+     *
      * @param model
      * @return JSP registration form
      */
@@ -293,21 +292,35 @@ public class HubSensorsController {
         return "registration";
     }
 
+    /**
+     * Method action to store new user
+     *
+     * @param userForm
+     * @param bindingResult
+     * @return
+     */
     @PostMapping("/registration")
     public String registration(@ModelAttribute("userForm") User userForm, BindingResult bindingResult) {
         userValidator.validate(userForm, bindingResult);
 
         if (bindingResult.hasErrors()) {
+
             return "registration";
         }
-
         userService.save(userForm);
-
         securityService.autoLogin(userForm.getUsername(), userForm.getPasswordConfirm());
 
         return "redirect:/";
     }
 
+    /**
+     * Method to show login form
+     *
+     * @param model
+     * @param error
+     * @param logout
+     * @return JSP login form
+     */
     @GetMapping("/login")
     public String login(Model model, String error, String logout) {
         if (error != null)
@@ -321,48 +334,99 @@ public class HubSensorsController {
 
     @GetMapping("/403")
     public String _403() {
+
         return "403";
     }
 
+    /**
+     * Method to show all sensors
+     *
+     * @param model
+     * @return sensors list
+     */
     @GetMapping("/sensors")
     public String getAllSensors(Model model) {
         model.addAttribute("sensors", sensorService.getAll());
+
         return "sensors";
     }
 
+    /**
+     * Method to show all users
+     *
+     * @param model
+     * @return users list
+     */
     @GetMapping("/users")
     public String getAllUsers(Model model) {
         model.addAttribute("users", getUserService.getAll());
+
         return "users";
     }
 
+    /**
+     * Method to show update form for user edit
+     *
+     * @param id
+     * @param model
+     * @return JSP form TO update user
+     */
     //atnaujinat išrašą, pirmiausia reikia jį parodyti
     @GetMapping("/update_user{id}")
     public String updateUserById(@RequestParam("id") int id, Model model) {
         //Kai užkrauname įrašo redagavimo formą, privalome jos laukelius užpildyti įrašo informacija
         model.addAttribute("user", getUserService.getById(id));
+
         return "update_user";
     }
 
+    /**
+     * Method to show user details
+     *
+     * @param id
+     * @param model
+     * @return JSP form to show user details
+     */
     @GetMapping("/show_user{id}")
     public String getUserById(@RequestParam("id") int id, Model model) {
         model.addAttribute("user", getUserService.getById(id));
+
         return "user";
     }
 
+    /**
+     * Method action to update user
+     *
+     * @param user
+     * @return redirect to user details by it`s id
+     */
     @PostMapping("/update-user")
     public String updateUser(@ModelAttribute("user") User user) {
         getUserService.update(user);
+
         return "redirect:/show_user?id=" + user.getId();
     }
 
+    /**
+     * Method to delete user
+     *
+     * @param id
+     * @param model
+     * @return redirect to user list
+     */
     @GetMapping("/delete_user{id}")
     public String deleteUser(@RequestParam("id") int id, Model model) {
         getUserService.delete(id);
         model.addAttribute("delete_user", getUserService.getAll());
+
         return "redirect:/users";
     }
 
+    /**
+     * Method to show pool sensors data
+     *
+     * @return JSP form of pool sensors triggers
+     */
     @GetMapping("/pool_data")
     public String getPoolData() {
         return "pool_data";

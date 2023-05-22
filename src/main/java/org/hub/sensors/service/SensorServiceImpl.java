@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 
 public class SensorServiceImpl implements SensorService {
@@ -30,7 +31,7 @@ public class SensorServiceImpl implements SensorService {
 
     @Override
     public Sensor getById(int id) {
-      return  sensorDAO.findEntityById(id);
+        return sensorDAO.findEntityById(id);
 
     }
 
@@ -42,7 +43,7 @@ public class SensorServiceImpl implements SensorService {
 
     @Override
     public void delete(int id) {
-sensorDAO.removeEntityById(id);
+        sensorDAO.removeEntityById(id);
     }
 
 
