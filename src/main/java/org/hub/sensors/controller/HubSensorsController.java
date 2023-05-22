@@ -51,7 +51,6 @@ public class HubSensorsController {
     private SensorValidator sensorValidator;
 
 
-
     final GpioController gpio = GpioFactory.getInstance();
     final GpioController gpio2 = GpioFactory.getInstance();
     final Console console = new Console();
@@ -136,21 +135,22 @@ public class HubSensorsController {
 //        };
 
 
-        GpioPinDigitalInput pin27 = gpio.provisionDigitalInputPin(RaspiPin.getPinByAddress(gpioPinNumber27));
-        GpioPinDigitalInput pin17 = gpio2.provisionDigitalInputPin(RaspiPin.getPinByAddress(gpioPinNumber17));
+        GpioPinDigitalInput pin27 = gpio.provisionDigitalInputPin(RaspiPin.getPinByAddress(gpioPinNumber27), PinPullResistance.PULL_DOWN);
+        GpioPinDigitalInput pin17 = gpio2.provisionDigitalInputPin(RaspiPin.getPinByAddress(gpioPinNumber17), PinPullResistance.PULL_DOWN);
 
         PinState pinValue27 = pin27.getState();
         PinState pinValue17 = pin17.getState();
 
         int activePin = 0;
-        if (pin27.isHigh()){
+
+        if (pin27.isHigh()) {
             activePin = gpioPinNumber27;
-        }else if  (pin17.isHigh()){
+        } else if (pin17.isHigh()) {
             activePin = gpioPinNumber17;
         }
 
-        switch (activePin){
-            case 27 :   {
+        switch (activePin) {
+            case 27:
                 sensorData.setSensorName("Sensor 27");
                 sensorData.setSensorLocation("Pool");
                 //if pin state is low, do this:
@@ -161,14 +161,14 @@ public class HubSensorsController {
                 sensorDataService.insertSensorDataStatus(dateTime, sensorData.getSensorLocation(), sensorData.getSensorName(), 0);
                 console.println("GPIO " + gpioPinNumber27 + "is :" + pinValue27);
 
-             //   pin27.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
+                //   pin27.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
 
                 gpio.shutdown();
                 gpio.unprovisionPin(pin27);
                 break;
 
-            }
-            case 17: {
+
+            case 17:
                 sensorData.setSensorName("Sensor 17");
                 sensorData.setSensorLocation("Chloride");
                 //if pin state is low, do this:
@@ -182,22 +182,15 @@ public class HubSensorsController {
                 gpio2.shutdown();
                 gpio2.unprovisionPin(pin17);
                 break;
-            }
+
             default:
                 console.println("GPIO " + gpioPinNumber17 + " is :" + pinValue17);
 
                 console.println("GPIO " + gpioPinNumber27 + " is :" + pinValue27);
-
+                break;
 
 
         }
-
-
-
-
-
-
-
 
 
     }
