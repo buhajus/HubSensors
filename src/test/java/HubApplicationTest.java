@@ -10,11 +10,9 @@ import static org.junit.jupiter.api.Assertions.*;
 public class HubApplicationTest {
     private static final String URL = "jdbc:mysql://localhost:3306/hub";
 
-
-
-
-
-
+    @Test public void testMethodOne() {
+        System.out.println(7+5);
+    }
     @Test
     public void testConnectionToDbPositiveTest() {
         assertTrue(connectToDbPositive());
