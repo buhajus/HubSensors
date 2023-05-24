@@ -7,7 +7,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class HubApplicationTest {
-    private static final String URL = "jdbc:mysql://192.168.8.165:3306/hub";
+    private static final String URL = "jdbc:mysql://localhost:3306/hub";
 
 
     @Before
