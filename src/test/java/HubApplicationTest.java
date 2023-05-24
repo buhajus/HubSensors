@@ -1,28 +1,28 @@
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class HubApplicationTest {
     private static final String URL = "jdbc:mysql://localhost:3306/hub";
 
 
-    @Before
-    public void setup() {
-    }
+
+
 
 
     @Test
     public void testConnectionToDbPositiveTest() {
-        Assert.assertTrue(connectToDbPositive());
+        assertTrue(connectToDbPositive());
     }
 
     @Test
     public void testConnectionToDbNegativeTest() {
-        Assert.assertFalse(connectToDbNegative());
+        assertFalse(connectToDbNegative());
 
     }
 
