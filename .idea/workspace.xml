@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cab6022f-3c94-4d51-9335-08f95806888b" name="Changes" comment="added methods comments">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/pool_data.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/pool_data.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/HubApplicationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,11 +57,11 @@
       <recent name="C:\Users\IT-admin01\OneDrive\Documents\IdeaProjects\Hub\src\main\java\org\hub\sensors\config" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\MB Saromania\IdeaProjects\HubSensors\src" />
+      <recent name="C:\Users\MB Saromania\IdeaProjects\HubSensors" />
       <recent name="C:\Users\IT-admin01\OneDrive\Documents\IdeaProjects\Hub\src\main\webapp\WEB-INF" />
       <recent name="C:\Users\IT-admin01\OneDrive\Documents\IdeaProjects\Hub\src\main\webapp" />
       <recent name="C:\Users\IT-admin01\OneDrive\Documents\IdeaProjects\Hub\src\main" />
-      <recent name="C:\Users\IT-admin01\OneDrive\Documents\IdeaProjects\Hub\src\main\resources\webapp\WEB-INF\jsp" />
-      <recent name="C:\Users\IT-admin01\OneDrive\Documents\IdeaProjects\Hub\src\main\resources" />
     </key>
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="org.hub.sensors.config" />
@@ -71,7 +71,7 @@
       <recent name="org.hub.sensors.model" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.HubApplicationTest.testConnectionToDbNegativeTest">
     <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.hub.sensors.HubApplication" />
       <module name="sensors" />
@@ -79,6 +79,31 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="HubApplicationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="sensors" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="HubApplicationTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HubApplicationTest.testConnectionToDbNegativeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="sensors" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="HubApplicationTest" />
+      <option name="METHOD_NAME" value="testConnectionToDbNegativeTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.HubApplicationTest.testConnectionToDbNegativeTest" />
+        <item itemvalue="JUnit.HubApplicationTest" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -197,7 +222,13 @@
       <option name="presentableId" value="LOCAL−00018" />
       <updated>1684778868515</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL−00019" summary="added methods comments">
+      <created>1684944737405</created>
+      <option name="number" value="LOCAL−00019" />
+      <option name="presentableId" value="LOCAL−00019" />
+      <updated>1684944737405</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="UnknownFeatures">
