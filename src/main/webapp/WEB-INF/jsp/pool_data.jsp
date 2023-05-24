@@ -8,6 +8,7 @@
     <jsp:include page="menu.jsp"/>
 </head>
 <body class="container">
+  <h1>RS485 data from pool controller coming soon</h1>
     <div class="table-responsive">
         <table class="table table-striped">
             <tr>
@@ -20,7 +21,7 @@
 
             <!-- iteruoja per visą skaičių sarašą -->
             <c:forEach var="pool" items="${pool_list}">
-            <h1>RS485 data from pool controller coming soon</h1>
+
                 <tr>
                     <td>${pool.cl}</td>
                     <td>${pool.ph}</td>
