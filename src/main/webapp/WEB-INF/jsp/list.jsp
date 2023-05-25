@@ -14,7 +14,7 @@
                 <th>Sensor name</th>
                 <th>Sensor location</th>
                 <th>Status</th>
-                <th>Sensor trigger time</th>
+                <a href="${sortDESC}"><th>Sensor trigger time</th></a>
                <!-- <th>Action</th> -->
             </tr>
 

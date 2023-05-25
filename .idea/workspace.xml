@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="cab6022f-3c94-4d51-9335-08f95806888b" name="Changes" comment="added pagination">
       <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/controller/HubSensorsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/controller/HubSensorsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/list.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,24 +124,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1684323418625</updated>
-    </task>
-    <task id="LOCAL−00008" summary="added checkSensorStatus">
-      <created>1684602207606</created>
-      <option name="number" value="LOCAL−00008" />
-      <option name="presentableId" value="LOCAL−00008" />
-      <updated>1684602207606</updated>
-    </task>
-    <task id="LOCAL−00009" summary="added checkSensorStatus">
-      <created>1684602491866</created>
-      <option name="number" value="LOCAL−00009" />
-      <option name="presentableId" value="LOCAL−00009" />
-      <updated>1684602491866</updated>
-    </task>
-    <task id="LOCAL−00010" summary="added checkSensorStatus">
-      <created>1684602535958</created>
-      <option name="number" value="LOCAL−00010" />
-      <option name="presentableId" value="LOCAL−00010" />
-      <updated>1684602535958</updated>
     </task>
     <task id="LOCAL−00011" summary="added checkSensorStatus">
       <created>1684602766436</created>
@@ -418,7 +401,25 @@
       <option name="presentableId" value="LOCAL−00056" />
       <updated>1685019350871</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL−00057" summary="added pagination">
+      <created>1685019534673</created>
+      <option name="number" value="LOCAL−00057" />
+      <option name="presentableId" value="LOCAL−00057" />
+      <updated>1685019534673</updated>
+    </task>
+    <task id="LOCAL−00058" summary="added pagination">
+      <created>1685019711058</created>
+      <option name="number" value="LOCAL−00058" />
+      <option name="presentableId" value="LOCAL−00058" />
+      <updated>1685019711058</updated>
+    </task>
+    <task id="LOCAL−00059" summary="added pagination">
+      <created>1685019822528</created>
+      <option name="number" value="LOCAL−00059" />
+      <option name="presentableId" value="LOCAL−00059" />
+      <updated>1685019822528</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="UnknownFeatures">
