@@ -55,18 +55,13 @@
 
         </table>
         <c:if test="${list.totalPages > 0}">
-      <ul class="pagination">
-<li>
-
-<c:forEach  var="pageNumber" items="${numbers}">
-<c:url value="/pagination" var="URL"/>
- <c:param name="page" value="${pageNumber}"/>
-  <c:param name="size" value="2"/>
-</c:url>
-<a href="<c:import url ='${URL}'/>">${pageNumber + 1}</a>
-     </c:forEach>
-</li>
-      </ul>
+          <ul class="pagination">
+            <c:forEach  var="pageNumber" items="${numbers}">
+                <li>
+                  <a href="#">${pageNumber + 1}</a>
+                </li>
+             </c:forEach>
+          </ul>
        </c:if>
     </div>
     <jsp:include page="footer.jsp"/>
