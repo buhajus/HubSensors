@@ -57,12 +57,13 @@
         <c:if test="${list.totalPages > 0}">
       <ul class="pagination">
 <li>
+
 <c:forEach  var="pageNumber" items="${numbers}">
 <c:url value="/pagination" var="URL"/>
  <c:param name="page" value="${pageNumber}"/>
   <c:param name="size" value="2"/>
 </c:url>
-<a href="${URL}">${pageNumber + 1}</a>
+<a href="<c:import url ='${URL}'/>">${pageNumber + 1}</a>
      </c:forEach>
 </li>
       </ul>
