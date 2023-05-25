@@ -5,9 +5,10 @@ import org.hub.sensors.model.SensorDataDAO;
 import org.hub.sensors.repository.SensorDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import java.text.DateFormat;
 import java.util.List;
 
 // @Service - servisų sluoksnis biznio logikai
@@ -28,13 +29,17 @@ public class SensorDataServiceImpl implements SensorDataService {
     @Autowired
     private SensorDataRepository sensorDataRepository;
 
+
+
     /**
      *
      * @return
      */
     @Override
-    public List<SensorData> getAll() {
-        return sensorDataDAO.findEntities();
+    public List<SensorData> getAll(PageRequest pageRequest) {
+        Page<SensorData> page = sensorDataRepository.findAll(pageRequest);
+        return page.getContent();
+       // return sensorDataDAO.findEntities();
     }
 
     @Override

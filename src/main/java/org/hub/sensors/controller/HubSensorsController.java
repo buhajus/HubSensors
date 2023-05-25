@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -214,8 +215,11 @@ public class HubSensorsController {
      * @return all sensor data records
      */
     @GetMapping({"/", "/list"})
-    public String getList(Model model) {
-        model.addAttribute("list", sensorDataService.getAll());
+    public String getList(Model model,
+                          @RequestParam(required = false, defaultValue = "0") int page,
+                          @RequestParam(required = false, defaultValue = "2") int size
+    ) {
+        model.addAttribute("list", sensorDataService.getAll(PageRequest.of(page, size)));
 
         return "list";
     }

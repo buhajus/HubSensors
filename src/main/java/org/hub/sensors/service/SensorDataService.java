@@ -1,6 +1,7 @@
 package org.hub.sensors.service;
 
 import org.hub.sensors.model.SensorData;
+import org.springframework.data.domain.PageRequest;
 
 import java.text.DateFormat;
 import java.time.format.DateTimeFormatter;
@@ -8,7 +9,9 @@ import java.util.List;
 
 public interface SensorDataService {
 
-    List<SensorData> getAll();
+ //   List<SensorData> getAll();
+
+    List<SensorData> getAll(PageRequest pageRequest);
 
     void save(SensorData sensor);
 

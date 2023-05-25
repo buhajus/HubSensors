@@ -6,7 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="cab6022f-3c94-4d51-9335-08f95806888b" name="Changes" comment="added Test">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/controller/HubSensorsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/controller/HubSensorsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/service/SensorDataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/service/SensorDataService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/service/SensorDataServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/service/SensorDataServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/HubApplicationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/HubApplicationTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -72,7 +76,7 @@
       <recent name="org.hub.sensors.model" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.HubApplicationTest.testConnectionToDbNegativeTest">
+  <component name="RunManager" selected="JUnit.HubApplicationTest">
     <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.hub.sensors.HubApplication" />
       <module name="sensors" />
@@ -99,10 +103,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="HubApplicationTest.testMethodOne" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="sensors" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="HubApplicationTest" />
+      <option name="METHOD_NAME" value="testMethodOne" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.HubApplicationTest.testConnectionToDbNegativeTest" />
         <item itemvalue="JUnit.HubApplicationTest" />
+        <item itemvalue="JUnit.HubApplicationTest.testMethodOne" />
+        <item itemvalue="JUnit.HubApplicationTest.testConnectionToDbNegativeTest" />
       </list>
     </recent_temporary>
   </component>
@@ -241,7 +256,19 @@
       <option name="presentableId" value="LOCAL−00021" />
       <updated>1684945526785</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL−00022" summary="added Test">
+      <created>1684946008197</created>
+      <option name="number" value="LOCAL−00022" />
+      <option name="presentableId" value="LOCAL−00022" />
+      <updated>1684946008197</updated>
+    </task>
+    <task id="LOCAL−00023" summary="added Test">
+      <created>1684946393844</created>
+      <option name="number" value="LOCAL−00023" />
+      <option name="presentableId" value="LOCAL−00023" />
+      <updated>1684946393844</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="UnknownFeatures">
