@@ -54,7 +54,7 @@
             </c:forEach>
 
         </table>
-        <c:if ${list.totalPages > 0}
+        <c:if ${list.totalPages > 0}>
       <ul class="pagination">
 <li>
 <c:forEach  var="pageNumber" items="${numbers}">
