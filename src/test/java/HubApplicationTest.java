@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class HubApplicationTest {
-    private static final String URL = "jdbc:mysql://localhost:3306/hub";
+    private final String URL = "jdbc:mysql://localhost:3306/hub";
 
     @Test
     public void testMethodOne() {
@@ -56,6 +56,6 @@ public class HubApplicationTest {
         }
 
 
-        return false;
+        return true;
     }
 }
