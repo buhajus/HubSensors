@@ -240,6 +240,7 @@ public class HubSensorsController {
         model.addAttribute("sortASC", Sort.Direction.ASC);
         model.addAttribute("sortDESC", Sort.Direction.DESC);
         model.addAttribute("totalRecords", sensorDataPage.getTotalElements());
+
         return "list";
     }
 

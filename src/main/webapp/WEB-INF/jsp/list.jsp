@@ -16,7 +16,7 @@
                 <th>Sensor name</th>
                 <th>Sensor location</th>
                 <th>Status</th>
-               <th> <a href="/list?page${pageNumber}&${sortASC}">Sensor trigger time</a></th>
+               <th> <a href="/list?page${list.number}&${sortASC}">Sensor trigger time</a></th>
                <!-- <th>Action</th> -->
             </tr>
 
