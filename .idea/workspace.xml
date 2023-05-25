@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cab6022f-3c94-4d51-9335-08f95806888b" name="Changes" comment="added pagination">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/service/SecurityServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/service/SecurityServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,12 +123,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1684323418625</updated>
-    </task>
-    <task id="LOCAL−00030" summary="added pagination">
-      <created>1685010500149</created>
-      <option name="number" value="LOCAL−00030" />
-      <option name="presentableId" value="LOCAL−00030" />
-      <updated>1685010500149</updated>
     </task>
     <task id="LOCAL−00031" summary="added pagination">
       <created>1685010618608</created>
@@ -419,7 +412,13 @@
       <option name="presentableId" value="LOCAL−00078" />
       <updated>1685027890691</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL−00079" summary="added pagination">
+      <created>1685028271401</created>
+      <option name="number" value="LOCAL−00079" />
+      <option name="presentableId" value="LOCAL−00079" />
+      <updated>1685028271401</updated>
+    </task>
+    <option name="localTasksCounter" value="80" />
     <servers />
   </component>
   <component name="UnknownFeatures">

@@ -10,15 +10,15 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class HubApplicationTest {
-    private final String URL = "jdbc:mysql://localhost:3306/hub";
+    private final String URL = "jdbc:mysql://127.0.0.1:3306/hub";
 
     @Test
     public void test() {
-        assertEquals(4,number());
+        assertEquals(4, number());
 
     }
 
-
+    @Test
     public void testConnectionToDbPositiveTest() {
         assertTrue(connectToDbPositive());
     }
@@ -28,8 +28,8 @@ public class HubApplicationTest {
 
     }
 
-    public int number(){
-        return 2+2;
+    public int number() {
+        return 2 + 2;
     }
 
     public boolean connectToDbPositive() {
