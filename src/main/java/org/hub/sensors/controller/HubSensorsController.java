@@ -21,6 +21,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -230,10 +231,10 @@ public class HubSensorsController {
 
     @GetMapping({"/", "/list"})
     public String getList(Model model,
-                             @RequestParam(required = false, defaultValue = "0") int page
-                          //   @RequestParam(required = false, defaultValue = "0") int size
+                             @RequestParam(required = false, defaultValue = "0") int page,
+                           @RequestParam(required = false, defaultValue = "5") int size
     ) {
-        Page<SensorData> sensorDataPage = sensorDataRepository.findAll(PageRequest.of(page, 5));
+        Page<SensorData> sensorDataPage = sensorDataRepository.findAll(PageRequest.of(page, size, Sort.Direction.DESC,"date"));
         model.addAttribute("list", sensorDataPage);
         model.addAttribute("numbers", IntStream.range(0, sensorDataPage.getTotalPages()).toArray());
 
