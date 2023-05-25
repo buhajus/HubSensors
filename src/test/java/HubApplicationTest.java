@@ -13,17 +13,16 @@ public class HubApplicationTest {
     private final String URL = "jdbc:mysql://localhost:3306/hub";
 
     @Test
-    public void testMethodOne() {
+    public void test() {
         assertEquals(4,number());
 
     }
 
-    @Test
+
     public void testConnectionToDbPositiveTest() {
         assertTrue(connectToDbPositive());
     }
 
-    @Test
     public void testConnectionToDbNegativeTest() {
         assertFalse(connectToDbNegative());
 
