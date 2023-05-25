@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -19,7 +20,7 @@ public class HubApplicationTest {
 
     @Test
     public void testConnectionToDbPositiveTest() {
-        assertTrue(connectToDbPositive());
+        Assert.assertTrue(connectToDbPositive());
     }
 
     @Test
