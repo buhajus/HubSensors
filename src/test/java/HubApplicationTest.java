@@ -20,7 +20,7 @@ public class HubApplicationTest {
 
     @Test
     public void testConnectionToDbPositiveTest() {
-        Assert.assertTrue(connectToDbPositive());
+        assertTrue(connectToDbPositive());
     }
 
     @Test
