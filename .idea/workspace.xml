@@ -328,7 +328,13 @@
       <option name="presentableId" value="LOCAL−00034" />
       <updated>1685011137699</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL−00035" summary="added pagination">
+      <created>1685011403171</created>
+      <option name="number" value="LOCAL−00035" />
+      <option name="presentableId" value="LOCAL−00035" />
+      <updated>1685011403171</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="UnknownFeatures">
