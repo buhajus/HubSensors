@@ -236,7 +236,7 @@ public class HubSensorsController {
     ) {
         Page<SensorData> sensorDataPage = sensorDataRepository.findAll(PageRequest.of(page, size));
         model.addAttribute("list", sensorDataPage);
-        model.addAttribute("numbers", IntStream.range(0, sensorDataPage.getTotalPages()).toArray().length-1);
+        model.addAttribute("numbers", IntStream.range(0, sensorDataPage.getTotalPages()).toArray());
         model.addAttribute("sortASC", Sort.Direction.ASC);
         model.addAttribute("sortDESC", Sort.Direction.DESC);
         return "list";
