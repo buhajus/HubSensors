@@ -10,12 +10,13 @@
 <body class="container">
     <div class="table-responsive">
         <table class="table table-striped">
-        <span>Total records in DB - "${totalRecords}"</span>
+        <span>Total records in DB - ${totalRecords}</span>
             <tr>
+                <th>id</th>
                 <th>Sensor name</th>
                 <th>Sensor location</th>
                 <th>Status</th>
-                <a href="/?${sortDESC}"><th>Sensor trigger time</th></a>
+                <a href="/list?page${pageNumber+1}&${sortDESC}"><th>Sensor trigger time</th></a>
                <!-- <th>Action</th> -->
             </tr>
 
@@ -38,6 +39,7 @@
                 </c:url>
 
                 <tr>
+                <td>${sensor.id}</td>
                     <td>${sensor.sensorName}</td>
                     <td>${sensor.sensorLocation}</td>
                     <td>${sensor.status}</td>
