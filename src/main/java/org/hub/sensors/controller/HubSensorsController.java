@@ -236,7 +236,7 @@ public class HubSensorsController {
     ) {
         Page<SensorData> sensorDataPage = sensorDataRepository.findAll(PageRequest.of(page, size, Sort.Direction.DESC,"date"));
         model.addAttribute("list", sensorDataPage);
-        model.addAttribute("numbers", IntStream.range(0, sensorDataPage.getTotalPages()).toArray());
+        model.addAttribute("numbers", IntStream.range(1, sensorDataPage.getTotalPages()).toArray());
 
         return "list";
     }
