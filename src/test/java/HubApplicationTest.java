@@ -35,9 +35,8 @@ public class HubApplicationTest {
 
     public boolean connectToDbPositive() {
         try {
-
             Connection connection = DriverManager.getConnection(URL, "root", "");
-            if (connection.isValid(1)) {
+            if (connection.isValid(0)) {
                 return true;
             }
 
@@ -57,6 +56,6 @@ public class HubApplicationTest {
         }
 
 
-        return true;
+        return false;
     }
 }
