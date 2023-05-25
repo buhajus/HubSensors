@@ -54,7 +54,8 @@
             </c:forEach>
 
         </table>
-      <ul class="pagination" <c:if ${list.totalPages > 0}</c:if>>
+        <c:if ${list.totalPages > 0}
+      <ul class="pagination">
 <li>
 <c:forEach  var="pageNumber" items="${numbers}">
 <c:url value="/pagination" var="URL"/>
@@ -65,6 +66,7 @@
      </c:forEach>
 </li>
       </ul>
+       </c:if>
     </div>
     <jsp:include page="footer.jsp"/>
 </body>
