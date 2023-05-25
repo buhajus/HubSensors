@@ -36,10 +36,9 @@ public class SensorDataServiceImpl implements SensorDataService {
      * @return
      */
     @Override
-    public List<SensorData> getAll(PageRequest pageRequest) {
-        Page<SensorData> page = sensorDataRepository.findAll(pageRequest);
-        return page.getContent();
-       // return sensorDataDAO.findEntities();
+    public List<SensorData> getAll() {
+
+       return sensorDataDAO.findEntities();
     }
 
     @Override

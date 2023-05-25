@@ -9,9 +9,9 @@ import java.util.List;
 
 public interface SensorDataService {
 
- //   List<SensorData> getAll();
+   List<SensorData> getAll();
 
-    List<SensorData> getAll(PageRequest pageRequest);
+
 
     void save(SensorData sensor);
 

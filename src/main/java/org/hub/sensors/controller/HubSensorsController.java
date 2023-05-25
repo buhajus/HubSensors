@@ -221,18 +221,25 @@ public class HubSensorsController {
      * @return all sensor data records
      */
     @GetMapping({"/", "/list"})
-    public String getList(Model model,
-                          @RequestParam(required = false, defaultValue = "0") int page,
-                          @RequestParam(required = false, defaultValue = "5") int size
+    public String getList(Model model) {
 
+        model.addAttribute("list", sensorDataService.getAll());
+
+        return "list";
+    }
+
+    @GetMapping("/pagination")
+    public String pagination(Model model,
+                             @RequestParam(required = false, defaultValue = "0") int page,
+                             @RequestParam(required = false, defaultValue = "5") int size
     ) {
         Page<SensorData> sensorDataPage = sensorDataRepository.findAll(PageRequest.of(page, size));
         model.addAttribute("list", sensorDataPage);
         model.addAttribute("numbers", IntStream.range(0, sensorDataPage.getTotalPages()).toArray());
-       // model.addAttribute("list", sensorDataService.getAll(PageRequest.of(page, size)));
 
         return "list";
     }
+
 
     /**
      * Method to get sensor by it`s id
