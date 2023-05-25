@@ -11,9 +11,6 @@
     <div class="table-responsive">
         <table class="table table-striped">
         <span>Total records in DB - ${totalRecords}</span>
-          <span>Get number - ${getNumber}</span>
-                    <span>Get number +1 ${getNumber + 1}</span>
-
             <tr>
              <th>id</th>
                 <th>Sensor name</th>
@@ -64,7 +61,7 @@
           <ul class="pagination">
             <c:forEach  var="pageNumber" items="${numbers}">
             <c:if test="${pageNumber == getNumber}">
-             <c:set var= "css" value="active"></c:set>
+             <c:set var="css" value="active"></c:set>
             </c:if>
                  <li class="${css}">
                       <a href="/list?page=${pageNumber}">${pageNumber + 1}</a>

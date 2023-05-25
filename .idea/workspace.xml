@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cab6022f-3c94-4d51-9335-08f95806888b" name="Changes" comment="added pagination">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/controller/HubSensorsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/controller/HubSensorsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/list.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -36,18 +36,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/MB Saromania/IdeaProjects/HubSensors/src/main/webapp/WEB-INF/jsp&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.5126437&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Users/MB Saromania/IdeaProjects/HubSensors/src/main/webapp/WEB-INF/jsp",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.5126437",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\MB Saromania\IdeaProjects\HubSensors\src\main\webapp\WEB-INF\jsp" />
@@ -124,24 +124,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1684323418625</updated>
-    </task>
-    <task id="LOCAL−00027" summary="added pagination">
-      <created>1685009431887</created>
-      <option name="number" value="LOCAL−00027" />
-      <option name="presentableId" value="LOCAL−00027" />
-      <updated>1685009431887</updated>
-    </task>
-    <task id="LOCAL−00028" summary="added pagination">
-      <created>1685009618001</created>
-      <option name="number" value="LOCAL−00028" />
-      <option name="presentableId" value="LOCAL−00028" />
-      <updated>1685009618001</updated>
-    </task>
-    <task id="LOCAL−00029" summary="added pagination">
-      <created>1685010342262</created>
-      <option name="number" value="LOCAL−00029" />
-      <option name="presentableId" value="LOCAL−00029" />
-      <updated>1685010342262</updated>
     </task>
     <task id="LOCAL−00030" summary="added pagination">
       <created>1685010500149</created>
@@ -419,7 +401,25 @@
       <option name="presentableId" value="LOCAL−00075" />
       <updated>1685026890389</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL−00076" summary="added pagination">
+      <created>1685027198408</created>
+      <option name="number" value="LOCAL−00076" />
+      <option name="presentableId" value="LOCAL−00076" />
+      <updated>1685027198408</updated>
+    </task>
+    <task id="LOCAL−00077" summary="added pagination">
+      <created>1685027342663</created>
+      <option name="number" value="LOCAL−00077" />
+      <option name="presentableId" value="LOCAL−00077" />
+      <updated>1685027342663</updated>
+    </task>
+    <task id="LOCAL−00078" summary="added pagination">
+      <created>1685027890691</created>
+      <option name="number" value="LOCAL−00078" />
+      <option name="presentableId" value="LOCAL−00078" />
+      <updated>1685027890691</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="UnknownFeatures">
