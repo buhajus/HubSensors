@@ -12,11 +12,11 @@
         <table class="table table-striped">
         <span>Total records in DB - ${totalRecords}</span>
             <tr>
-                <th>id</th>
+              <a href="#"><th>id</th></a>
                 <th>Sensor name</th>
                 <th>Sensor location</th>
                 <th>Status</th>
-                <a href="/list?page${pageNumber+1}&${sortDESC}"><th>Sensor trigger time</th></a>
+               <th> <a href="/list?page${pageNumber+1}&${sortDESC}">Sensor trigger time</a></th>
                <!-- <th>Action</th> -->
             </tr>
 

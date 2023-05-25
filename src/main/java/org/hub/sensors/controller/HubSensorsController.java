@@ -219,7 +219,7 @@ public class HubSensorsController {
      * Index page
      *
      * @param model
-     * @return all sensor data records
+     * @return all sensor data records with pagination
      */
 //    @GetMapping({"/", "/list"})
 //    public String getList(Model model) {
@@ -228,13 +228,12 @@ public class HubSensorsController {
 //
 //        return "list";
 //    }
-
     @GetMapping({"/", "/list"})
     public String getList(Model model,
-                             @RequestParam(required = false, defaultValue = "0") int page
-                           //@RequestParam(required = false, defaultValue = "5") int size
+                          @RequestParam(required = false, defaultValue = "0") int page,
+                          @RequestParam(required = false, defaultValue = "5") int size
     ) {
-        Page<SensorData> sensorDataPage = sensorDataRepository.findAll(PageRequest.of(page,5));
+        Page<SensorData> sensorDataPage = sensorDataRepository.findAll(PageRequest.of(page, size, Sort.Direction.DESC));
         model.addAttribute("list", sensorDataPage);
         model.addAttribute("numbers", IntStream.range(0, sensorDataPage.getTotalPages()).toArray());
         model.addAttribute("sortASC", Sort.Direction.ASC);
