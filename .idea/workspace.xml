@@ -4,14 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cab6022f-3c94-4d51-9335-08f95806888b" name="Changes" comment="added Test">
+    <list default="true" id="cab6022f-3c94-4d51-9335-08f95806888b" name="Changes" comment="added pagination">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/controller/HubSensorsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/controller/HubSensorsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/service/SensorDataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/service/SensorDataService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/service/SensorDataServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/service/SensorDataServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/HubApplicationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/HubApplicationTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,8 +110,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.HubApplicationTest" />
-        <item itemvalue="JUnit.HubApplicationTest.testMethodOne" />
         <item itemvalue="JUnit.HubApplicationTest.testConnectionToDbNegativeTest" />
+        <item itemvalue="JUnit.HubApplicationTest.testMethodOne" />
       </list>
     </recent_temporary>
   </component>
@@ -268,7 +262,13 @@
       <option name="presentableId" value="LOCAL−00023" />
       <updated>1684946393844</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL−00024" summary="added pagination">
+      <created>1685008217500</created>
+      <option name="number" value="LOCAL−00024" />
+      <option name="presentableId" value="LOCAL−00024" />
+      <updated>1685008217500</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -291,7 +291,8 @@
     <MESSAGE value="-" />
     <MESSAGE value="added methods comments" />
     <MESSAGE value="added Test" />
-    <option name="LAST_COMMIT_MESSAGE" value="added Test" />
+    <MESSAGE value="added pagination" />
+    <option name="LAST_COMMIT_MESSAGE" value="added pagination" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

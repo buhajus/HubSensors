@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class HubApplicationTest {
-    private static final String URL = "jdbc:mysql://localhost:3306/hub";
+    private static final String URL = "jdbc:mysql://192.168.1.165:3306/hub";
 
     @Test
     public void testMethodOne() {
