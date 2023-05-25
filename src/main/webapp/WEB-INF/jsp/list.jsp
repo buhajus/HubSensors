@@ -10,11 +10,12 @@
 <body class="container">
     <div class="table-responsive">
         <table class="table table-striped">
+        <span>Total records in DB - "${totalRecords}"</span>
             <tr>
                 <th>Sensor name</th>
                 <th>Sensor location</th>
                 <th>Status</th>
-                <a href="${sortDESC}"><th>Sensor trigger time</th></a>
+                <a href="/?${sortDESC}"><th>Sensor trigger time</th></a>
                <!-- <th>Action</th> -->
             </tr>
 
