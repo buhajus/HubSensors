@@ -60,8 +60,8 @@
         <c:if test="${list.totalPages >= 0}">
           <ul class="pagination">
             <c:forEach  var="pageNumber" items="${numbers}">
-            <c:if test="${pageNumber} == list.number">
-             <c:set var= "css" value="active" ><c:set>
+            <c:if test="${pageNumber == list.number}">
+             <c:set var= "css" value="active"></c:set>
             </c:if>
                  <li class="${css}">
                       <a href="/list?page=${pageNumber}">${pageNumber + 1}</a>
