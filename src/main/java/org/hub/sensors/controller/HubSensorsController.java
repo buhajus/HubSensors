@@ -8,6 +8,7 @@ import com.pi4j.util.Console;
 import org.hub.sensors.model.Sensor;
 import org.hub.sensors.model.SensorData;
 import org.hub.sensors.model.User;
+import org.hub.sensors.repository.SensorDataRepository;
 import org.hub.sensors.service.SecurityService;
 import org.hub.sensors.service.SensorDataService;
 import org.hub.sensors.service.SensorService;
@@ -18,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
@@ -31,6 +33,7 @@ import java.text.DateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
+import java.util.stream.IntStream;
 
 // @RestController negrąžina view.
 // Kadangi mums reikia grąžinti view pagal Spring MVC, naudojame @Controller
@@ -50,6 +53,9 @@ public class HubSensorsController {
     private UserValidator userValidator;
     @Autowired
     private SensorValidator sensorValidator;
+
+    @Autowired
+    private SensorDataRepository sensorDataRepository;
 
 
     final GpioController gpio = GpioFactory.getInstance();
@@ -218,8 +224,12 @@ public class HubSensorsController {
     public String getList(Model model,
                           @RequestParam(required = false, defaultValue = "0") int page,
                           @RequestParam(required = false, defaultValue = "2") int size
+
     ) {
-        model.addAttribute("list", sensorDataService.getAll(PageRequest.of(page, size)));
+        Page<SensorData> sensorDataPage = sensorDataRepository.findAll(PageRequest.of(page, size));
+        model.addAttribute("list", sensorDataPage);
+        model.addAttribute("numbers", IntStream.range(0, sensorDataPage.getTotalPages()).toArray());
+       // model.addAttribute("list", sensorDataService.getAll(PageRequest.of(page, size)));
 
         return "list";
     }

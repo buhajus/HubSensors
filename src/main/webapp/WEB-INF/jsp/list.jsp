@@ -19,7 +19,7 @@
             </tr>
 
             <!-- iteruoja per visą skaičių sarašą -->
-            <c:forEach var="sensor" items="${list}">
+            <c:forEach var="sensor" items="${list.content}">
 
                 <!-- konstruoja įrašo atnaujinimo adresą su skaičiaus id -->
                 <c:url var="update" value="/update">
@@ -54,6 +54,17 @@
             </c:forEach>
 
         </table>
+      <ul class="pagination" <c:if ${list.totalPages > 0}</c:if>>
+<li>
+<c:forEach  var="pageNumber" items="${numbers}">
+<c:url value="/pagination" var="URL"/>
+ <c:param name="page" value="${pageNumber}"/>
+  <c:param name="size" value="${pageNumber}"/>
+</c:url>
+<a href="$URL">${pageNumber + 1}</a>
+     </c:forEach>
+</li>
+      </ul>
     </div>
     <jsp:include page="footer.jsp"/>
 </body>
