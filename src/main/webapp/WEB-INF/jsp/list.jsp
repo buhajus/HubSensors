@@ -62,7 +62,7 @@
  <c:param name="page" value="${pageNumber}"/>
   <c:param name="size" value="${pageNumber}"/>
 </c:url>
-<a href="$URL">${pageNumber + 1}</a>
+<a href="${URL}">${pageNumber + 1}</a>
      </c:forEach>
 </li>
       </ul>
