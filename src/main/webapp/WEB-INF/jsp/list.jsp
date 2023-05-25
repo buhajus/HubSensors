@@ -19,7 +19,7 @@
             </tr>
 
             <!-- iteruoja per visą skaičių sarašą -->
-            <c:forEach var="sensor" items="${list.content}">
+            <c:forEach var="sensor" items="${list}">
 
                 <!-- konstruoja įrašo atnaujinimo adresą su skaičiaus id -->
                 <c:url var="update" value="/update">
