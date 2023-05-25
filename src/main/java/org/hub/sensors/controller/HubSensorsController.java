@@ -234,10 +234,11 @@ public class HubSensorsController {
                              @RequestParam(required = false, defaultValue = "0") int page,
                            @RequestParam(required = false, defaultValue = "5") int size
     ) {
-        Page<SensorData> sensorDataPage = sensorDataRepository.findAll(PageRequest.of(page, size, Sort.Direction.DESC,"date"));
+        Page<SensorData> sensorDataPage = sensorDataRepository.findAll(PageRequest.of(page, size));
         model.addAttribute("list", sensorDataPage);
         model.addAttribute("numbers", IntStream.range(0, sensorDataPage.getTotalPages()).toArray().length-1);
-
+        model.addAttribute("sortASC", Sort.Direction.ASC);
+        model.addAttribute("sortDESC", Sort.Direction.DESC);
         return "list";
     }
 
