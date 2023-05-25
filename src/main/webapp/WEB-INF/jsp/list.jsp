@@ -58,7 +58,7 @@
           <ul class="pagination">
             <c:forEach  var="pageNumber" items="${numbers}">
                 <li>
-                  <a href="#">${pageNumber + 1}</a>
+                  <a href="'/list&page='+ ${pageNumber}">${pageNumber + 1}</a>
                 </li>
              </c:forEach>
           </ul>
