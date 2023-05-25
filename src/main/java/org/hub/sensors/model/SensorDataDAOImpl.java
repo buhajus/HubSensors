@@ -72,6 +72,8 @@ public class SensorDataDAOImpl implements SensorDataDAO {
         entityManager.close();
 
     }
+
+
     /**
      * Method to show entities from DB
      *

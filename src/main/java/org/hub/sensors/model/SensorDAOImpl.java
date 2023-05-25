@@ -102,4 +102,21 @@ public class SensorDAOImpl implements SensorDAO {
         entityManager.close();
 
     }
+
+
+    @Override
+    public  List<Sensor> getGpioStatusById( int gpio){
+        EntityManager entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
+        entityManager.getTransaction().begin();
+
+        List<Sensor> sensors = entityManager
+                .createQuery("Select status FROM Sensor n WHERE n.gpio = :gpio")
+                .getResultList();
+
+        entityManager.getTransaction().commit();
+        entityManager.close();
+
+        return sensors;
+
+    }
 }

@@ -2,8 +2,6 @@ package org.hub.sensors.service;
 
 import org.hub.sensors.model.Sensor;
 import org.hub.sensors.model.SensorDAO;
-import org.hub.sensors.model.SensorData;
-import org.hub.sensors.repository.SensorDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -44,6 +42,11 @@ public class SensorServiceImpl implements SensorService {
     @Override
     public void delete(int id) {
         sensorDAO.removeEntityById(id);
+    }
+
+    @Override
+    public  List<Sensor> getGpioStatus(int gpio){
+        return sensorDAO.getGpioStatusById(gpio);
     }
 
 

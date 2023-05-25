@@ -16,4 +16,5 @@ public interface SensorService {
     void delete(int id);
 
 
+    List<Sensor> getGpioStatus(int gpio);
 }

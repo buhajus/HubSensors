@@ -23,6 +23,8 @@ public class Sensor {
     @Min(value = 0, message = "min 0" )
     private int gpio;
 
+    private String status;
+
     public Sensor() {
     }
 
@@ -32,6 +34,21 @@ public class Sensor {
         this.gpio = gpio;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Sensor(int id, String sensorName, String sensorModel, int gpio, String status) {
+        this.id = id;
+        this.sensorName = sensorName;
+        this.sensorModel = sensorModel;
+        this.gpio = gpio;
+        this.status = status;
+    }
 
     public int getGpio() {
         return gpio;
