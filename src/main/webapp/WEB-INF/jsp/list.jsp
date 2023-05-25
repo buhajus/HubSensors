@@ -12,6 +12,7 @@
         <table class="table table-striped">
         <span>Total records in DB - ${totalRecords}</span>
           <span>Get number - ${getNumber}</span>
+                    <span>Get number +1 ${getNumber + 1}</span>
 
             <tr>
              <th>id</th>
@@ -62,7 +63,7 @@
         <c:if test="${list.totalPages > 0}">
           <ul class="pagination">
             <c:forEach  var="pageNumber" items="${numbers}">
-            <c:if test="${pageNumber-1 == list.number}">
+            <c:if test="${pageNumber+1 == list.number}">
              <c:set var= "css" value="active"></c:set>
             </c:if>
                  <li class="${css}">
