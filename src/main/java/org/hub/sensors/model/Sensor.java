@@ -18,51 +18,29 @@ public class Sensor {
     @Column(name = "sensor_model")
     @NotBlank(message = "Model is mandatory")
     private String sensorModel;
-
-    @Column(name = "gpio")
-    @Min(value = 0, message = "min 0" )
-    private int gpio;
-
-    private String status;
+    @OneToOne(mappedBy = "sensor")
+    private GpioPin gpio;
 
     public Sensor() {
     }
 
-    public Sensor(String sensorName, String sensorModel, int gpio) {
+    public Sensor(String sensorName, String sensorModel, GpioPin gpio) {
         this.sensorName = sensorName;
         this.sensorModel = sensorModel;
         this.gpio = gpio;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public Sensor(int id, String sensorName, String sensorModel, int gpio, String status) {
-        this.id = id;
-        this.sensorName = sensorName;
-        this.sensorModel = sensorModel;
-        this.gpio = gpio;
-        this.status = status;
-    }
-
-    public int getGpio() {
-        return gpio;
-    }
-
-    public Sensor(int id, String sensorName, String sensorModel, int gpio) {
+    public Sensor(int id, String sensorName, String sensorModel, GpioPin gpio) {
         this.id = id;
         this.sensorName = sensorName;
         this.sensorModel = sensorModel;
         this.gpio = gpio;
     }
 
-    public void setGpio(int gpio) {
-        this.gpio = gpio;
+    public Sensor( String sensorName, String sensorModel) {
+
+        this.sensorName = sensorName;
+        this.sensorModel = sensorModel;
     }
 
     public int getId() {
@@ -87,5 +65,13 @@ public class Sensor {
 
     public void setSensorModel(String sensorModel) {
         this.sensorModel = sensorModel;
+    }
+
+    public GpioPin getGpio() {
+        return gpio;
+    }
+
+    public void setGpio(GpioPin gpio) {
+        this.gpio = gpio;
     }
 }

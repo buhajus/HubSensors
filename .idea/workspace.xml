@@ -5,7 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cab6022f-3c94-4d51-9335-08f95806888b" name="Changes" comment="added pagination">
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/service/SecurityServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/service/SecurityServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/controller/PiGpioController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/model/GpioPin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/gpio_config.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/controller/HubSensorsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/controller/HubSensorsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/model/Sensor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/model/Sensor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/menu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/menu.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +34,14 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
   <component name="ProjectId" id="2Pv2ojkwcbGfcnqnHncpKDpb6H9" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -40,7 +56,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/MB Saromania/IdeaProjects/HubSensors/src/main/webapp/WEB-INF/jsp",
+    "last_opened_file_path": "C:/Users/IT-admin01/OneDrive/Documents/IdeaProjects/HubSensors/src/main/webapp/WEB-INF/jsp",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.5126437",
@@ -49,11 +65,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\IT-admin01\OneDrive\Documents\IdeaProjects\HubSensors\src\main\webapp\WEB-INF\jsp" />
       <recent name="C:\Users\MB Saromania\IdeaProjects\HubSensors\src\main\webapp\WEB-INF\jsp" />
       <recent name="C:\Users\MB Saromania\IdeaProjects\HubSensors" />
       <recent name="C:\Users\IT-admin01\OneDrive\Documents\IdeaProjects\Hub\src\main\java\org\hub\sensors" />
       <recent name="C:\Users\IT-admin01\OneDrive\Documents\IdeaProjects\Hub\src\main\resources" />
-      <recent name="C:\Users\IT-admin01\OneDrive\Documents\IdeaProjects\Hub\src\main\java\org\hub\sensors\config" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\MB Saromania\IdeaProjects\HubSensors\src" />
@@ -70,10 +86,21 @@
       <recent name="org.hub.sensors.model" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Unnamed">
-    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.HubApplication">
+    <configuration name="HubApplication" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.hub.sensors.HubApplication" />
       <module name="sensors" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.hub.sensors.controller.PiGpioController" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+        <pattern>
+          <option name="PATTERN" value="org.hub.sensors.controller.GpioController" />
+          <option name="ENABLED" value="true" />
+          <option name="INCLUDE" value="false" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -107,6 +134,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.HubApplication" />
+      <item itemvalue="JUnit.HubApplicationTest" />
+      <item itemvalue="JUnit.HubApplicationTest.testConnectionToDbNegativeTest" />
+      <item itemvalue="JUnit.HubApplicationTest.testMethodOne" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.HubApplicationTest" />
@@ -432,6 +465,17 @@
     <option featureType="dependencySupport" implementationName="java:org.hibernate.validator:hibernate-validator" />
     <option featureType="dependencySupport" implementationName="java:org.springframework.boot:spring-boot" />
     <option featureType="dependencySupport" implementationName="java:org.springframework:spring-webmvc" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="fix maven" />
