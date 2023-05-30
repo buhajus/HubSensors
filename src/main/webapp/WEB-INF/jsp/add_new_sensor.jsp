@@ -22,13 +22,21 @@
                  <span>   Sensor model: <form:input type="text" path="sensorModel"/>
                          <form:errors path="sensorModel" cssClass="error"/></span>
 
-                         <span> GPIO of raspberry: <form:input type="number" path="gpio"/>
-                             <form:errors path="gpio" cssClass="error"/></span>
+                 <span> GPIO of raspberry:  </span>
+                            <select  name="gpioId">
+                          <c:forEach var="gpio" items="${gpio}">
+
+                               <option value="${gpio.id}" ${gpio.id == gpio ? 'selected' : ''}>${gpio.id}</option>
+
+                            </c:forEach>
+                             </select>
                  <br>
                <input type="submit" value="Add new sensor" class="btn btn-info">
 
 
         </form:form>
+
+
     </body>
     <jsp:include page="footer.jsp"/>
 </html>

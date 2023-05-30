@@ -13,13 +13,11 @@
             <tr>
             <th>id</th>
                 <th>GPIO pin</th>
-                <th>Sensor name</th>
-
-                <th>Action</th>
+                 <th>Action</th>
             </tr>
 
             <!-- iteruoja per visą  sarašą -->
-            <c:forEach var="gpio" items="${sensors}">
+            <c:forEach var="gpio" items="${gpio}">
 
                 <!-- konstruoja įrašo atnaujinimo adresą su skaičiaus id -->
                 <c:url var="update" value="/update">
@@ -38,8 +36,7 @@
 
                 <tr>
                     <td>${gpio.id}</td>
-                    <td>${gpio.pin}</td>
-                    <td>${gpio.sensorName}</td>
+                    <td>${gpio.gpio}</td>
 
                     <td>
                         <!-- atvaizduoti atnaujinimo adresą --> <a href="${update}">Keisti</a>

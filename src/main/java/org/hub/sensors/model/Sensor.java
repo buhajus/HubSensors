@@ -11,14 +11,16 @@ public class Sensor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private Long id;
     @Column(name = "sensor_name")
     //  @NotBlank(message = "Name is mandatory")
     private String sensorName;
     @Column(name = "sensor_model")
     @NotBlank(message = "Model is mandatory")
     private String sensorModel;
-    @OneToOne(mappedBy = "sensor")
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "gpio_pin", referencedColumnName = "id")
     private GpioPin gpio;
 
     public Sensor() {
@@ -30,7 +32,7 @@ public class Sensor {
         this.gpio = gpio;
     }
 
-    public Sensor(int id, String sensorName, String sensorModel, GpioPin gpio) {
+    public Sensor(Long id, String sensorName, String sensorModel, GpioPin gpio) {
         this.id = id;
         this.sensorName = sensorName;
         this.sensorModel = sensorModel;
@@ -43,11 +45,12 @@ public class Sensor {
         this.sensorModel = sensorModel;
     }
 
-    public int getId() {
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

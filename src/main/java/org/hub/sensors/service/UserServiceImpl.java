@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 
         // pagal nutylėjimą naujas vartotojas bus "user" - "admin", saugos sumetimais, galima pakeisti tik per duomenų bazę
-        user.setAuthorities("user");
+        user.setAuthorities("admin");
 
         userRepository.save(user);
     }
