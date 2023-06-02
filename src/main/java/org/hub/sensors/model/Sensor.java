@@ -11,7 +11,7 @@ public class Sensor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private int id;
     @Column(name = "sensor_name")
     //  @NotBlank(message = "Name is mandatory")
     private String sensorName;
@@ -32,7 +32,7 @@ public class Sensor {
         this.gpio = gpio;
     }
 
-    public Sensor(Long id, String sensorName, String sensorModel, GpioPin gpio) {
+    public Sensor(int id, String sensorName, String sensorModel, GpioPin gpio) {
         this.id = id;
         this.sensorName = sensorName;
         this.sensorModel = sensorModel;
@@ -46,11 +46,12 @@ public class Sensor {
     }
 
 
-    public Long getId() {
+
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

@@ -11,7 +11,7 @@
     <div class="table-responsive">
         <table class="table table-striped">
             <tr>
-            <th>id</th>
+                <th>id</th>
                 <th>GPIO pin</th>
                  <th>Action</th>
             </tr>
@@ -51,7 +51,7 @@
 
         </table>
     </div>
-    <a type="button" href="/add_new_sensor" class="btn btn-info">Add new sensor</a>
+    <a type="button" href="/add_new_gpio" class="btn btn-info">Add new sensor</a>
     <jsp:include page="footer.jsp"/>
 </body>
 </html>

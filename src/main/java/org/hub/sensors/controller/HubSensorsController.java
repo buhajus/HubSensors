@@ -1,7 +1,6 @@
 package org.hub.sensors.controller;
 
 
-
 import org.hub.sensors.model.GpioPin;
 import org.hub.sensors.model.Sensor;
 import org.hub.sensors.model.SensorData;
@@ -96,8 +95,6 @@ public class HubSensorsController {
      */
     @PostMapping("/add-new-sensor")
     public String addSensor(@Valid @ModelAttribute("sensor") Sensor sensor,
-
-                            Model model,
                             BindingResult bindingResult,
                             @RequestParam HashMap<String, String> inputForm,
                             ModelMap outputForm) {
@@ -108,15 +105,30 @@ public class HubSensorsController {
         }
         String sensorName = inputForm.get("sensorName");
         String sensorModel = inputForm.get("sensorModel");
-        int gpio = Integer.parseInt(inputForm.get("gpio"));
-        model.addAttribute("gpio", gpio);
+        String gpioValue = inputForm.get("gpio");
 
 
         outputForm.put("sensorName", sensorName);
         outputForm.put("sensorModel", sensorModel);
-        //  outputForm.put("gpio",  gpio);
+        outputForm.put("gpio", gpioValue);
+        GpioPin selectedPin = null;
 
-        sensorService.save(new Sensor(sensorName, sensorModel));
+        if (!gpioValue.isEmpty()) {
+            int gpio = Integer.parseInt(gpioValue);
+            selectedPin =  gpioRepository.getOne(gpio);
+        }
+
+        Sensor newSensor = new Sensor();
+        newSensor.setSensorName(sensorName);
+        newSensor.setSensorModel(sensorModel);
+        newSensor.setGpio(selectedPin);
+
+        //newSensor.setGpio(selectedPin);
+
+
+        sensorService.save(newSensor);
+
+        // sensorService.save(new Sensor(sensorName, sensorModel, gpioPinValue));
         return "redirect:/sensors";
     }
 
@@ -131,20 +143,44 @@ public class HubSensorsController {
 
         //Jeigu Model "number" nepraeina validacijos - per jį grąžinamos validacijos
         //klaidos į View
+        List<GpioPin> gpioPinList = gpioRepository.findAll();
+        //   List<GpioPin> pins = gpioRepository.findPins();
+        //   model.addAttribute("pins", pins);
+        model.addAttribute("gpioPinList", gpioPinList);
+
+
         model.addAttribute("sensor", new Sensor());
-        try {
-            List<GpioPin> gpioPinList = gpioRepository.findAll();
-            model.addAttribute("gpio", gpioPinList);
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-            // Handle the case where the GPIO ID is not a valid integer
-            // You can log the error or take appropriate action
-        }
-        // model.addAttribute("gpio", gpioRepository.findAll());
+
+        // model.addAttribute("gpio", gpio.getGpio());
+
         //grąžiname JSP failą, kuris turi būti talpinamas "webapp -> WEB-INF ->  JSP" folderi
         return "add_new_sensor";
     }
 
+    @GetMapping("/add_new_gpio")
+    public String addNewGpio(Model model) {
+        model.addAttribute("gpio", new GpioPin());
+
+        return "add_new_gpio";
+    }
+
+    @PostMapping("/add-new-gpio")
+    public String addGpio(@RequestParam("gpio") int gpioPin, Model model) {
+
+//        sensorValidator.validate(sensor, bindingResult);
+//        if (bindingResult.hasErrors()) {
+//            return "add_new_sensor";
+        //        }
+        model.addAttribute("gpio", new GpioPin());
+
+        GpioPin gpio = new GpioPin();
+        gpio.setGpio(gpioPin);
+//        int gpio = Integer.parseInt(gpioPin.get("gpio"));
+//        outputForm.put("gpio", gpio);
+        gpioRepository.save(gpio);
+
+        return "redirect:/gpio_config";
+    }
     /**
      * Method for checking sensors every 5 sec and if they are active - store data into DB
      */

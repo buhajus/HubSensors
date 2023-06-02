@@ -9,13 +9,13 @@ import java.lang.Long;
 
 @Entity
 @Table(name = "gpio_config")
-public class GpioPin implements Serializable {
+public class GpioPin  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private int id;
     @Column(name = "gpio")
-    private Long gpio;
+    private int gpio;
     @OneToOne(mappedBy = "gpio")
     private Sensor sensor;
 
@@ -23,30 +23,35 @@ public class GpioPin implements Serializable {
     public GpioPin() {
     }
 
-    public GpioPin(Long id, Long gpio, Sensor sensor) {
+    public GpioPin(int id, int gpio, Sensor sensor) {
         this.id = id;
         this.gpio = gpio;
         this.sensor = sensor;
     }
 
-    public GpioPin(Long gpio, Sensor sensor) {
+    public GpioPin(int gpio, Sensor sensor) {
         this.gpio = gpio;
         this.sensor = sensor;
     }
 
-    public Long getId() {
+    public GpioPin(int gpio) {
+        this.gpio = gpio;
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public Long getGpio() {
+    public int getGpio() {
         return gpio;
     }
 
-    public void setGpio(Long gpio) {
+
+    public void setGpio(int gpio) {
         this.gpio = gpio;
     }
 

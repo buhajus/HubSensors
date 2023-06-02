@@ -23,14 +23,11 @@
                          <form:errors path="sensorModel" cssClass="error"/></span>
 
                  <span> GPIO of raspberry:  </span>
-                            <select  name="gpioId">
-                          <c:forEach var="gpio" items="${gpio}">
-
-                               <option value="${gpio.id}" ${gpio.id == gpio ? 'selected' : ''}>${gpio.id}</option>
-
-                            </c:forEach>
-                             </select>
-                 <br>
+                            <form:select  path="gpio">
+                              <form:option value=""> --SELECT--</form:option>
+                                <form:options items="${gpioPinList}"></form:options>
+                            </form:select>
+                                   <br>
                <input type="submit" value="Add new sensor" class="btn btn-info">
 
 
