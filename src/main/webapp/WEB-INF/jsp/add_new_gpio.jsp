@@ -17,8 +17,8 @@
 
         <form:form method="post" action="/add-new-gpio" modelAttribute="gpio">
                  <span> GPIO PIN: <form:input type="number" path="gpio"/>
-
-                 <br>
+                     <form:errors path="gpio" cssClass="error"/></span><p>
+                   <br>
                <input type="submit" value="Add new GPIO PIN" class="btn btn-info">
 
 

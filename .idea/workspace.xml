@@ -4,16 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cab6022f-3c94-4d51-9335-08f95806888b" name="Changes" comment="added GPIO table, controller">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/add_new_gpio.jsp" afterDir="false" />
+    <list default="true" id="cab6022f-3c94-4d51-9335-08f95806888b" name="Changes" comment="added pagination">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/model/GpioPinDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/model/GpioPinDAOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/service/GpioPinService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/service/GpioPinServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/validator/GpioValidator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/config/SpringConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/config/SpringConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/controller/HubSensorsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/controller/HubSensorsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/model/GpioPin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/model/GpioPin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/model/Sensor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/model/Sensor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/model/SensorDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/model/SensorDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/model/SensorDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/model/SensorDAOImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/repository/GpioRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/repository/GpioRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/service/SensorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/service/SensorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/service/SensorServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/service/SensorServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/validation.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/validation.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/add_new_gpio.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/add_new_gpio.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/add_new_sensor.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/add_new_sensor.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/gpio_config.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/gpio_config.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/gpio_config.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/gpio_list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/sensors_history_list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/menu.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/menu.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/sensors.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/sensors_list.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/update.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/update_sensor.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/users.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/users_list.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,6 +94,7 @@
       <recent name="C:\Users\IT-admin01\OneDrive\Documents\IdeaProjects\Hub\src\main" />
     </key>
     <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="org.hub.sensors.validator" />
       <recent name="org.hub.sensors.config" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -492,8 +508,8 @@
     <breakpoint-manager>
       <breakpoints>
         <breakpoint enabled="true" type="java-exception">
-          <properties class="java.lang.NumberFormatException" package="java.lang" />
-          <option name="timeStamp" value="1" />
+          <properties class="java.lang.IllegalArgumentException" package="java.lang" />
+          <option name="timeStamp" value="2" />
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>

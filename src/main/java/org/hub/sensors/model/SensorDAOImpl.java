@@ -18,7 +18,11 @@ public class SensorDAOImpl implements SensorDAO {
         EntityTransaction entityTransaction = entityManager.getTransaction();
         entityTransaction.begin();
 
-        entityManager.persist(sensor);
+        GpioPin gpioPin = sensor.getGpio();
+        GpioPin managedGpioPin = entityManager.merge(gpioPin);
+        sensor.setGpio(managedGpioPin);
+
+        entityManager.merge(sensor);
 
         entityManager.getTransaction().commit();
         entityManager.close();
@@ -105,18 +109,18 @@ public class SensorDAOImpl implements SensorDAO {
 
 
     @Override
-    public  List<Sensor> getGpioStatusById( int gpio){
+    public  List<Sensor> getGpio(){
         EntityManager entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
         entityManager.getTransaction().begin();
 
-        List<Sensor> sensors = entityManager
-                .createQuery("Select status FROM Sensor n WHERE n.gpio = :gpio")
+        List<Sensor> gpioList = entityManager
+                .createNativeQuery("SELECT id, gpio FROM gpio_config WHERE id NOT IN (SELECT gpio_id FROM sensors)", GpioPin.class)
                 .getResultList();
 
         entityManager.getTransaction().commit();
         entityManager.close();
 
-        return sensors;
+        return gpioList;
 
     }
 }

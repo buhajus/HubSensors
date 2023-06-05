@@ -24,9 +24,10 @@
 
                  <span> GPIO of raspberry:  </span>
                             <form:select  path="gpio">
-                              <form:option value=""> --SELECT--</form:option>
-                                <form:options items="${gpioPinList}"></form:options>
+                              <form:option value="0"> --SELECT--</form:option>
+                                <form:options items="${gpioList}" itemValue="id" itemLabel="gpio"></form:options>
                             </form:select>
+
                                    <br>
                <input type="submit" value="Add new sensor" class="btn btn-info">
 

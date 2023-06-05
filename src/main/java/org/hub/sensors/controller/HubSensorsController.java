@@ -1,16 +1,15 @@
 package org.hub.sensors.controller;
 
 
+import com.sun.prism.null3d.NULL3DPipeline;
 import org.hub.sensors.model.GpioPin;
 import org.hub.sensors.model.Sensor;
 import org.hub.sensors.model.SensorData;
 import org.hub.sensors.model.User;
 import org.hub.sensors.repository.GpioRepository;
 import org.hub.sensors.repository.SensorDataRepository;
-import org.hub.sensors.service.SecurityService;
-import org.hub.sensors.service.SensorDataService;
-import org.hub.sensors.service.SensorService;
-import org.hub.sensors.service.UserService;
+import org.hub.sensors.service.*;
+import org.hub.sensors.validator.GpioValidator;
 import org.hub.sensors.validator.SensorValidator;
 import org.hub.sensors.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +26,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.validation.Valid;
 import java.text.DateFormat;
 import java.time.LocalDateTime;
@@ -55,10 +56,15 @@ public class HubSensorsController {
     private SensorValidator sensorValidator;
 
     @Autowired
+    private GpioValidator gpioValidator;
+
+    @Autowired
     private SensorDataRepository sensorDataRepository;
 
     @Autowired
     private GpioRepository gpioRepository;
+    @Autowired
+    private GpioPinService gpioPinService;
 
 
 //    final GpioController gpio = GpioFactory.getInstance();
@@ -89,47 +95,32 @@ public class HubSensorsController {
      *
      * @param sensor
      * @param bindingResult
-     * @param inputForm
      * @param outputForm
      * @return redirect to list of all sensors
      */
     @PostMapping("/add-new-sensor")
     public String addSensor(@Valid @ModelAttribute("sensor") Sensor sensor,
                             BindingResult bindingResult,
-                            @RequestParam HashMap<String, String> inputForm,
+                            @RequestParam("gpio") int gpio,
                             ModelMap outputForm) {
 
         sensorValidator.validate(sensor, bindingResult);
         if (bindingResult.hasErrors()) {
             return "add_new_sensor";
         }
-        String sensorName = inputForm.get("sensorName");
-        String sensorModel = inputForm.get("sensorModel");
-        String gpioValue = inputForm.get("gpio");
 
+        //GpioPin gpioPin = gpioPinService.getById(gpioId);
+        //   GpioPin gpioPin = gpioPinService.getGpioPin(gpio);
+        if (gpio != 0) {
+            outputForm.put("sensorName", sensor.getSensorName());
+            outputForm.put("sensorModel", sensor.getSensorModel());
+            outputForm.put("gpio", String.valueOf(gpio));
+            sensorService.save(sensor);
 
-        outputForm.put("sensorName", sensorName);
-        outputForm.put("sensorModel", sensorModel);
-        outputForm.put("gpio", gpioValue);
-        GpioPin selectedPin = null;
-
-        if (!gpioValue.isEmpty()) {
-            int gpio = Integer.parseInt(gpioValue);
-            selectedPin =  gpioRepository.getOne(gpio);
         }
 
-        Sensor newSensor = new Sensor();
-        newSensor.setSensorName(sensorName);
-        newSensor.setSensorModel(sensorModel);
-        newSensor.setGpio(selectedPin);
-
-        //newSensor.setGpio(selectedPin);
-
-
-        sensorService.save(newSensor);
-
-        // sensorService.save(new Sensor(sensorName, sensorModel, gpioPinValue));
-        return "redirect:/sensors";
+        //sensorService.save(new Sensor(sensorName, sensorModel, gpio));
+        return "redirect:/sensors_list";
     }
 
     /**
@@ -143,10 +134,12 @@ public class HubSensorsController {
 
         //Jeigu Model "number" nepraeina validacijos - per jį grąžinamos validacijos
         //klaidos į View
-        List<GpioPin> gpioPinList = gpioRepository.findAll();
-        //   List<GpioPin> pins = gpioRepository.findPins();
-        //   model.addAttribute("pins", pins);
-        model.addAttribute("gpioPinList", gpioPinList);
+
+        model.addAttribute("gpioPinList", gpioRepository.findAll());
+
+        model.addAttribute("gpioList", sensorService.getGpio());
+        //  model.addAttribute("gpioById", gpioPinList);
+        model.addAttribute("gpioPins", gpioPinService.getAllGpioPins());
 
 
         model.addAttribute("sensor", new Sensor());
@@ -165,21 +158,24 @@ public class HubSensorsController {
     }
 
     @PostMapping("/add-new-gpio")
-    public String addGpio(@RequestParam("gpio") int gpioPin, Model model) {
+    public String addGpio(Model model,
+                          @Valid @ModelAttribute("gpio") GpioPin gpioPinValid,
+                          BindingResult bindingResult,
+                          @RequestParam("gpio") Integer gpioPin) {
 
-//        sensorValidator.validate(sensor, bindingResult);
-//        if (bindingResult.hasErrors()) {
-//            return "add_new_sensor";
-        //        }
-        model.addAttribute("gpio", new GpioPin());
-
+        gpioValidator.validate(gpioPinValid, bindingResult);
+        if (bindingResult.hasErrors()) {
+            return "add_new_gpio";
+        }
         GpioPin gpio = new GpioPin();
+        model.addAttribute("gpio", gpio);
+
         gpio.setGpio(gpioPin);
 //        int gpio = Integer.parseInt(gpioPin.get("gpio"));
 //        outputForm.put("gpio", gpio);
         gpioRepository.save(gpio);
 
-        return "redirect:/gpio_config";
+        return "redirect:/gpio_list";
     }
     /**
      * Method for checking sensors every 5 sec and if they are active - store data into DB
@@ -202,7 +198,7 @@ public class HubSensorsController {
 //
 //        return "list";
 //    }
-    @GetMapping({"/", "/list"})
+    @GetMapping({"/", "/sensors_history_list"})
     public String getList(Model model,
                           @RequestParam(required = false, defaultValue = "0") int page,
                           @RequestParam(required = false, defaultValue = "5") int size
@@ -216,7 +212,7 @@ public class HubSensorsController {
         model.addAttribute("totalRecords", sensorDataPage.getTotalElements());
         model.addAttribute("getNumber", sensorDataPage.getNumber());
 
-        return "list";
+        return "sensors_history_list";
     }
 
 
@@ -246,7 +242,7 @@ public class HubSensorsController {
         sensorService.delete(id);
         model.addAttribute("sensor", sensorService.getAll());
 
-        return "redirect:/sensors";
+        return "redirect:/sensors_list";
     }
 
     /**
@@ -262,7 +258,7 @@ public class HubSensorsController {
         //Kai užkrauname įrašo redagavimo formą, privalome jos laukelius užpildyti įrašo informacija
         model.addAttribute("sensor", sensorService.getById(id));
 
-        return "update";
+        return "update_sensor";
     }
 
     /**
@@ -343,18 +339,18 @@ public class HubSensorsController {
      * @param model
      * @return sensors list
      */
-    @GetMapping("/sensors")
+    @GetMapping("/sensors_list")
     public String getAllSensors(Model model) {
         model.addAttribute("sensors", sensorService.getAll());
 
-        return "sensors";
+        return "sensors_list";
     }
 
-    @GetMapping("/gpio_config")
+    @GetMapping("/gpio_list")
     public String getAllGpio(Model model) {
         model.addAttribute("gpio", gpioRepository.findAll());
 
-        return "gpio_config";
+        return "gpio_list";
     }
 
     /**
@@ -363,11 +359,11 @@ public class HubSensorsController {
      * @param model
      * @return users list
      */
-    @GetMapping("/users")
+    @GetMapping("/users_list")
     public String getAllUsers(Model model) {
         model.addAttribute("users", getUserService.getAll());
 
-        return "users";
+        return "users_list";
     }
 
     /**
@@ -425,7 +421,17 @@ public class HubSensorsController {
         getUserService.delete(id);
         model.addAttribute("delete_user", getUserService.getAll());
 
-        return "redirect:/users";
+        return "redirect:/users_list";
+    }
+
+    @GetMapping("/delete_gpio{id}")
+    public String deleteGpio(@RequestParam("id") int id,
+                             Model model) {
+
+        gpioRepository.deleteById(id);
+        model.addAttribute("delete_gpio", gpioRepository.findAll());
+
+        return "redirect:/gpio_list";
     }
 
     /**

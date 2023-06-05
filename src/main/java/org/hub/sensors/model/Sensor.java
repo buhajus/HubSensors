@@ -19,8 +19,8 @@ public class Sensor {
     @NotBlank(message = "Model is mandatory")
     private String sensorModel;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "gpio_pin", referencedColumnName = "id")
+    @OneToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinColumn(name = "gpio_id", referencedColumnName = "id")
     private GpioPin gpio;
 
     public Sensor() {
@@ -39,12 +39,11 @@ public class Sensor {
         this.gpio = gpio;
     }
 
-    public Sensor( String sensorName, String sensorModel) {
+    public Sensor(String sensorName, String sensorModel) {
 
         this.sensorName = sensorName;
         this.sensorModel = sensorModel;
     }
-
 
 
     public int getId() {

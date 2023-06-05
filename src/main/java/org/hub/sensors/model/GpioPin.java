@@ -4,6 +4,8 @@ package org.hub.sensors.model;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import java.io.Serializable;
 import java.lang.Long;
 
@@ -14,7 +16,11 @@ public class GpioPin  {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
+    
     @Column(name = "gpio")
+
+    @Min(message = "Min value 2", value = 2)
+    @Max(message = "Max value 27", value = 27)
     private int gpio;
     @OneToOne(mappedBy = "gpio")
     private Sensor sensor;

@@ -35,6 +35,19 @@ public class SpringConfig {
     }
 
     @Bean
+    @Qualifier("GpioPinDAOImpl")
+    public GpioPinDAO getGpioPinDAO(){
+        return new GpioPinDAOImpl();
+    }
+
+    @Primary
+    @Bean
+    @Qualifier("GpioPinServiceImpl")
+    public GpioPinService getGpioPinService(){
+        return new GpioPinServiceImpl();
+    }
+
+    @Bean
     @Qualifier("SensorDAOImpl")
     public SensorDAO getSensorDAO() {
         return new SensorDAOImpl();

@@ -1,6 +1,7 @@
 package org.hub.sensors.service;
 
 import org.hub.sensors.model.Sensor;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -16,5 +17,5 @@ public interface SensorService {
     void delete(int id);
 
 
-    List<Sensor> getGpioStatus(int gpio);
+    List<Sensor> getGpio();
 }
