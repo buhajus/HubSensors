@@ -18,4 +18,6 @@ public interface SensorService {
 
 
     List<Sensor> getGpio();
+
+    Sensor getByGpio(int gPin);
 }

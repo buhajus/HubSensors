@@ -14,4 +14,6 @@ public interface SensorDAO {
     void removeEntityById(int id);
 
     List<Sensor> getGpio();
+
+    Sensor findGpioByPin(int gPin);
 }

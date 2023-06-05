@@ -109,7 +109,7 @@ public class SensorDAOImpl implements SensorDAO {
 
 
     @Override
-    public  List<Sensor> getGpio(){
+    public List<Sensor> getGpio() {
         EntityManager entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
         entityManager.getTransaction().begin();
 
@@ -122,5 +122,23 @@ public class SensorDAOImpl implements SensorDAO {
 
         return gpioList;
 
+    }
+
+    @Override
+    public Sensor findGpioByPin(int gPin) {
+        EntityManager entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
+        entityManager.getTransaction().begin();
+
+        List<Sensor> sensors = entityManager
+                .createNativeQuery("SELECT s.sensor_name FROM sensors AS s" +
+                        "LEFT JOIN gpio_config AS gc ON s.gpio_id = gc.id" +
+                        "WHERE gc.gpio = ?")
+                .setParameter(1, gPin)
+                .getResultList();
+
+        entityManager.getTransaction().commit();
+        entityManager.close();
+
+        return sensors.get(0);
     }
 }

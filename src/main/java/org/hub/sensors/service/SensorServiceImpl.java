@@ -50,5 +50,10 @@ public class SensorServiceImpl implements SensorService {
         return sensorDAO.getGpio();
     }
 
+    @Override
+    public Sensor getByGpio(int gPin) {
+        return sensorDAO.findGpioByPin(gPin);
+    }
+
 
 }

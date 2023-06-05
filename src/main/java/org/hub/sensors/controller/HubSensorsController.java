@@ -1,6 +1,10 @@
 package org.hub.sensors.controller;
 
 
+import com.pi4j.io.gpio.GpioPinDigital;
+import com.pi4j.io.gpio.GpioPinDigitalInput;
+import com.pi4j.io.gpio.PinPullResistance;
+import com.pi4j.io.gpio.RaspiPin;
 import com.sun.prism.null3d.NULL3DPipeline;
 import org.hub.sensors.model.GpioPin;
 import org.hub.sensors.model.Sensor;
@@ -8,6 +12,7 @@ import org.hub.sensors.model.SensorData;
 import org.hub.sensors.model.User;
 import org.hub.sensors.repository.GpioRepository;
 import org.hub.sensors.repository.SensorDataRepository;
+import org.hub.sensors.repository.SensorRepository;
 import org.hub.sensors.service.*;
 import org.hub.sensors.validator.GpioValidator;
 import org.hub.sensors.validator.SensorValidator;
@@ -32,8 +37,10 @@ import javax.validation.Valid;
 import java.text.DateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.IntStream;
 
 // @RestController negrąžina view.
@@ -61,6 +68,8 @@ public class HubSensorsController {
     @Autowired
     private SensorDataRepository sensorDataRepository;
 
+    @Autowired
+    private SensorRepository sensorRepository;
     @Autowired
     private GpioRepository gpioRepository;
     @Autowired
@@ -442,6 +451,53 @@ public class HubSensorsController {
     @GetMapping("/pool_data")
     public String getPoolData() {
         return "pool_data";
+    }
+
+    @GetMapping("/listofpins")
+    public void setGpioPinList() throws InterruptedException {
+
+
+        GpioPin pins[] = gpioRepository.findAll().toArray(new GpioPin[0]);
+        Sensor gpioPin[] = sensorService.getAll().toArray(new Sensor[0]);
+
+        for (Sensor sensor : gpioPin) {
+            System.out.println("Sensors gpio" + sensor.getGpio().getGpio());
+        }
+        for (int i = 0; i < sensorService.getAll().size(); i++) {
+
+            System.out.println("size of senso");
+        }
+
+
+        for (GpioPin pin : pins) {
+            System.out.println(pin.getGpio());
+
+        }
+        Sensor sensor = new Sensor();
+
+        int activePin = 27;
+        Map<Integer, String> sensorMap = new HashMap<>();
+        //find name by id
+       ;
+
+        sensorMap.put(activePin, sensorService.getByGpio(activePin).getSensorName());
+      //  sensorMap.put(17, sensor1.getSensorName() );
+        System.out.println(sensorMap.keySet());
+
+//        if(sensorMap.containsKey(activePin)){
+//
+//            sensorMap.values();
+//
+//
+//        }
+
+        while (activePin == 27) {
+
+         sensor.setSensorName(sensorMap.get(activePin));
+            sensorDataService.insertSensorDataStatus("2022-12-15", "tvarktas", sensor.getSensorName(), 0);
+            Thread.sleep(5000);
+        }
+
     }
 
 

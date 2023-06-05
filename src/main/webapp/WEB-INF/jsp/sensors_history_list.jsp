@@ -16,7 +16,7 @@
                 <th>Sensor name</th>
                 <th>Sensor location</th>
                 <th>Status</th>
-               <th> <a href="/list?page${list.number}&${sortASC}">Sensor trigger time</a></th>
+               <th> <a href="/sensors_history_list?page${list.number}&${sortASC}">Sensor trigger time</a></th>
                <!-- <th>Action</th> -->
             </tr>
 
@@ -64,7 +64,7 @@
              <c:set var="css" value="active"></c:set>
             </c:if>
                  <li class="${css}">
-                      <a href="/list?page=${pageNumber}">${pageNumber + 1}</a>
+                      <a href="/sensors_history_list?page=${pageNumber}">${pageNumber + 1}</a>
                  </li>
              </c:forEach>
           </ul>
