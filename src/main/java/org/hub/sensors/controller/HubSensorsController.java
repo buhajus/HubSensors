@@ -1,6 +1,7 @@
 package org.hub.sensors.controller;
 
 
+import com.pi4j.io.gpio.*;
 import org.hub.sensors.model.GpioPin;
 import org.hub.sensors.model.Sensor;
 import org.hub.sensors.model.SensorData;
@@ -28,7 +29,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.IntStream;
 
@@ -43,6 +46,9 @@ import java.util.stream.IntStream;
 public class HubSensorsController {
     @Autowired
     private UserService userService;
+
+    final GpioController gpio = GpioFactory.getInstance();
+
 
     @Autowired
     private SecurityService securityService;
@@ -442,9 +448,44 @@ public class HubSensorsController {
         return "pool_data";
     }
 
+
+    public List<GpioPinDigitalInput> gpioPin() {
+        List<Sensor> listOfActiveSensors = sensorService.getAll();
+        List<GpioPinDigitalInput> gpioPins = new ArrayList<>();
+
+        for (Sensor sensor : listOfActiveSensors) {
+            int pinAddress = sensor.getGpio().getGpio();
+            GpioPinDigitalInput digitalInput = gpio.provisionDigitalInputPin(RaspiPin.getPinByAddress(pinAddress), PinPullResistance.PULL_DOWN);
+            gpioPins.add(digitalInput);
+        }
+        gpio.shutdown();
+
+        for (int i = 0; i <= sensorService.getAll().size(); i++) {
+            gpio.unprovisionPin(gpioPin().get(i));
+        }
+
+        return gpioPins;
+
+    }
+
+
     @GetMapping("/listofpins")
     public void setGpioPinList() throws InterruptedException {
 
+        for (int i = 0; i <= sensorService.getAll().size(); i++) {
+            System.out.println("State " + gpioPin().get(i).getState());
+            if (gpioPin().get(i).isHigh()) {
+                System.out.println("if hihgh: " + i);
+                //tada is gpio saraso gauti gpio pino numeri
+
+            }
+        }
+
+
+        // System.out.println("\n\ngpio digital name " + gpioPin().getName() + "\n\n");
+
+        // System.out.println("\n\ngpio digital pin " + gpioPin().getPin() + "\n\n");
+        //    System.out.println("\n\ngpio digital state " + gpioPin() + "\n\n");
 
         GpioPin pins[] = gpioRepository.findAll().toArray(new GpioPin[0]);
         Sensor gpioPin[] = sensorService.getAll().toArray(new Sensor[0]);
@@ -466,20 +507,20 @@ public class HubSensorsController {
         for (Sensor listOfActiveSensors : sensorService.getAll()) {
 
             System.out.println(listOfActiveSensors.getGpio().getGpio());
-
-
         }
+
+
         Sensor sensor = new Sensor();
 
-        int activePin = 27;
+        int activePin = 0;
+
 
         Map<Integer, String> sensorMap = new HashMap<>();
         //find name by id
-        ;
 
         sensorMap.put(activePin, sensorService.getByGpio(activePin).getSensorName());
         //  sensorMap.put(17, sensor1.getSensorName() );
-        System.out.println(sensorMap.keySet());
+        //System.out.println(sensorMap.keySet());
 
 //        if(sensorMap.containsKey(activePin)){
 //
@@ -494,6 +535,13 @@ public class HubSensorsController {
             sensorDataService.insertSensorDataStatus("2022-12-15", "tvarktas", sensor.getSensorName(), 0);
             Thread.sleep(5000);
         }
+
+        gpio.shutdown();
+
+        for (int i = 0; i <= sensorService.getAll().size(); i++) {
+            gpio.unprovisionPin(gpioPin().get(i));
+        }
+
 
     }
 

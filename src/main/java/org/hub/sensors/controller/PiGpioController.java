@@ -96,11 +96,11 @@ public class PiGpioController {
         int activePin = 0;
         int gPin = gpioPin().getPin().getAddress();
 
-        for (Sensor listOfActiveSensors : sensorService.getAll()) {
-            System.out.println("is hihj " + listOfActiveSensors.getGpio().getGpio());
-
-
-        }
+//        for (Sensor listOfActiveSensors : sensorService.getAll()) {
+//            System.out.println("is hihj " + listOfActiveSensors.getGpio().getGpio());
+//
+//
+//        }
 //        if (pin27.isHigh()) {
 //
 //            activePin = gpioPinNumber27;
@@ -108,7 +108,7 @@ public class PiGpioController {
 //            activePin = gpioPinNumber17;
         for (Sensor listOfActiveSensors : sensorService.getAll()) {
             if (gpioPin().isHigh()) {
-                System.out.println(listOfActiveSensors.getGpio().getGpio());
+                System.out.println(listOfActiveSensors.getSensorName());
             }
 
 
@@ -173,7 +173,7 @@ public class PiGpioController {
         //TODO:for loop to close all pins
 
         // gpio.unprovisionPin(pin27);
-       // gpio.unprovisionPin(pin17);
+        // gpio.unprovisionPin(pin17);
 
     }
 }
