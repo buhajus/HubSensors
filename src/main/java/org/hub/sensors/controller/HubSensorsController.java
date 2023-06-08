@@ -450,27 +450,35 @@ public class HubSensorsController {
         Sensor gpioPin[] = sensorService.getAll().toArray(new Sensor[0]);
 
         for (Sensor sensor : gpioPin) {
-            System.out.println("Sensors gpio" + sensor.getGpio().getGpio());
+            System.out.println("gpio in sensors list " + sensor.getGpio().getGpio());
         }
-        for (int i = 0; i < sensorService.getAll().size(); i++) {
-
-            System.out.println("size of senso");
-        }
+//        for (int i = 0; i < sensorService.getAll().size(); i++) {
+//
+//            System.out.println(i);
+//        }
 
 
         for (GpioPin pin : pins) {
-            System.out.println(pin.getGpio());
+            System.out.println("List of gpio pins " + pin.getGpio());
+
+        }
+
+        for (Sensor listOfActiveSensors : sensorService.getAll()) {
+
+            System.out.println(listOfActiveSensors.getGpio().getGpio());
+
 
         }
         Sensor sensor = new Sensor();
 
         int activePin = 27;
+
         Map<Integer, String> sensorMap = new HashMap<>();
         //find name by id
-       ;
+        ;
 
         sensorMap.put(activePin, sensorService.getByGpio(activePin).getSensorName());
-      //  sensorMap.put(17, sensor1.getSensorName() );
+        //  sensorMap.put(17, sensor1.getSensorName() );
         System.out.println(sensorMap.keySet());
 
 //        if(sensorMap.containsKey(activePin)){
@@ -480,9 +488,9 @@ public class HubSensorsController {
 //
 //        }
 
-        while (activePin == 27) {
+        if (activePin == 27) {
 
-         sensor.setSensorName(sensorMap.get(activePin));
+            sensor.setSensorName((sensorMap.get(activePin)));
             sensorDataService.insertSensorDataStatus("2022-12-15", "tvarktas", sensor.getSensorName(), 0);
             Thread.sleep(5000);
         }

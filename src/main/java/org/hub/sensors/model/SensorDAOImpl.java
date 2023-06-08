@@ -4,6 +4,7 @@ import org.hub.sensors.config.JPAUtil;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import java.util.ArrayList;
 import java.util.List;
 
 public class SensorDAOImpl implements SensorDAO {
@@ -130,14 +131,19 @@ public class SensorDAOImpl implements SensorDAO {
         entityManager.getTransaction().begin();
 
         List<Sensor> sensors = entityManager
-                .createNativeQuery("SELECT s.sensor_name FROM sensors AS s" +
-                        "LEFT JOIN gpio_config AS gc ON s.gpio_id = gc.id" +
-                        "WHERE gc.gpio = ?")
-                .setParameter(1, gPin)
+//                .createNativeQuery("SELECT s.sensor_name FROM sensors AS s" +
+//                        " LEFT JOIN gpio_config AS gc ON s.gpio_id = gc.id" +
+//                        " WHERE gc.gpio = ?"),
+                .createQuery("SELECT n FROM Sensor n" +
+                        " LEFT JOIN n.gpio m" +
+                        " WHERE m.gpio= :gPin", Sensor.class)
+                .setParameter("gPin", gPin)
                 .getResultList();
+
 
         entityManager.getTransaction().commit();
         entityManager.close();
+
 
         return sensors.get(0);
     }

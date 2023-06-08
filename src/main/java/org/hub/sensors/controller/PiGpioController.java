@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Map;
 
 
-@Controller
+//@Controller
 @EnableAutoConfiguration
 
 
@@ -85,22 +85,36 @@ public class PiGpioController {
 //        };
 
 //
-        GpioPinDigitalInput pin27 = gpio.provisionDigitalInputPin(RaspiPin.getPinByAddress(gpioPinNumber27), PinPullResistance.PULL_DOWN);
-        GpioPinDigitalInput pin17 = gpio.provisionDigitalInputPin(RaspiPin.getPinByAddress(gpioPinNumber17), PinPullResistance.PULL_DOWN);
+        // GpioPinDigitalInput pin27 = gpio.provisionDigitalInputPin(RaspiPin.getPinByAddress(gpioPinNumber27), PinPullResistance.PULL_DOWN);
+        // GpioPinDigitalInput pin17 = gpio.provisionDigitalInputPin(RaspiPin.getPinByAddress(gpioPinNumber17), PinPullResistance.PULL_DOWN);
 
-        PinState pinValue27 = pin27.getState();
-        PinState pinValue17 = pin17.getState();
+        //PinState pinValue27 = pin27.getState();
+        //PinState pinValue17 = pin17.getState();
 
-      //  int activePin = 0;
+        //  int activePin = 0;
 
         int activePin = 0;
         int gPin = gpioPin().getPin().getAddress();
 
-        if (pin27.isHigh()) {
-            activePin = gpioPinNumber27;
-        } else if (pin17.isHigh()) {
-            activePin = gpioPinNumber17;
+        for (Sensor listOfActiveSensors : sensorService.getAll()) {
+            System.out.println("is hihj " + listOfActiveSensors.getGpio().getGpio());
+
+
         }
+//        if (pin27.isHigh()) {
+//
+//            activePin = gpioPinNumber27;
+//        } else if (pin17.isHigh()) {
+//            activePin = gpioPinNumber17;
+        for (Sensor listOfActiveSensors : sensorService.getAll()) {
+            if (gpioPin().isHigh()) {
+                System.out.println(listOfActiveSensors.getGpio().getGpio());
+            }
+
+
+        }
+
+//        }
 
         Map<Integer, String> sensorMap = new HashMap<>();
         //TODO:aprasyti nauja metoda kuris ieskotu pagal gpio o ne pagal id
@@ -114,53 +128,51 @@ public class PiGpioController {
         }
 
 
-
-
-        switch (activePin) {
-            case 27:
-                sensorData.setSensorName("Sensor 27");
-                sensorData.setSensorLocation("Pool");
-                //if pin state is low, do this:
-                //check which pin was high and get data sensorData.getSensorLocation(), sensorData.getSensorName() ....
-                //switch,
-                //send email after trigger
-
-                sensorDataService.insertSensorDataStatus(dateTime, sensorData.getSensorLocation(), sensor.getSensorName(), 0);
-                console.println("GPIO " + gpioPinNumber27 + "is :" + pinValue27);
-
-                //   pin27.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
-
-                break;
-
-            case 17:
-                sensorData.setSensorName("Sensor 17");
-                sensorData.setSensorLocation("Chloride");
-                //if pin state is low, do this:
-                //check which pin was high and get data sensorData.getSensorLocation(), sensorData.getSensorName() ....
-                //switch,
-                //send email after trigger
-                sensorDataService.insertSensorDataStatus(dateTime, sensorData.getSensorLocation(), sensorData.getSensorName(), 0);
-                console.println("GPIO " + gpioPinNumber17 + "is :" + pinValue17);
-                //pin17.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
-                break;
-
-            default:
-                console.println("GPIO " + gpioPinNumber17 + " is :" + pinValue17);
-
-                console.println("GPIO " + gpioPinNumber27 + " is :" + pinValue27);
-                break;
-
-        }
+//        switch (activePin) {
+//            case 27:
+//                sensorData.setSensorName("Sensor 27");
+//                sensorData.setSensorLocation("Pool");
+//                //if pin state is low, do this:
+//                //check which pin was high and get data sensorData.getSensorLocation(), sensorData.getSensorName() ....
+//                //switch,
+//                //send email after trigger
+//
+//                sensorDataService.insertSensorDataStatus(dateTime, sensorData.getSensorLocation(), sensor.getSensorName(), 0);
+//                console.println("GPIO " + gpioPinNumber27 + "is :" + pinValue27);
+//
+//                //   pin27.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
+//
+//                break;
+//
+//            case 17:
+//                sensorData.setSensorName("Sensor 17");
+//                sensorData.setSensorLocation("Chloride");
+//                //if pin state is low, do this:
+//                //check which pin was high and get data sensorData.getSensorLocation(), sensorData.getSensorName() ....
+//                //switch,
+//                //send email after trigger
+//                sensorDataService.insertSensorDataStatus(dateTime, sensorData.getSensorLocation(), sensorData.getSensorName(), 0);
+//                console.println("GPIO " + gpioPinNumber17 + "is :" + pinValue17);
+//                //pin17.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
+//                break;
+//
+//            default:
+//                console.println("GPIO " + gpioPinNumber17 + " is :" + pinValue17);
+//
+//                console.println("GPIO " + gpioPinNumber27 + " is :" + pinValue27);
+//                break;
+//
+//        }
 
         gpio.shutdown();
 
-        for (int i = 0; i <= sensorService.getAll().size() ; i++) {
+        for (int i = 0; i <= sensorService.getAll().size(); i++) {
             gpio.unprovisionPin(gpioPin());
         }
 
         //TODO:for loop to close all pins
 
-       // gpio.unprovisionPin(pin27);
+        // gpio.unprovisionPin(pin27);
        // gpio.unprovisionPin(pin17);
 
     }
