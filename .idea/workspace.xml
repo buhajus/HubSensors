@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cab6022f-3c94-4d51-9335-08f95806888b" name="Changes" comment="update" />
+    <list default="true" id="cab6022f-3c94-4d51-9335-08f95806888b" name="Changes" comment="working with gpio">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/controller/PiGpioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/controller/PiGpioController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/HubApplicationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/HubApplicationTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -78,7 +83,7 @@
       <recent name="org.hub.sensors.model" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.HubApplication">
+  <component name="RunManager" selected="JUnit.HubApplicationTest.testGpioIsHigh">
     <configuration name="HubApplication" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.hub.sensors.HubApplication" />
       <module name="sensors" />
@@ -106,6 +111,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="HubApplicationTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="sensors" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="HubApplicationTest" />
+      <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="HubApplicationTest.testConnectionToDbNegativeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="sensors" />
       <option name="PACKAGE_NAME" value="" />
@@ -116,11 +131,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HubApplicationTest.testMethodOne" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="HubApplicationTest.testConnectionToDbPositiveTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="sensors" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="HubApplicationTest" />
-      <option name="METHOD_NAME" value="testMethodOne" />
+      <option name="METHOD_NAME" value="testConnectionToDbPositiveTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HubApplicationTest.testGpioIsHigh" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="sensors" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="HubApplicationTest" />
+      <option name="METHOD_NAME" value="testGpioIsHigh" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -128,15 +153,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.HubApplication" />
+      <item itemvalue="JUnit.HubApplicationTest.test" />
+      <item itemvalue="JUnit.HubApplicationTest.testConnectionToDbPositiveTest" />
+      <item itemvalue="JUnit.HubApplicationTest.testGpioIsHigh" />
       <item itemvalue="JUnit.HubApplicationTest" />
       <item itemvalue="JUnit.HubApplicationTest.testConnectionToDbNegativeTest" />
-      <item itemvalue="JUnit.HubApplicationTest.testMethodOne" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.HubApplicationTest" />
+        <item itemvalue="JUnit.HubApplicationTest.testGpioIsHigh" />
+        <item itemvalue="JUnit.HubApplicationTest.testConnectionToDbPositiveTest" />
+        <item itemvalue="JUnit.HubApplicationTest.test" />
         <item itemvalue="JUnit.HubApplicationTest.testConnectionToDbNegativeTest" />
-        <item itemvalue="JUnit.HubApplicationTest.testMethodOne" />
+        <item itemvalue="JUnit.HubApplicationTest" />
       </list>
     </recent_temporary>
   </component>
@@ -148,12 +177,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1684323418625</updated>
-    </task>
-    <task id="LOCAL−00034" summary="added pagination">
-      <created>1685011137699</created>
-      <option name="number" value="LOCAL−00034" />
-      <option name="presentableId" value="LOCAL−00034" />
-      <updated>1685011137699</updated>
     </task>
     <task id="LOCAL−00035" summary="added pagination">
       <created>1685011403171</created>
@@ -443,7 +466,13 @@
       <option name="presentableId" value="LOCAL−00082" />
       <updated>1686220688480</updated>
     </task>
-    <option name="localTasksCounter" value="83" />
+    <task id="LOCAL−00083" summary="working with gpio">
+      <created>1686229054245</created>
+      <option name="number" value="LOCAL−00083" />
+      <option name="presentableId" value="LOCAL−00083" />
+      <updated>1686229054245</updated>
+    </task>
+    <option name="localTasksCounter" value="84" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -481,7 +510,8 @@
     <MESSAGE value="mod PiGpioController" />
     <MESSAGE value="optimiz" />
     <MESSAGE value="update" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
+    <MESSAGE value="working with gpio" />
+    <option name="LAST_COMMIT_MESSAGE" value="working with gpio" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">

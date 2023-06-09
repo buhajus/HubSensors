@@ -4,7 +4,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import org.junit.Assert;
+
+import com.pi4j.io.gpio.GpioPinDigitalInput;
+import org.hub.sensors.controller.PiGpioController;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -22,10 +24,19 @@ public class HubApplicationTest {
     public void testConnectionToDbPositiveTest() {
         assertTrue(connectToDbPositive());
     }
-@Test
+
+    @Test
     public void testConnectionToDbNegativeTest() {
         assertFalse(connectToDbNegative());
 
+    }
+
+    @Test
+    public void testGpioIsHigh() {
+        PiGpioController gpioController = new PiGpioController();
+        GpioPinDigitalInput digitalInput = gpioController.gpioPin();
+
+        assertTrue(digitalInput.isHigh());
     }
 
     public int number() {
