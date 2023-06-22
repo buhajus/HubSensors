@@ -1,0 +1,20 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Pi" type="Run as an Embedded Java application" factoryName="Run as an Embedded Java application" singleton="false">
+    <option name="classesDirectory" />
+    <option name="hostname" value="172.16.1.105" />
+    <option name="keyPath" value="" />
+    <option name="password" value="admin" />
+    <option name="port" value="12343" />
+    <option name="programArguments" value="" />
+    <option name="runAsRoot" value="true" />
+    <option name="sshPort" value="22" />
+    <option name="username" value="puza" />
+    <option name="usingKey" value="false" />
+    <option name="vmParameters" value="" />
+    <option name="moduleName" value="sensors" />
+    <option name="mainclass" value="org.hub.sensors.HubApplication" />
+    <method v="2">
+      <option name="Maven.BeforeRunTask" enabled="true" file="$PROJECT_DIR$/pom.xml" goal="" />
+    </method>
+  </configuration>
+</component>

@@ -54,6 +54,7 @@ public class PiGpioController {
             pinAddress = gpioPin.getGpio().getGpio();
 
         }
+        //test
 
 
         return gpio.provisionDigitalInputPin(RaspiPin.getPinByAddress(pinAddress), PinPullResistance.PULL_DOWN);

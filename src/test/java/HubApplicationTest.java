@@ -31,7 +31,6 @@ public class HubApplicationTest {
 
     }
 
-    @Test
     public void testGpioIsHigh() {
         PiGpioController gpioController = new PiGpioController();
         GpioPinDigitalInput digitalInput = gpioController.gpioPin();

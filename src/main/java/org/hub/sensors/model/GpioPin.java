@@ -1,8 +1,6 @@
 package org.hub.sensors.model;
 
 
-
-
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -11,12 +9,12 @@ import java.lang.Long;
 
 @Entity
 @Table(name = "gpio_config")
-public class GpioPin  {
+public class GpioPin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-    
+
     @Column(name = "gpio")
 
     @Min(message = "Min value 2", value = 2)
