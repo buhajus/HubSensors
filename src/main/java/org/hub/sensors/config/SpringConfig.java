@@ -68,6 +68,18 @@ public class SpringConfig {
     }
 
     @Bean
+    @Qualifier("RS485DAOImpl")
+    public RS485DAO getRS485DAO() {
+        return new RS485DAOImpl();
+    }
+
+//    @Bean
+//    @Qualifier("RS485ServiceImpl")
+//    public RS485Service getRS485DAOService() {
+//        return new RS485ServiceImpl();
+//    }
+
+    @Bean
     @Primary
     @Qualifier("UserServiceImpl")
     public UserService getUserService() {

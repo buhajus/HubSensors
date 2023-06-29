@@ -1,22 +1,50 @@
 package org.hub.sensors.model;
 
-public class Rs485 {
+import javax.persistence.*;
 
+@Entity
+@Table(name = "rs485_data")
+public class RS485 {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    @Column(name = "port_name")
     private String portName;
+    @Column(name = "slave_id")
     private int slaveId;
+    @Column(name = "start_address")
     private int startAddress;
+    @Column(name = "num_registers")
     private int numRegisters;
+    @Column(name = "addresses")
     private int addresses;
 
-    public Rs485() {
+    public RS485() {
     }
 
-    public Rs485(String portName, int slaveId, int startAddress, int numRegisters, int addresses) {
+    public RS485(String portName, int slaveId, int startAddress, int numRegisters, int addresses) {
         this.portName = portName;
         this.slaveId = slaveId;
         this.startAddress = startAddress;
         this.numRegisters = numRegisters;
         this.addresses = addresses;
+    }
+
+    public RS485(int id, String portName, int slaveId, int startAddress, int numRegisters, int addresses) {
+        this.id = id;
+        this.portName = portName;
+        this.slaveId = slaveId;
+        this.startAddress = startAddress;
+        this.numRegisters = numRegisters;
+        this.addresses = addresses;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getPortName() {

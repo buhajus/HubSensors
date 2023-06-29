@@ -47,7 +47,7 @@ public class HubSensorsController {
     @Autowired
     private UserService userService;
 
-    final GpioController gpio = GpioFactory.getInstance();
+    //final GpioController gpio = GpioFactory.getInstance();
 
 
     @Autowired
@@ -69,6 +69,8 @@ public class HubSensorsController {
     private GpioRepository gpioRepository;
     @Autowired
     private GpioPinService gpioPinService;
+    @Autowired
+    private RS485Service rs485Service;
 
 
 //    final GpioController gpio = GpioFactory.getInstance();
@@ -93,6 +95,10 @@ public class HubSensorsController {
     @Autowired
     @Qualifier("UserServiceImpl")
     public UserService getUserService;
+
+//    @Autowired
+//    @Qualifier("RS485ServiceImpl")
+//    public RS485Service getRs485Service;
 
     /**
      * Method action to take values from JSP input form and store into DB
@@ -445,10 +451,11 @@ public class HubSensorsController {
      */
     @GetMapping("/pool_data")
     public String getPoolData() {
+        rs485Service.insertDataFromSlave("com10",1,1000,10,  1001);
         return "pool_data";
     }
 
-
+/*
     public List<GpioPinDigitalInput> gpioPin() {
         List<Sensor> listOfActiveSensors = sensorService.getAll();
         List<GpioPinDigitalInput> gpioPins = new ArrayList<>();
@@ -543,7 +550,7 @@ public class HubSensorsController {
         }
 
 
-    }
+    }*/
 
 
 }

@@ -23,7 +23,7 @@ import java.util.Map;
 
 
 //@Controller
-@EnableAutoConfiguration
+//@EnableAutoConfiguration
 
 
 public class PiGpioController {
