@@ -18,6 +18,7 @@
              <li class="navbar-brand"><a href="/">Sensors history</a></li>
               <li class="navbar-brand"><a href="/pool_data">Pool data</a></li>
                 <li class="navbar-brand"><a href="/sensors_list">Sensors</a></li>
+                 <li class="navbar-brand"><a href="/slaves_list">Slaves</a></li>
                 <li class="navbar-brand"><a href="/gpio_list">Raspberry GPIO configuration</a></li>
                 <li class="navbar-brand"><a href="/users_list">Users</a></li>
             </ul>

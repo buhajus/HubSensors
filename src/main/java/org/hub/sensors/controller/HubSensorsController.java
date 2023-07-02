@@ -1,14 +1,9 @@
 package org.hub.sensors.controller;
 
 
-import com.pi4j.io.gpio.*;
+import org.hub.sensors.model.*;
 import org.hub.sensors.model.GpioPin;
-import org.hub.sensors.model.Sensor;
-import org.hub.sensors.model.SensorData;
-import org.hub.sensors.model.User;
-import org.hub.sensors.repository.GpioRepository;
-import org.hub.sensors.repository.SensorDataRepository;
-import org.hub.sensors.repository.SensorRepository;
+import org.hub.sensors.repository.*;
 import org.hub.sensors.service.*;
 import org.hub.sensors.validator.GpioValidator;
 import org.hub.sensors.validator.SensorValidator;
@@ -28,11 +23,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.ghgande.j2mod.modbus.io.ModbusSerialTransaction;
+import com.ghgande.j2mod.modbus.msg.ReadMultipleRegistersRequest;
+import com.ghgande.j2mod.modbus.msg.ReadMultipleRegistersResponse;
+import com.ghgande.j2mod.modbus.net.SerialConnection;
+import com.ghgande.j2mod.modbus.util.SerialParameters;
+
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.IntStream;
 
 // @RestController negrąžina view.
@@ -70,7 +70,12 @@ public class HubSensorsController {
     @Autowired
     private GpioPinService gpioPinService;
     @Autowired
-    private RS485Service rs485Service;
+    private SlaveService slaveService;
+
+    @Autowired
+    private SlaveRepository slaveRepository;
+    @Autowired
+    private PoolDataRepository poolDataRepository;
 
 
 //    final GpioController gpio = GpioFactory.getInstance();
@@ -449,108 +454,121 @@ public class HubSensorsController {
      *
      * @return JSP form of pool sensors triggers
      */
+    @GetMapping("/slaves_list")
+    public String getSlavesList(Model model) {
+        model.addAttribute("slaves", slaveRepository.findAll());
+        // slaveService.setSlaveData("COM11", 1, 1000, 10, 1001);
+        return "slaves_list";
+    }
+
+    @GetMapping("/add_new_slave")
+    public String addNewSlave(Model model) {
+        model.addAttribute("slave", new Slave());
+
+        return "/add_new_slave";
+
+    }
+
+
+    @PostMapping("/add-new-slave")
+    public String addSlave(@Valid @ModelAttribute("slave") Slave slave,
+                           BindingResult bindingResult,
+                           ModelMap outputForm) {
+
+//        sensorValidator.validate(slave, bindingResult);
+//        if (bindingResult.hasErrors()) {
+//            return "add_new_slave";
+//        }
+
+        outputForm.put("portName", slave.getPortName());
+        outputForm.put("slaveId", slave.getSlaveId());
+        outputForm.put("startAddress", slave.getStartAddress());
+        outputForm.put("numRegisters", slave.getNumRegisters());
+        outputForm.put("addresses", slave.getAddresses());
+        slaveRepository.save(slave);
+
+
+        return "redirect:/slaves_list";
+    }
+
     @GetMapping("/pool_data")
-    public String getPoolData() {
-        rs485Service.insertDataFromSlave("com10",1,1000,10,  1001);
+    public String getDataFromSlaves(PoolData poolData, Slave slave,
+                                    Model model) {
+        model.addAttribute("pool_list", poolDataRepository.findAll());
+
+        List<Slave> slaves = new ArrayList();
+        slaves.add(getDataFromSlave("COM10", 1, 1000, 10, 1000, "Afrika"));
+        slaveRepository.saveAll(slaves);
+        //  poolDataRepository.save();
         return "pool_data";
     }
 
-/*
-    public List<GpioPinDigitalInput> gpioPin() {
-        List<Sensor> listOfActiveSensors = sensorService.getAll();
-        List<GpioPinDigitalInput> gpioPins = new ArrayList<>();
+    //reikia irasineti periodiskai ir tada pasimti i pool lista
+    public Slave getDataFromSlave(String portName, int slaveId, int startAddress, int numRegisters, int addresses, String deviceName) {
+        List<Slave> slaves = new ArrayList<>();
+        SerialParameters parameters = new SerialParameters();
+        parameters.setPortName(portName);
+        parameters.setBaudRate(9600);
+        parameters.setDatabits(8);
+        parameters.setParity("None");
+        parameters.setStopbits(1);
 
-        for (Sensor sensor : listOfActiveSensors) {
-            int pinAddress = sensor.getGpio().getGpio();
-            GpioPinDigitalInput digitalInput = gpio.provisionDigitalInputPin(RaspiPin.getPinByAddress(pinAddress), PinPullResistance.PULL_DOWN);
-            gpioPins.add(digitalInput);
+        SerialConnection connection = new SerialConnection(parameters);
+
+
+        ModbusSerialTransaction transaction;
+        ReadMultipleRegistersRequest request;
+        ReadMultipleRegistersResponse response;
+
+        try {
+            connection.open();
+
+            request = new ReadMultipleRegistersRequest(startAddress, numRegisters);
+            request.setUnitID(slaveId);
+
+            transaction = new ModbusSerialTransaction(connection);
+            transaction.setRequest(request);
+
+            transaction.execute();
+            response = (ReadMultipleRegistersResponse) transaction.getResponse();
+
+
+            if (response != null) {
+                HashMap<Integer, Double> list = new HashMap<>();
+
+
+                // Read successful, process the response
+                for (int i = 0; i < numRegisters; i++) {
+
+
+                    int registerAddress = startAddress + i;
+                    double registerValue = response.getRegisterValue(i);
+
+
+                    if (registerAddress == 0) {
+                        //if address exist in array - add to list
+                        list.put(registerAddress, registerValue / 100);
+                    }
+
+
+                    System.out.println("Register " + registerAddress + ": " + registerValue);
+                }
+                System.out.println(list);
+
+            } else {
+                // Read failed, handle the error
+                System.err.println("Modbus read failed.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            connection.close();
         }
-        gpio.shutdown();
-
-        for (int i = 0; i <= sensorService.getAll().size(); i++) {
-            gpio.unprovisionPin(gpioPin().get(i));
-        }
-
-        return gpioPins;
-
+        return (Slave) slaves;
     }
 
-
-    @GetMapping("/listofpins")
-    public void setGpioPinList() throws InterruptedException {
-
-        for (int i = 0; i <= sensorService.getAll().size(); i++) {
-            System.out.println("State " + gpioPin().get(i).getState());
-            if (gpioPin().get(i).isHigh()) {
-                System.out.println("if hihgh: " + i);
-                //tada is gpio saraso gauti gpio pino numeri
-
-            }
-        }
-
-
-        // System.out.println("\n\ngpio digital name " + gpioPin().getName() + "\n\n");
-
-        // System.out.println("\n\ngpio digital pin " + gpioPin().getPin() + "\n\n");
-        //    System.out.println("\n\ngpio digital state " + gpioPin() + "\n\n");
-
-        GpioPin pins[] = gpioRepository.findAll().toArray(new GpioPin[0]);
-        Sensor gpioPin[] = sensorService.getAll().toArray(new Sensor[0]);
-
-        for (Sensor sensor : gpioPin) {
-            System.out.println("gpio in sensors list " + sensor.getGpio().getGpio());
-        }
-//        for (int i = 0; i < sensorService.getAll().size(); i++) {
-//
-//            System.out.println(i);
-//        }
-
-
-        for (GpioPin pin : pins) {
-            System.out.println("List of gpio pins " + pin.getGpio());
-
-        }
-
-        for (Sensor listOfActiveSensors : sensorService.getAll()) {
-
-            System.out.println(listOfActiveSensors.getGpio().getGpio());
-        }
-
-
-        Sensor sensor = new Sensor();
-
-        int activePin = 0;
-
-
-        Map<Integer, String> sensorMap = new HashMap<>();
-        //find name by id
-
-        sensorMap.put(activePin, sensorService.getByGpio(activePin).getSensorName());
-        //  sensorMap.put(17, sensor1.getSensorName() );
-        //System.out.println(sensorMap.keySet());
-
-//        if(sensorMap.containsKey(activePin)){
-//
-//            sensorMap.values();
-//
-//
-//        }
-
-        if (activePin == 27) {
-
-            sensor.setSensorName((sensorMap.get(activePin)));
-            sensorDataService.insertSensorDataStatus("2022-12-15", "tvarktas", sensor.getSensorName(), 0);
-            Thread.sleep(5000);
-        }
-
-        gpio.shutdown();
-
-        for (int i = 0; i <= sensorService.getAll().size(); i++) {
-            gpio.unprovisionPin(gpioPin().get(i));
-        }
-
-
-    }*/
-
-
 }
+
+
+
+

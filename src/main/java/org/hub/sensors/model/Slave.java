@@ -3,8 +3,8 @@ package org.hub.sensors.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "rs485_data")
-public class RS485 {
+@Table(name = "slave")
+public class Slave {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -18,25 +18,29 @@ public class RS485 {
     private int numRegisters;
     @Column(name = "addresses")
     private int addresses;
+    @Column(name = "deviceName")
+    private String deviceName;
 
-    public RS485() {
+    public Slave() {
     }
 
-    public RS485(String portName, int slaveId, int startAddress, int numRegisters, int addresses) {
-        this.portName = portName;
-        this.slaveId = slaveId;
-        this.startAddress = startAddress;
-        this.numRegisters = numRegisters;
-        this.addresses = addresses;
-    }
-
-    public RS485(int id, String portName, int slaveId, int startAddress, int numRegisters, int addresses) {
+    public Slave(int id, String portName, int slaveId, int startAddress, int numRegisters, int addresses, String deviceName) {
         this.id = id;
         this.portName = portName;
         this.slaveId = slaveId;
         this.startAddress = startAddress;
         this.numRegisters = numRegisters;
         this.addresses = addresses;
+        this.deviceName = deviceName;
+    }
+
+    public Slave(String portName, int slaveId, int startAddress, int numRegisters, int addresses, String deviceName) {
+        this.portName = portName;
+        this.slaveId = slaveId;
+        this.startAddress = startAddress;
+        this.numRegisters = numRegisters;
+        this.addresses = addresses;
+        this.deviceName = deviceName;
     }
 
     public int getId() {
@@ -85,5 +89,13 @@ public class RS485 {
 
     public void setAddresses(int addresses) {
         this.addresses = addresses;
+    }
+
+    public String getDeviceName() {
+        return deviceName;
+    }
+
+    public void setDeviceName(String deviceName) {
+        this.deviceName = deviceName;
     }
 }

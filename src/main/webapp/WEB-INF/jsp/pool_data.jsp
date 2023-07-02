@@ -8,7 +8,7 @@
     <jsp:include page="menu.jsp"/>
 </head>
 <body class="container">
-  <h1>RS485 data from pool controller coming soon</h1>
+
     <div class="table-responsive">
         <table class="table table-striped">
             <tr>
@@ -16,6 +16,7 @@
                 <th>PH</th>
                 <th>Temperature</th>
                 <th>Date time</th>
+                <th>Device name</th>
 
             </tr>
 
@@ -23,10 +24,11 @@
             <c:forEach var="pool" items="${pool_list}">
 
                 <tr>
-                    <td>${pool.cl}</td>
+                    <td>${pool.chloride}</td>
                     <td>${pool.ph}</td>
                     <td>${pool.temp}</td>
-                    <td>${pool.date_time}</td>
+                    <td>${pool.dateTime}</td>
+                     <td>${pool.deviceName}</td>
                 </tr>
             </c:forEach>
 

@@ -68,9 +68,9 @@ public class SpringConfig {
     }
 
     @Bean
-    @Qualifier("RS485DAOImpl")
-    public RS485DAO getRS485DAO() {
-        return new RS485DAOImpl();
+    @Qualifier("SlaveDAOImpl")
+    public SlaveDAO getSlaveDAO() {
+        return new SlaveDAOImpl();
     }
 
 //    @Bean
