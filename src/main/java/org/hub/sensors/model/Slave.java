@@ -18,7 +18,7 @@ public class Slave {
     private int numRegisters;
     @Column(name = "addresses")
     private int addresses;
-    @Column(name = "deviceName")
+    @Column(name = "device_name")
     private String deviceName;
 
     public Slave() {

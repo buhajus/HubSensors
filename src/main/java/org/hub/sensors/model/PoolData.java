@@ -84,7 +84,8 @@ public class PoolData {
         return deviceName;
     }
 
-    public void setDeviceName(String deviceName) {
+    public String setDeviceName(String deviceName) {
         this.deviceName = deviceName;
+        return deviceName;
     }
 }

@@ -73,6 +73,12 @@ public class SpringConfig {
         return new SlaveDAOImpl();
     }
 
+    @Bean
+    @Qualifier("PoolDataDAOImpl")
+    public PoolDataDAO getPoolDataDAO() {
+        return new PoolDataDAOImpl();
+    }
+
 //    @Bean
 //    @Qualifier("RS485ServiceImpl")
 //    public RS485Service getRS485DAOService() {

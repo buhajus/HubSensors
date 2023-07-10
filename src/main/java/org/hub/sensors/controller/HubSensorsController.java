@@ -30,9 +30,11 @@ import com.ghgande.j2mod.modbus.net.SerialConnection;
 import com.ghgande.j2mod.modbus.util.SerialParameters;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 import java.util.stream.IntStream;
 
 // @RestController negrąžina view.
@@ -77,6 +79,8 @@ public class HubSensorsController {
     @Autowired
     private PoolDataRepository poolDataRepository;
 
+    @Autowired
+    private PoolDataService poolDataService;
 
 //    final GpioController gpio = GpioFactory.getInstance();
 //    final Console console = new Console();
@@ -496,16 +500,30 @@ public class HubSensorsController {
                                     Model model) {
         model.addAttribute("pool_list", poolDataRepository.findAll());
 
-        List<Slave> slaves = new ArrayList();
-        slaves.add(getDataFromSlave("COM10", 1, 1000, 10, 1000, "Afrika"));
-        slaveRepository.saveAll(slaves);
-        //  poolDataRepository.save();
+        //get then set
+        String deviceName = poolData.setDeviceName("arbuzas");
+
+
+        HashMap<Integer, Double> dataFromSlave = getDataFromSlave("COM10", 1, 1000, 10, 1000);
+        poolDataService.save(dataFromSlave.get(1000), dataFromSlave.get(1001), dataFromSlave.get(1002), dateTime(), deviceName);
+
+
+        //poolDataRepository.save();
         return "pool_data";
     }
 
+
+    public String dateTime() {
+        LocalDateTime dateObj = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        String dateTime = dateObj.format(formatter);
+
+        return dateTime;
+    }
+
     //reikia irasineti periodiskai ir tada pasimti i pool lista
-    public Slave getDataFromSlave(String portName, int slaveId, int startAddress, int numRegisters, int addresses, String deviceName) {
-        List<Slave> slaves = new ArrayList<>();
+    public HashMap getDataFromSlave(String portName, int slaveId, int startAddress, int numRegisters, int addresses) {
+        HashMap<Integer, Double> list = new HashMap<>();
         SerialParameters parameters = new SerialParameters();
         parameters.setPortName(portName);
         parameters.setBaudRate(9600);
@@ -534,7 +552,7 @@ public class HubSensorsController {
 
 
             if (response != null) {
-                HashMap<Integer, Double> list = new HashMap<>();
+
 
 
                 // Read successful, process the response
@@ -543,12 +561,12 @@ public class HubSensorsController {
 
                     int registerAddress = startAddress + i;
                     double registerValue = response.getRegisterValue(i);
+                    list.put(registerAddress, registerValue / 100);
 
-
-                    if (registerAddress == 0) {
-                        //if address exist in array - add to list
-                        list.put(registerAddress, registerValue / 100);
-                    }
+//                    if (registerAddress == 0) {
+//                        //if address exist in array - add to list
+//                        list.put(registerAddress, registerValue / 100);
+//                    }
 
 
                     System.out.println("Register " + registerAddress + ": " + registerValue);
@@ -564,7 +582,7 @@ public class HubSensorsController {
         } finally {
             connection.close();
         }
-        return (Slave) slaves;
+        return (HashMap) list;
     }
 
 }
