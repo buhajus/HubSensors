@@ -501,11 +501,14 @@ public class HubSensorsController {
         model.addAttribute("pool_list", poolDataRepository.findAll());
 
         //get then set
-        String deviceName = poolData.setDeviceName("arbuzas");
-
+        //String deviceName = poolData.setDeviceName("arbuzas");
+        List<Slave> slaveList = new ArrayList<>();
 
         HashMap<Integer, Double> dataFromSlave = getDataFromSlave("COM10", 1, 1000, 10, 1000);
-        poolDataService.save(dataFromSlave.get(1000), dataFromSlave.get(1001), dataFromSlave.get(1002), dateTime(), deviceName);
+        for (Slave list : slaveList) {
+
+            poolDataService.save(dataFromSlave.get(1000), dataFromSlave.get(1001), dataFromSlave.get(1002), dateTime(), list.getDeviceName());
+        }
 
 
         //poolDataRepository.save();
