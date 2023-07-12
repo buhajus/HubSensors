@@ -20,24 +20,29 @@ public class PoolData {
     @Column(name = "device_name")
     private String deviceName;
 
+    @Column(name = "alarm")
+    private boolean alarm;
+
     public PoolData() {
     }
 
-    public PoolData(int id, double chloride, double ph, double temp, String dateTime, String deviceName) {
+    public PoolData(int id, double chloride, double ph, double temp, String dateTime, String deviceName, boolean alarm) {
         this.id = id;
         this.chloride = chloride;
         this.ph = ph;
         this.temp = temp;
         this.dateTime = dateTime;
         this.deviceName = deviceName;
+        this.alarm = alarm;
     }
 
-    public PoolData(double chloride, double ph, double temp, String dateTime, String deviceName) {
+    public PoolData(double chloride, double ph, double temp, String dateTime, String deviceName, boolean alarm) {
         this.chloride = chloride;
         this.ph = ph;
         this.temp = temp;
         this.dateTime = dateTime;
         this.deviceName = deviceName;
+        this.alarm = alarm;
     }
 
     public int getId() {
@@ -84,8 +89,15 @@ public class PoolData {
         return deviceName;
     }
 
-    public String setDeviceName(String deviceName) {
+    public void setDeviceName(String deviceName) {
         this.deviceName = deviceName;
-        return deviceName;
+    }
+
+    public boolean isAlarm() {
+        return alarm;
+    }
+
+    public void setAlarm(boolean alarm) {
+        this.alarm = alarm;
     }
 }

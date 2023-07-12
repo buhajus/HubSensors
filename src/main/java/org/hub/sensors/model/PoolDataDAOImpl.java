@@ -16,7 +16,7 @@ import java.time.format.DateTimeFormatter;
 
 public class PoolDataDAOImpl implements PoolDataDAO {
     @Override
-    public void insertValues(Double ph, Double ch, Double temp, String dateTime, String deviceName) {
+    public void insertValues(Double ph, Double ch, Double temp, String dateTime, String deviceName, Boolean alarm) {
         EntityManager entityManager = JPAUtil.getEntityManagerFactory().createEntityManager();
         EntityTransaction entityTransaction = entityManager.getTransaction();
         entityTransaction.begin();
@@ -25,13 +25,14 @@ public class PoolDataDAOImpl implements PoolDataDAO {
 
 
         entityManager.createNativeQuery(
-                        "INSERT INTO pool_data(chloride, ph, temperature, date_time, device_name) " +
-                                "VALUES (?,?,?,?,?)")
+                        "INSERT INTO pool_data(chloride, ph, temperature, date_time, device_name, alarm) " +
+                                "VALUES (?,?,?,?,?,?)")
                 .setParameter(1, ch)
                 .setParameter(2, ph)
                 .setParameter(3, temp)
                 .setParameter(4, dateTime)
                 .setParameter(5, deviceName)
+                .setParameter(6, alarm)
                 .executeUpdate();
         // entityManager.persist(poolData);
         entityManager.getTransaction().commit();

@@ -491,30 +491,33 @@ public class HubSensorsController {
         outputForm.put("addresses", slave.getAddresses());
         slaveRepository.save(slave);
 
-
         return "redirect:/slaves_list";
     }
 
     @GetMapping("/pool_data")
-    public String getDataFromSlaves(PoolData poolData, Slave slave,
-                                    Model model) {
+    public String getDataFromSlaves(Model model, PoolData poolData) {
         model.addAttribute("pool_list", poolDataRepository.findAll());
+        List<Slave> slaveList = slaveRepository.findAll();
+        List<PoolData> poolDataList = poolDataRepository.findAll();
+        Iterator<PoolData> iterator = poolDataList.iterator();
+//        while (iterator.hasNext()){
+//            PoolData pd = iterator.next();
+//            if(pd.getTemp() < 35){
+//                poolData.setAlarm(true);
+//                System.err.println("Šalta");
+//            }
+//        }
+        for (Slave slave : slaveList) {
 
-        //get then set
-        //String deviceName = poolData.setDeviceName("arbuzas");
-        List<Slave> slaveList = new ArrayList<>();
-
-        HashMap<Integer, Double> dataFromSlave = getDataFromSlave("COM10", 1, 1000, 10, 1000);
-        for (Slave list : slaveList) {
-
-            poolDataService.save(dataFromSlave.get(1000), dataFromSlave.get(1001), dataFromSlave.get(1002), dateTime(), list.getDeviceName());
+            HashMap<Integer, Double> dataFromSlave =
+                    getDataFromSlave(slave.getPortName(), slave.getSlaveId(), slave.getStartAddress(), slave.getNumRegisters());
+            poolDataService.save(dataFromSlave.get(1000), dataFromSlave.get(1001),
+                    dataFromSlave.get(1002), dateTime(), slave.getDeviceName(), (dataFromSlave.get(1002) < 35) ? true : false);
         }
-
 
         //poolDataRepository.save();
         return "pool_data";
     }
-
 
     public String dateTime() {
         LocalDateTime dateObj = LocalDateTime.now();
@@ -525,7 +528,7 @@ public class HubSensorsController {
     }
 
     //reikia irasineti periodiskai ir tada pasimti i pool lista
-    public HashMap getDataFromSlave(String portName, int slaveId, int startAddress, int numRegisters, int addresses) {
+    public HashMap getDataFromSlave(String portName, int slaveId, int startAddress, int numRegisters) {
         HashMap<Integer, Double> list = new HashMap<>();
         SerialParameters parameters = new SerialParameters();
         parameters.setPortName(portName);
@@ -555,7 +558,6 @@ public class HubSensorsController {
 
 
             if (response != null) {
-
 
 
                 // Read successful, process the response

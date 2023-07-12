@@ -53,6 +53,9 @@
         .has-error {
             color: red
         }
+        .good-temp {
+                    color: green
+                }
     </style>
 </html>
 

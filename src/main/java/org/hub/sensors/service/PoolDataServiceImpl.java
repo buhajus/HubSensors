@@ -14,8 +14,8 @@ public class PoolDataServiceImpl implements PoolDataService {
     private PoolDataDAO poolDataDAO;
 
     @Override
-    public void save(Double ph, Double ch, Double temp, String dateTime, String deviceName) {
-        poolDataDAO.insertValues(ph, ch, temp, dateTime, deviceName);
+    public void save(Double ph, Double ch, Double temp, String dateTime, String deviceName, Boolean alarm) {
+        poolDataDAO.insertValues(ph, ch, temp, dateTime, deviceName, alarm);
 
     }
 }

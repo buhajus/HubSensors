@@ -17,6 +17,7 @@
                 <th>Temperature</th>
                 <th>Date time</th>
                 <th>Device name</th>
+                <th>Alarm status</th>
 
             </tr>
 
@@ -29,6 +30,10 @@
                     <td>${pool.temp}</td>
                     <td>${pool.dateTime}</td>
                      <td>${pool.deviceName}</td>
+
+                     <c:if test="${pool.alarm == false}"><td class="good-temp"> Temp gera </td></c:if>
+                     <c:if test="${pool.alarm == true}"> <td class="has-error"> Šalta </td></c:if>
+
                 </tr>
             </c:forEach>
 
