@@ -7,6 +7,7 @@ import javax.persistence.*;
 public class PoolData {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
     @Column(name = "chloride")
     private double chloride;

@@ -21,7 +21,7 @@ public class PoolDataDAOImpl implements PoolDataDAO {
         EntityTransaction entityTransaction = entityManager.getTransaction();
         entityTransaction.begin();
 
-        Slave slave = new Slave();
+       // Slave slave = new Slave();
 
 
         entityManager.createNativeQuery(

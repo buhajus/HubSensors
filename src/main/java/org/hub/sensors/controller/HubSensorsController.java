@@ -14,6 +14,8 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.converter.json.GsonBuilderUtils;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -30,9 +32,7 @@ import com.ghgande.j2mod.modbus.net.SerialConnection;
 import com.ghgande.j2mod.modbus.util.SerialParameters;
 
 import javax.validation.Valid;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.IntStream;
@@ -495,11 +495,31 @@ public class HubSensorsController {
     }
 
     @GetMapping("/pool_data")
-    public String getDataFromSlaves(Model model, PoolData poolData) {
+    public String getDataFromSlaves(Model model) {
         model.addAttribute("pool_list", poolDataRepository.findAll());
+        return "pool_data";
+    }
+
+    public String getDateTime() {
+        LocalDateTime dateObj = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        String dateTime = dateObj.format(formatter);
+
+        return dateTime;
+    }
+
+    @Scheduled(fixedDelay = 3600000)
+    public void insertSlaveDataToDb() {
+
+        double temperatureLimit = 35;
+        int chloride = 1000;
+        int ph = 1001;
+        int temperature = 1002;
+
+
         List<Slave> slaveList = slaveRepository.findAll();
-        List<PoolData> poolDataList = poolDataRepository.findAll();
-        Iterator<PoolData> iterator = poolDataList.iterator();
+        //  List<PoolData> poolDataList = poolDataRepository.findAll();
+        // Iterator<PoolData> iterator = poolDataList.iterator();
 //        while (iterator.hasNext()){
 //            PoolData pd = iterator.next();
 //            if(pd.getTemp() < 35){
@@ -507,25 +527,35 @@ public class HubSensorsController {
 //                System.err.println("Šalta");
 //            }
 //        }
+        ;
+        //TODO:assing address like 1000 = cloride, 1002 = temperature
+        //8 double cloride = poolData.getChloride();
+
+
         for (Slave slave : slaveList) {
 
             HashMap<Integer, Double> dataFromSlave =
                     getDataFromSlave(slave.getPortName(), slave.getSlaveId(), slave.getStartAddress(), slave.getNumRegisters());
-            poolDataService.save(dataFromSlave.get(1000), dataFromSlave.get(1001),
-                    dataFromSlave.get(1002), dateTime(), slave.getDeviceName(), (dataFromSlave.get(1002) < 35) ? true : false);
+
+            try {
+                poolDataService.save(dataFromSlave.get(chloride), dataFromSlave.get(ph),
+                        dataFromSlave.get(temperature), getDateTime(), slave.getDeviceName(), (dataFromSlave.get(temperature) < temperatureLimit) ? true : false);
+
+                if (dataFromSlave.get(temperature) < temperatureLimit) {
+                    //send email
+                    System.out.println("alarm");
+
+                }
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
         }
-
-        //poolDataRepository.save();
-        return "pool_data";
     }
 
-    public String dateTime() {
-        LocalDateTime dateObj = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-        String dateTime = dateObj.format(formatter);
 
-        return dateTime;
-    }
 
     //reikia irasineti periodiskai ir tada pasimti i pool lista
     public HashMap getDataFromSlave(String portName, int slaveId, int startAddress, int numRegisters) {
@@ -536,6 +566,7 @@ public class HubSensorsController {
         parameters.setDatabits(8);
         parameters.setParity("None");
         parameters.setStopbits(1);
+        int divideBy = 100;
 
         SerialConnection connection = new SerialConnection(parameters);
 
@@ -560,13 +591,10 @@ public class HubSensorsController {
             if (response != null) {
 
 
-                // Read successful, process the response
                 for (int i = 0; i < numRegisters; i++) {
-
-
                     int registerAddress = startAddress + i;
                     double registerValue = response.getRegisterValue(i);
-                    list.put(registerAddress, registerValue / 100);
+                    list.put(registerAddress, registerValue / divideBy);
 
 //                    if (registerAddress == 0) {
 //                        //if address exist in array - add to list
@@ -579,7 +607,7 @@ public class HubSensorsController {
                 System.out.println(list);
 
             } else {
-                // Read failed, handle the error
+
                 System.err.println("Modbus read failed.");
             }
         } catch (Exception e) {
