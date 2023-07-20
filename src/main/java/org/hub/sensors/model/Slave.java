@@ -1,8 +1,6 @@
 package org.hub.sensors.model;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "slave")
@@ -23,10 +21,8 @@ public class Slave {
     @Column(name = "device_name")
     private String deviceName;
 
-
     public Slave() {
     }
-
 
     public Slave(int id, String portName, int slaveId, int startAddress, int numRegisters, int addresses, String deviceName) {
         this.id = id;

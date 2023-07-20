@@ -6,7 +6,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+<<<<<<< HEAD
 import java.util.List;
+=======
+>>>>>>> origin/master
 
 @Entity
 @Data
@@ -19,9 +22,12 @@ public class SlaveAddress {
     private int id;
     private int address;
     private String name;
+<<<<<<< HEAD
     @ManyToOne
     @JoinColumn(name = "slave_id", referencedColumnName = "id")
     private Slave id_slave;
+=======
+>>>>>>> origin/master
 
 
 }
