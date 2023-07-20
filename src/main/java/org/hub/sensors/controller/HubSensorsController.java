@@ -81,6 +81,8 @@ public class HubSensorsController {
 
     @Autowired
     private PoolDataService poolDataService;
+    @Autowired
+    private SlaveAddressRepository slaveAddressRepository;
 
 //    final GpioController gpio = GpioFactory.getInstance();
 //    final Console console = new Console();
@@ -508,16 +510,19 @@ public class HubSensorsController {
         return dateTime;
     }
 
-    @Scheduled(fixedDelay = 3600000)
+    // @Scheduled(fixedDelay = 3600)
+    @GetMapping("/pool")
     public void insertSlaveDataToDb() {
 
+
         double temperatureLimit = 35;
-        int chloride = 1000;
-        int ph = 1001;
-        int temperature = 1002;
+        // int chloride = 1000;
+        //  int ph = 1001;
+        //  int temperature = 1003;
 
 
         List<Slave> slaveList = slaveRepository.findAll();
+        List<SlaveAddress> slaveAddressList = slaveAddressRepository.findAll();
         //  List<PoolData> poolDataList = poolDataRepository.findAll();
         // Iterator<PoolData> iterator = poolDataList.iterator();
 //        while (iterator.hasNext()){
@@ -531,20 +536,48 @@ public class HubSensorsController {
         //TODO:assing address like 1000 = cloride, 1002 = temperature
         //8 double cloride = poolData.getChloride();
 
+        Map<String, Integer> slaveAddressMap = new HashMap<>();
+        for (SlaveAddress slaveAddress : slaveAddressList) {
+            slaveAddressMap.put(slaveAddress.getName(), slaveAddress.getAddress());
+        }
+
 
         for (Slave slave : slaveList) {
+
 
             HashMap<Integer, Double> dataFromSlave =
                     getDataFromSlave(slave.getPortName(), slave.getSlaveId(), slave.getStartAddress(), slave.getNumRegisters());
 
+
             try {
-                poolDataService.save(dataFromSlave.get(chloride), dataFromSlave.get(ph),
-                        dataFromSlave.get(temperature), getDateTime(), slave.getDeviceName(), (dataFromSlave.get(temperature) < temperatureLimit) ? true : false);
 
-                if (dataFromSlave.get(temperature) < temperatureLimit) {
-                    //send email
-                    System.out.println("alarm");
 
+                for (SlaveAddress slaveAddress : slaveAddressList) {
+
+                    if (slave.getId() == slaveAddress.getId_slave().getId()) {
+                        double chloride = dataFromSlave.getOrDefault(slaveAddressMap.get("CH"), 0.0);
+                        double ph = dataFromSlave.getOrDefault(slaveAddressMap.get("PH"), 0.0);
+                        double temperature = dataFromSlave.getOrDefault(slaveAddressMap.get("Temperature"), 0.0);
+
+                        boolean alarm = temperature < temperatureLimit;
+
+
+                        poolDataService.save(
+
+                                chloride,
+                                ph,
+                                temperature,
+                                getDateTime(),
+                                slave.getDeviceName(),
+                                alarm);
+
+
+                        if (alarm) {
+                            //send email
+                            System.out.println("alarm");
+
+                        }
+                    }
                 }
 
 
@@ -554,7 +587,6 @@ public class HubSensorsController {
 
         }
     }
-
 
 
     //reikia irasineti periodiskai ir tada pasimti i pool lista
