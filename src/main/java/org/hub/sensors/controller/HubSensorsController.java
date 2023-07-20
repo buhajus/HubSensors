@@ -81,6 +81,8 @@ public class HubSensorsController {
 
     @Autowired
     private PoolDataService poolDataService;
+    @Autowired
+    private SlaveAddressRepository slaveAddressRepository;
 
 //    final GpioController gpio = GpioFactory.getInstance();
 //    final Console console = new Console();
@@ -508,16 +510,19 @@ public class HubSensorsController {
         return dateTime;
     }
 
-    @Scheduled(fixedDelay = 3600000)
+    // @Scheduled(fixedDelay = 3600)
+    @GetMapping("/pool")
     public void insertSlaveDataToDb() {
+
 
         double temperatureLimit = 35;
         int chloride = 1000;
         int ph = 1001;
-        int temperature = 1002;
+        int temperature = 1003;
 
 
         List<Slave> slaveList = slaveRepository.findAll();
+        List<SlaveAddress> slaveAddressList = slaveAddressRepository.findAll();
         //  List<PoolData> poolDataList = poolDataRepository.findAll();
         // Iterator<PoolData> iterator = poolDataList.iterator();
 //        while (iterator.hasNext()){
@@ -534,12 +539,31 @@ public class HubSensorsController {
 
         for (Slave slave : slaveList) {
 
+
             HashMap<Integer, Double> dataFromSlave =
                     getDataFromSlave(slave.getPortName(), slave.getSlaveId(), slave.getStartAddress(), slave.getNumRegisters());
 
+
             try {
-                poolDataService.save(dataFromSlave.get(chloride), dataFromSlave.get(ph),
-                        dataFromSlave.get(temperature), getDateTime(), slave.getDeviceName(), (dataFromSlave.get(temperature) < temperatureLimit) ? true : false);
+                Iterator<SlaveAddress> slaveAddressIterator = slaveAddressList.iterator();
+                while (slaveAddressIterator.hasNext()) {
+                    SlaveAddress slaveAddress = slaveAddressIterator.next();
+                    for (int i = slave.getStartAddress(); i < slaveAddress.getAddress(); i++) {
+                        boolean isTemperature = slaveAddress.getName().equals("Temperature");
+
+
+                        poolDataService.save(
+
+                                dataFromSlave.get(i),
+                                dataFromSlave.get(i),
+                                dataFromSlave.get(i),
+                                getDateTime(),
+                                slave.getDeviceName(),
+                                (isTemperature ? (dataFromSlave.get(i) < temperatureLimit ? true : false) : false));
+                    }
+
+                }
+
 
                 if (dataFromSlave.get(temperature) < temperatureLimit) {
                     //send email
@@ -554,7 +578,6 @@ public class HubSensorsController {
 
         }
     }
-
 
 
     //reikia irasineti periodiskai ir tada pasimti i pool lista

@@ -1,6 +1,8 @@
 package org.hub.sensors.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "slave")
@@ -21,8 +23,13 @@ public class Slave {
     @Column(name = "device_name")
     private String deviceName;
 
+    @OneToMany(targetEntity = SlaveAddress.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "slave_id", referencedColumnName = "id")
+    private List<SlaveAddress> slaveAddressList;
+
     public Slave() {
     }
+
 
     public Slave(int id, String portName, int slaveId, int startAddress, int numRegisters, int addresses, String deviceName) {
         this.id = id;

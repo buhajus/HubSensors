@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cab6022f-3c94-4d51-9335-08f95806888b" name="Changes" comment="Added pool data .java, .jsp">
+    <list default="true" id="cab6022f-3c94-4d51-9335-08f95806888b" name="Changes" comment="small update in HubSensorsController.java">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/model/SlaveAddress.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/repository/SlaveAddressRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/controller/HubSensorsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/controller/HubSensorsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/model/PoolData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/model/PoolData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/model/PoolDataDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/model/PoolDataDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/hub/sensors/model/Slave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/hub/sensors/model/Slave.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +20,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -52,7 +54,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/MB Saromania/IdeaProjects/HubSensors/src/main/webapp/WEB-INF/jsp&quot;,
+    &quot;last_opened_file_path&quot;: &quot;G:/Downloads&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.5126437&quot;,
@@ -248,12 +250,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1684323418625</updated>
-    </task>
-    <task id="LOCAL−00037" summary="added pagination">
-      <created>1685013313308</created>
-      <option name="number" value="LOCAL−00037" />
-      <option name="presentableId" value="LOCAL−00037" />
-      <updated>1685013313308</updated>
     </task>
     <task id="LOCAL−00038" summary="added pagination">
       <created>1685013471430</created>
@@ -543,7 +539,13 @@
       <option name="presentableId" value="LOCAL−00085" />
       <updated>1688322925604</updated>
     </task>
-    <option name="localTasksCounter" value="86" />
+    <task id="LOCAL−00086" summary="small update in HubSensorsController.java">
+      <created>1689520016227</created>
+      <option name="number" value="LOCAL−00086" />
+      <option name="presentableId" value="LOCAL−00086" />
+      <updated>1689520016228</updated>
+    </task>
+    <option name="localTasksCounter" value="87" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -583,7 +585,8 @@
     <MESSAGE value="update" />
     <MESSAGE value="working with gpio" />
     <MESSAGE value="Added pool data .java, .jsp" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added pool data .java, .jsp" />
+    <MESSAGE value="small update in HubSensorsController.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="small update in HubSensorsController.java" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
