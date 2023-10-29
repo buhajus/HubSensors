@@ -1,2 +1,2 @@
 # HubSensors
-Store data from variuos sensors, devices using Rasperry PI, RS485
+Store data from various sensors, devices using Raspberry PI, RS485
